@@ -5,11 +5,13 @@ ruby '2.6.3'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'haml-rails'
 gem 'image_processing', '~> 1.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'sass-rails', '>= 6'
+gem 'thor'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
