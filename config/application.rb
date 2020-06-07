@@ -33,6 +33,7 @@ module Papua
 
     # Configure generators:
     config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
       g.test_framework  :rspec
       g.assets          false
       g.helper          false
