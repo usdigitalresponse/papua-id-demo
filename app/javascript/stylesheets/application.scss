@@ -1,5 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {
-  padding-top: 2rem;
+.warning {
+  background-color: #9c1414;
+  color: #fff;
+  text-align: center;
+}
+
+.card {
+  margin-top: 2rem;
 }
