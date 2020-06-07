@@ -1,0 +1,65 @@
+- content_for(:page_header) { t('new.header') }
+
+.card-body
+  = t('new.helper_text')
+
+.card-body
+  = form_for @applicant do |f|
+    - if @applicant.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@applicant.errors.count, "error")} prohibited this applicant from being saved:"
+        %ul
+          - @applicant.errors.full_messages.each do |message|
+            %li= message
+
+    .row
+      .col-lg-5
+        .form-group
+          = f.label :first_name, "First Name"
+          = f.text_field :first_name, class: 'form-control'
+      .col-lg-5
+        .form-group
+          = f.label :last_name, "Last Name"
+          = f.text_field :last_name, class: 'form-control'
+      .col-lg-2
+        .form-group
+          = f.label :birthdate
+          = f.date_field :birthdate, class: 'form-control'
+    .row
+      .col-lg
+        .form-group
+          = f.label :email_address, "Email Address"
+          = f.email_field :email_address, class: 'form-control'
+      .col-lg
+        .form-group
+          = f.label :phone_number, "Phone Number"
+          = f.telephone_field :phone_number, class: 'form-control'
+    .row
+      .col-lg
+        .form-group
+          = f.label :street_address, "Street Address"
+          = f.text_field :street_address, class: 'form-control'
+    .row
+      .col-lg
+        .form-group
+          = f.label :city
+          = f.text_field :city, class: 'form-control'
+      .col-lg
+        .form-group
+          = f.label :state
+          = f.select :state, us_states, { include_blank: true }, class: 'form-control'
+      .col-lg
+        .form-group
+          = f.label :postal_code, "ZIP Code"
+          = f.number_field :postal_code, class: 'form-control'
+    .row
+      .col-lg
+        .form-group
+          = f.label :ssn, "Social Security Number"
+          = f.text_field :ssn, class: 'form-control'
+      .col-lg
+        .form-group
+          = f.label :case_number, "Case Number"
+          = f.text_field :case_number, class: 'form-control'
+    .form-group
+      = f.submit 'Save', class: 'btn btn-success'

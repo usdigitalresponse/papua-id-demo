@@ -1,2 +1,4 @@
 en:
-  hello: "Hello world"
+  new:
+    header: ID Verification Service
+    helper_text: Input your information below to verify your identity, and hit submit when complete. If verified, your information will be updated with your benifit provider.
