@@ -20,4 +20,10 @@ RSpec.describe Applicant, type: :model do
       Applicant.create(valid_attributes)
     }.to change(Applicant, :count).by(1)
   end
+
+  it 'removes dashes from ssn' do
+    a = build_stubbed(:applicant)
+    a.ssn = '999-09-9999'
+    expect(a.ssn).to eq('999099999')
+  end
 end

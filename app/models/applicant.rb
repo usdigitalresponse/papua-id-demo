@@ -7,6 +7,10 @@ class Applicant < ApplicationRecord
     Denied: -1
   }
 
+  def ssn=(value)
+    super(value.to_s.gsub(/-/, ''))
+  end
+
   protected
 
   def make_descision
