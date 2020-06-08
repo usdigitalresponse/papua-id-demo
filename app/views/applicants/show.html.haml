@@ -1,0 +1,17 @@
+.card-body.text-center
+  - case @applicant.descision
+  - when 'Approved'
+    %h1.card-title= t('applicant.show.approved.header')
+    %p= t('applicant.show.approved.helper_text')
+    .text-success
+      %i.fas.fa-check-circle.fa-10x
+  - when 'Denied'
+    %h1.card-title= t('applicant.show.denied.header')
+    %p= t('applicant.show.denied.helper_text')
+    .text-danger
+      %i.fas.fa-times-circle.fa-10x
+  - when 'Manual Review'
+    %h1.card-title= t('applicant.show.manual_review.header')
+    %p= t('applicant.show.manual_review.helper_text')
+    .text-warning
+      %i.fas.fa-user-circle.fa-10x

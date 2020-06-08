@@ -1,5 +1,7 @@
 class ApplicantsController < ApplicationController
-  before_action :set_applicant, only: [:show, :edit, :update, :destroy]
+  before_action :set_applicant, only: [:show]
+
+  def show; end
 
   # GET /applicants/new
   def new
@@ -11,7 +13,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      redirect_to new_applicant_url, notice: 'Applicant was successfully created.'
+      redirect_to @applicant, notice: 'Applicant was successfully created.'
     else
       render :new
     end

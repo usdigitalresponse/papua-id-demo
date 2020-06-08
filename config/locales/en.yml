@@ -1,4 +1,15 @@
 en:
-  new:
-    header: ID Verification Service
-    helper_text: Input your information below to verify your identity, and hit submit when complete. If verified, your information will be updated with your benifit provider.
+  applicant:
+    new:
+      header: ID Verification Service
+      helper_text: Input your information below to verify your identity, and hit submit when complete. If verified, your information will be updated with your benifit provider.
+    show:
+      approved:
+        header: Success!
+        helper_text: Your identity has been verified, and that verification will be sent to your benfits provider.
+      denied:
+        header: Whoops!
+        helper_text: We were not able to verify your identity at this time. Please contact your benifits provider for other verification options.
+      manual_review:
+        header: Almost!
+        helper_text: We are not able to verify your itentity automatically, but a human has been assigned to review this, and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.

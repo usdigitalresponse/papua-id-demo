@@ -6,6 +6,10 @@ RSpec.describe ApplicantsController, type: :routing do
       expect(get: "/applicants/new").to route_to("applicants#new")
     end
 
+    it "routes to #show" do
+      expect(get: "/applicants/1").to route_to("applicants#show", id: "1")
+    end
+
     it "routes to #create" do
       expect(post: "/applicants").to route_to("applicants#create")
     end
@@ -14,10 +18,6 @@ RSpec.describe ApplicantsController, type: :routing do
   describe 'Excluded Routes' do
     it "does not route to #index" do
       expect(get: "/applicants").not_to route_to("applicants#index")
-    end
-
-    it "does not route to #show" do
-      expect(get: "/applicants/1").not_to route_to("applicants#show", id: "1")
     end
 
     it "does not route to #edit" do

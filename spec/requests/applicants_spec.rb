@@ -42,7 +42,7 @@ RSpec.describe "/applicants", type: :request do
         expect {
           post applicants_url, params: { applicant: valid_attributes }
         }.to change(Applicant, :count).by(1)
-        expect(response).to redirect_to(new_applicant_url)
+        expect(response).to redirect_to(applicant_url(Applicant.order(:created_at).last.id))
       end
     end
   end
