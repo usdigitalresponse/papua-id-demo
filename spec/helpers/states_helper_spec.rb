@@ -10,8 +10,8 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe StatesHelperHelper, type: :helper do
-  it('lists all 50 states') do
-    expect(helper.us_states.count).to eq(50)
+RSpec.describe StatesHelper, type: :helper do
+  it('lists all 50 states and DC') do
+    expect(helper.us_states.count).to eq(51)
   end
 end
