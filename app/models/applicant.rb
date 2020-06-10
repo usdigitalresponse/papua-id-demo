@@ -28,7 +28,7 @@ class Applicant < ApplicationRecord
       document_ssn: ssn
     }
 
-    self.descision_response = Alloy.evaluations(body: request_params)
+    self.descision_response = Alloy::Api.evaluations(body: request_params)
     self.descision = descision_response['summary']['outcome']
     self.entity_id = descision_response['entity_token']
     self.evaluation_id = descision_response['evaluation_token']
