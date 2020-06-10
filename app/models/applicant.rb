@@ -25,7 +25,9 @@ class Applicant < ApplicationRecord
       address_city: city,
       address_state: state,
       address_postal_code: postal_code,
-      document_ssn: ssn
+      address_country_code: 'US',
+      document_ssn: ssn,
+      'meta.case_number': case_number
     }
 
     self.descision_response = Alloy::Api.evaluations(body: request_params)
