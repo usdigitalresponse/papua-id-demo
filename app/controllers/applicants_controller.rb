@@ -5,7 +5,10 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/new
   def new
-    @applicant = Applicant.new
+    if params[:example_with_ln].present?
+      @applicant = FactoryBot.build(:applicant, last_name: params[:example_with_ln])
+    end
+    @applicant ||= Applicant.new
   end
 
   # POST /applicants
