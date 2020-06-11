@@ -17,13 +17,13 @@ TAG_GROUPS = {
     'SSN Warning',
     'SSN Miskey',
     'DOB Miskey',
-    'Foreign Device',
-    'Fraud Risk'
+    'Foreign Device'
   ],
   danger: [
     'Device Warning',
     'Address Warning',
     'Email Warning',
-    'Fraud Warning'
+    'Fraud Warning',
+    'Fraud Risk'
   ]
 }
