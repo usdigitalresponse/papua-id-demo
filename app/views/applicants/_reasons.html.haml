@@ -1,6 +1,6 @@
 #REASON_LIST.accordian
   - (@applicant.descision_response["summary"]["tags"] & SHOWN_TAGS).each_with_index do |tag, index|
-    .card
+    .card.mt-0
       .card-header{id: "REASON_#{index}_HEADING"}
         %h5.mb-0
           %button.btn.btn-link.collapsed{data: {toggle: 'collapse', target: "#REASON_#{index}"}, aria: {expanded: false, controls: "#REASON_#{index}"}}
