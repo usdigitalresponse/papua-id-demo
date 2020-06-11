@@ -7,6 +7,8 @@ class Applicant < ApplicationRecord
     Denied: -1
   }
 
+  scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
+
   def ssn=(value)
     super(value.to_s.gsub(/-/, ''))
   end
@@ -17,6 +19,14 @@ class Applicant < ApplicationRecord
 
   def evaluation_info
     Alloy::Api.evaluation_details(entity_id, evaluation_id)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def alloy_app_uri
+    "https://app.alloy.co/entities/#{entity_id}/evaluations/#{evaluation_id}/"
   end
 
   protected

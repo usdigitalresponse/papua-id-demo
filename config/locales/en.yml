@@ -1,4 +1,14 @@
 en:
+  admin:
+    applicants:
+      view_on_alloy: View on Alloy.co
+      index:
+        header: Listing Applicants
+        helper_text: This page shows all applicants in the system.
+        table:
+          name: Name
+          timestamp: Applied On
+          descision: Result
   applicant:
     new:
       header: ID Verification Service
@@ -11,7 +21,7 @@ en:
         header: Whoops!
         helper_text: We were not able to verify your identity at this time. Please contact your benifits provider for other verification options.
         reasons_html: Some reasons your application was denied may include&colon;
-      manual_review:
+      manual-review:
         header: Almost!
         helper_text: We are not able to verify your itentity automatically, but a human has been assigned to review this, and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.
         reasons_html: Some reasons for this review may include&colon;

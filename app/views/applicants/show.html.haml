@@ -1,21 +1,7 @@
 .card-body.text-center
-  - case @applicant.descision
-  - when 'Approved'
-    %h1.card-title= t('applicant.show.approved.header')
-    %p= t('applicant.show.approved.helper_text')
-    .text-success
-      %i.fas.fa-check-circle.fa-10x
-  - when 'Denied'
-    %h1.card-title= t('applicant.show.denied.header')
-    %p= t('applicant.show.denied.helper_text')
-    .text-danger
-      %i.fas.fa-times-circle.fa-10x
-    %h4.my-4= t('applicant.show.denied.reasons_html')
-    = render 'reasons'
-  - when 'Manual Review'
-    %h1.card-title= t('applicant.show.manual_review.header')
-    %p= t('applicant.show.manual_review.helper_text')
-    .text-warning
-      %i.fas.fa-user-circle.fa-10x
-    %h4.my-4= t('applicant.show.manual_review.reasons_html')
+  %h1.card-title= t("applicant.show.#{@applicant.descision.parameterize}.header")
+  %p= t("applicant.show.#{@applicant.descision.parameterize}.helper_text")
+  = descision_icon(@applicant.descision, size: 10)
+  - unless @applicant.Approved?
+    %h4.my-4= t("applicant.show.#{@applicant.descision.parameterize}.reasons_html")
     = render 'reasons'
