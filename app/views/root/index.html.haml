@@ -1,0 +1,9 @@
+- content_for(:page_header) { t('root.index.header') }
+
+.card-body
+  %p= t('root.index.helper_text')
+  = form_tag(new_applicant_url, method: :get) do
+    .form-group
+      = select_tag(:example_with_ln, options_from_collection_for_select(@examples, :to_s, :to_s), include_blank: true, class: 'form-control')
+    .form-group
+      = submit_tag t('shared.continue'), class: 'btn btn-success'
