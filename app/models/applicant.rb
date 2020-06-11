@@ -29,6 +29,10 @@ class Applicant < ApplicationRecord
     "https://app.alloy.co/entities/#{entity_id}/evaluations/#{evaluation_id}/"
   end
 
+  def tags
+    descision_response["summary"]["tags"]
+  end
+
   protected
 
   def make_descision

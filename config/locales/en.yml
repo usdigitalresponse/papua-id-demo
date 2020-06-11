@@ -4,6 +4,28 @@ en:
       approved: Approved
       denied: Denied
       manual-review: Manual Review
+    tags:
+      ssn-warning: SSN Warning
+      fraud-risk: Fraud Risk
+      device-warning: Device Warning
+      foreign-device: Foreign Device
+      address-warning: Address Warning
+      denied-fraud: Denied Fraud
+      fraud-review: Fraud Review
+      email-warning: Email Warning
+      fraud-warning: Fraud Warning
+      dob-miskey: DoB Miskey
+      kyc-address-match: Address Match
+      kyc-dob-match: DoB Match
+      kyc-name-match: Name Match
+      kyc-ssn-match: SSN Match
+      ofac-match: OFAC Match
+      phone-match: Phone Number Match
+      ssn-miskey: SSN Miskey
+      address-not-verified: Address Not Verified
+      dob-not-verified: DoB Not Verified
+      name-not-verified: Name Not Verified
+      ssn-not-verified: SSN Not Verfieid
     continue: Continue
   root:
     index:
@@ -31,6 +53,11 @@ en:
           phone_number: Phone
           address: Address
         result: Result
+        reasons:
+          header: Descision Reasons
+          success: Passing Checks
+          warning: Warnings
+          danger: Red Flags
   applicant:
     new:
       header: Applicant Identity Verification

@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ul.none {
+  list-style: none;
+  padding-left: 1rem;
+}

@@ -48,3 +48,28 @@
         .card-body.text-center
           %h3= t("shared.#{@applicant.descision.parameterize}")
           %p= descision_icon(@applicant.descision, size: 3)
+      .card
+        .card-header
+          %h5.card-title= t('admin.applicants.show.reasons.header')
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %h4= t('admin.applicants.show.reasons.success')
+            %ul.none
+              - (@applicant.tags & TAG_GROUPS[:success]).each do |t|
+                %li
+                  = descision_icon "Approved"
+                  = t("shared.tags.#{t.parameterize}")
+          %li.list-group-item
+            %h4= t('admin.applicants.show.reasons.warning')
+            %ul.none
+              - (@applicant.tags & TAG_GROUPS[:warning]).each do |t|
+                %li
+                  = descision_icon "Manual Review"
+                  = t("shared.tags.#{t.parameterize}")
+          %li.list-group-item
+            %h4= t('admin.applicants.show.reasons.danger')
+            %ul.none
+              - (@applicant.tags & TAG_GROUPS[:danger]).each do |t|
+                %li
+                  = descision_icon "Denied"
+                  = t("shared.tags.#{t.parameterize}")
