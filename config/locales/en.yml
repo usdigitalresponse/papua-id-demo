@@ -1,15 +1,15 @@
 en:
   applicant:
     new:
-      header: ID Verification Service
-      helper_text: Input your information below to verify your identity, and hit submit when complete. If verified, your information will be updated with your benifit provider.
+      header: Applicant Demographic Data
+      helper_text: Input your information below to verify an applicant's identity, and hit submit when complete. If verified, the applicant passes automated identity checks.
     show:
       approved:
         header: Success!
-        helper_text: Your identity has been verified, and that verification will be sent to your benfits provider.
+        helper_text: Identity successfully verified, no issues or conflicts detected.
       denied:
-        header: Whoops!
-        helper_text: We were not able to verify your identity at this time. Please contact your benifits provider for other verification options.
+        header: Verification Failed!
+        helper_text: Conflicts or issues were detected with this application, we were unable to verify applicants identity at this time.
       manual_review:
         header: Almost!
-        helper_text: We are not able to verify your itentity automatically, but a human has been assigned to review this, and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.
+        helper_text: We are not able to verify applicant identity automatically, this case will move to manual review! Further documentation may be requested.
