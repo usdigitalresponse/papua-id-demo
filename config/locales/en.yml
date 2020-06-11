@@ -1,4 +1,10 @@
 en:
+  shared:
+    continue: Continue
+  root:
+    index:
+      header: Select Example
+      helper_text: Select an example to use in the form or leave blank to show an empty form.
   admin:
     applicants:
       view_on_alloy: View on Alloy.co

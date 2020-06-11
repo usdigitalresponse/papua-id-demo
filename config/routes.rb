@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'applicants#new'
+  root to: 'root#index'
   namespace :admin do
     resources :applicants
   end
