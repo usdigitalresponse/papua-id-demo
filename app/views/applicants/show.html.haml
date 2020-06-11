@@ -10,8 +10,12 @@
     %p= t('applicant.show.denied.helper_text')
     .text-danger
       %i.fas.fa-times-circle.fa-10x
+    %p= t('applicant.show.denied.reasons')
+    = render 'reasons'
   - when 'Manual Review'
     %h1.card-title= t('applicant.show.manual_review.header')
     %p= t('applicant.show.manual_review.helper_text')
     .text-warning
       %i.fas.fa-user-circle.fa-10x
+    %p= t('applicant.show.manual_review.reasons')
+    = render 'reasons'

@@ -1,7 +1,16 @@
 class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:show]
 
-  def show; end
+  def show
+    case @applicant.descision
+    when 'Approved'
+      'success'
+    when 'Manual Review'
+      'warning'
+    when 'Denied'
+      'danger'
+    end
+  end
 
   # GET /applicants/new
   def new

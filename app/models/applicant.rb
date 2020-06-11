@@ -11,6 +11,14 @@ class Applicant < ApplicationRecord
     super(value.to_s.gsub(/-/, ''))
   end
 
+  def entity_info
+    Alloy::Api.entity_details(entity_id)
+  end
+
+  def evaluation_info
+    Alloy::Api.evaluation_details(entity_id, evaluation_id)
+  end
+
   protected
 
   def make_descision

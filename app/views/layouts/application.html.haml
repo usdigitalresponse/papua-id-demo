@@ -14,7 +14,7 @@
     .warning
       .container Right! This is a demo. Like....do not put real information in this. I should not have to say that, but...still. For real. Do not put real information into this! And if you do, and something bad happens, you have been duely warned and it is absolutely not Matt&apos;s fault!
     .container
-      .card
+      .card{class: "border-#{@card_border}" if @card_border}
         - if content_for?(:page_header)
           .card-header
             %h1.card-title= content_for :page_header
