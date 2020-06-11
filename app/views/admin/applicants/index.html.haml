@@ -12,9 +12,9 @@
     %tbody
       - @applicants.each do |applicant|
         %tr
-          %td= applicant.full_name
+          %td= link_to applicant.full_name, admin_applicant_url(applicant)
           %td= applicant.created_at
           %td
             = descision_icon(applicant.descision)
-            = applicant.descision
+            = t("shared.#{applicant.descision.parameterize}")
           %td= link_to(t('admin.applicants.view_on_alloy'), applicant.alloy_app_uri, target: '_blank')
