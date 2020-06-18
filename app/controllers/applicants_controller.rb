@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:show]
 
   def show
-    case @applicant.descision
+    case @applicant.decision
     when 'Approved'
       'success'
     when 'Manual Review'
@@ -22,10 +22,10 @@ class ApplicantsController < ApplicationController
 
   # POST /applicants
   def create
-    @applicant = Applicant.new(applicant_params)
+    @applicant = Applicant.new(applicant_params.except(:example_with_ln))
 
     if @applicant.save
-      redirect_to @applicant, notice: 'Applicant was successfully created.'
+      redirect_to new_bank_account_path, params: applicant_params[:example_with_ln]
     else
       render :new
     end
@@ -40,6 +40,6 @@ class ApplicantsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :birthdate, :email_address, :phone_number, :street_address, :city, :state, :postal_code, :ssn, :case_number)
+    params.require(:applicant).permit(:first_name, :last_name, :birthdate, :email_address, :phone_number, :street_address, :city, :state, :postal_code, :ssn, :case_number, :example_with_ln)
   end
 end

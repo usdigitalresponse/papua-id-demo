@@ -5,3 +5,4 @@
   - unless @applicant.Approved?
     %h4.my-4= t("applicant.show.#{@applicant.descision.parameterize}.reasons_html")
     = render 'reasons'
+  =link_to "Bank Account Information", new_bank_account_url
