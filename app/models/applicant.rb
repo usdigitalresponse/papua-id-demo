@@ -57,5 +57,7 @@ class Applicant < ApplicationRecord
     self.evaluation_id = descision_response['evaluation_token']
     self.application_token = descision_response['application_token']
     self.application_version_id = descision_response['application_version_id']
+
+    self.save
   end
 end

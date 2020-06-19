@@ -25,7 +25,9 @@ class BankAccountsController < ApplicationController
     @bank_account = BankAccount.new(bank_account_params)
 
     if @bank_account.save
-      redirect_to @bank_account, notice: 'Bank account was successfully stored.'
+      @bank_account.applicant.make_decision
+
+      redirect_to applicant_path(@bank_account.applicant)
     else
       render :new
     end
@@ -36,6 +38,6 @@ class BankAccountsController < ApplicationController
   end
 
   def bank_account_params
-    params.require(:bank_account).permit(:first_name, :last_name, :bank_account_number, :bank_routing_number)
+    params.require(:bank_account).permit(:first_name, :last_name, :bank_account_number, :bank_routing_number, :applicant_id)
   end
 end

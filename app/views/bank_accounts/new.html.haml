@@ -7,9 +7,9 @@
   = form_for @bank_account do |f|
     - if @bank_account.errors.any?
       #error-explanation
-        %h2= "#{pluralize(@applicant.errors.count, "error")} prohibited this bank account from being saved:"
+        %h2= "#{pluralize(@bank_account.errors.count, "error")} prohibited this bank account from being saved:"
         %ul
-          - @bank_account.errors.full_message.each do |message|
+          - @bank_account.errors.full_messages.each do |message|
             %li= message
 
     .row
@@ -30,5 +30,7 @@
         .form-group
           = f.label :bank_routing_number, "Bank Routing Number"
           = f.text_field :bank_routing_number, class: 'form-control'
+        .form-group
+          = f.hidden_field :applicant_id, value: params[:applicant_id]
     .form-group
       = f.submit 'Save', class: 'btn btn-success'

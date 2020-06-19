@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:show]
 
   def show
-    case @applicant.decision
+    case @applicant.descision
     when 'Approved'
       'success'
     when 'Manual Review'
@@ -25,7 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params.except(:example_with_ln))
 
     if @applicant.save
-      redirect_to new_bank_account_path, params: applicant_params[:example_with_ln]
+      redirect_to new_bank_account_path(example_with_ln: applicant_params[:example_with_ln], applicant_id: @applicant.id)
     else
       render :new
     end

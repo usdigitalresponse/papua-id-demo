@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_170603) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "decision"
-    t.bigint "applicant_id"
+    t.uuid "applicant_id"
     t.index ["applicant_id"], name: "index_bank_accounts_on_applicant_id"
   end
 
