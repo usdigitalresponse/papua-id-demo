@@ -74,6 +74,23 @@ en:
         header: Almost!
         helper_text: We are not able to verify applicant identity automatically, this application has been sent to manual review. and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.
         reasons_html: Some reasons for this review may include&colon;
+  bank_account:
+    new:
+      header: Applicant Bank Account Verification
+      helper_text: Input your information to verify applicant's bank account
+    show:
+      approved:
+        header: Success!
+        helper_text: Bank account verification was successful, data is valid and consistent
+      denied:
+        header: Whoops!
+        helper_text: Bank account verification was not successful
+        reasons_html: Some reasons your application was denied include&colon;
+      manual-review:
+        header: Almost!
+        helper_text: Bank account verification was not successful
+        reasons_html: Some reasons for this review may include&colon;
+
   tags:
     fraud-risk:
       header: Fraud Risk Identified

@@ -61,5 +61,7 @@
         .form-group
           = f.label :case_number, "Case Number"
           = f.text_field :case_number, class: 'form-control'
+        .form-group
+          = f.hidden_field :example_with_ln, value: params['example_with_ln']
     .form-group
       = f.submit 'Save', class: 'btn btn-success'

@@ -1,6 +1,7 @@
 class Applicant < ApplicationRecord
   validates :first_name, :last_name, :ssn, :birthdate, presence: true
-  before_create :make_descision
+  has_one :bank_account
+
   enum descision: {
     Approved: 1,
     "Manual Review": 0,
@@ -33,9 +34,7 @@ class Applicant < ApplicationRecord
     descision_response["summary"]["tags"]
   end
 
-  protected
-
-  def make_descision
+  def make_decision
     # This probably belongs somewhere else, but for right now, it's here.
     request_params = {
       name_first: first_name,
@@ -58,5 +57,7 @@ class Applicant < ApplicationRecord
     self.evaluation_id = descision_response['evaluation_token']
     self.application_token = descision_response['application_token']
     self.application_version_id = descision_response['application_version_id']
+
+    self.save
   end
 end
