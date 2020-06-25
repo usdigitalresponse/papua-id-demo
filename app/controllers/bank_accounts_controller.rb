@@ -23,10 +23,6 @@ class BankAccountsController < ApplicationController
 
   # POST /bank_accounts
   def create
-    if BankAccount.count(bank_account_params.permit(:bank_account_number, :bank_routing_number)) > MAX_APPLICANTS_PER_ACCOUNT
-
-    end
-
     @bank_account = BankAccount.new(bank_account_params)
 
     if @bank_account.save
