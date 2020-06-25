@@ -1,5 +1,6 @@
 class BankAccountsController < ApplicationController
   before_action :set_bank_account, only: [:show]
+  MAX_APPLICANTS_PER_ACCOUNT = 2
 
   def show
     case @bank_account.decision

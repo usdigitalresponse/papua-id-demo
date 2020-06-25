@@ -40,6 +40,14 @@
                 = @applicant.street_address
                 %br
                 = "#{@applicant.city}, #{@applicant.state} #{@applicant.postal_code}"
+          %li.list-group-item
+            .d-flex.justify-content-between
+              %strong= "Bank Account Number"
+              %span= @applicant.bank_account.bank_account_number
+          %li.list-group-item
+            .d-flex.justify-content-between
+              %strong= "Bank Routing Number"
+              %span= @applicant.bank_account.bank_routing_number
 
     .col-lg
       .card
