@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to root_url and return if User.find(session[:user_id]).present?
     @redirect_path = params[:path]
   end
 
