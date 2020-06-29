@@ -9,7 +9,7 @@ FactoryBot.define do
     city { Faker::Address.city }
     state { Faker::Address.state_abbr }
     postal_code { Faker::Address.zip.gsub(/-\d{4}/, '') }
-    ssn { Faker::IDNumber.valid.gsub(/-/, '').to_i }
+    ssn { Faker::IDNumber.valid.gsub(/-/, '') }
     case_number { Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3, min_numeric: 3) }
   end
 end

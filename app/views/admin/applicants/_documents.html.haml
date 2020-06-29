@@ -1,0 +1,12 @@
+.card
+  .card-header
+    %h5.card-title Documents
+  %ul.list-group.list-group-flush
+    - @applicant.documents.each do |document|
+      %li.list-group-item
+        .d-flex.justify-content-between
+          = image_tag document.file, style: 'width: 50%'
+          %div{style: 'vertical-alignn: middle; height: 100%'}
+            = descision_icon(document.descision, size: 2)
+            %br
+            = t("shared.descisions.#{document.descision.parameterize}")
