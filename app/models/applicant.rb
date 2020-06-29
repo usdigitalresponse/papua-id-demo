@@ -1,10 +1,13 @@
 class Applicant < ApplicationRecord
+  has_many :documents
   validates :first_name, :last_name, :ssn, :birthdate, presence: true
   before_create :make_descision
+
   enum descision: {
     Approved: 1,
     "Manual Review": 0,
-    Denied: -1
+    Denied: -1,
+    unprocessed: -2
   }
 
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
@@ -33,11 +36,8 @@ class Applicant < ApplicationRecord
     descision_response["summary"]["tags"]
   end
 
-  protected
-
-  def make_descision
-    # This probably belongs somewhere else, but for right now, it's here.
-    request_params = {
+  def request_params
+    {
       name_first: first_name,
       name_last: last_name,
       birth_date: birthdate.iso8601,
@@ -51,8 +51,13 @@ class Applicant < ApplicationRecord
       document_ssn: ssn,
       'meta.case_number': case_number
     }
+  end
 
-    self.descision_response = Alloy::Api.evaluations(body: request_params)
+  protected
+
+  def make_descision
+    # TODO: Move this to a job
+    self.descision_response = Alloy::Api.evaluations(body: self.request_params)
     self.descision = descision_response['summary']['outcome']
     self.entity_id = descision_response['entity_token']
     self.evaluation_id = descision_response['evaluation_token']

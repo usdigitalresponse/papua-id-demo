@@ -10,11 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_144228) do
+ActiveRecord::Schema.define(version: 2020_06_29_110713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "applicants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", limit: 64
@@ -30,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_144228) do
     t.string "case_number", limit: 32
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "descision"
+    t.integer "descision", limit: 2, default: -2, null: false
     t.jsonb "descision_response"
     t.string "entity_id"
     t.string "evaluation_id"
@@ -38,4 +59,28 @@ ActiveRecord::Schema.define(version: 2020_06_08_144228) do
     t.string "application_version_id"
   end
 
+  create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "document_type"
+    t.uuid "applicant_id", null: false
+    t.integer "descision", limit: 2, default: -2, null: false
+    t.jsonb "descision_response"
+    t.string "entity_id"
+    t.string "evaluation_id"
+    t.string "application_token"
+    t.string "application_version_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "processing_status", default: 0, null: false
+    t.index ["applicant_id"], name: "index_documents_on_applicant_id"
+  end
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "documents", "applicants"
 end

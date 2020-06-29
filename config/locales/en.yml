@@ -1,9 +1,15 @@
 en:
+  activerecord:
+    attributes:
+      document:
+        document_type: TEST THIS
+        file: File to Upload
   shared:
     descisions:
       approved: Approved
       denied: Denied
       manual-review: Manual Review
+      unprocessed: Not Yet Processed
     tags:
       ssn-warning: SSN Warning
       fraud-risk: Fraud Risk
@@ -26,11 +32,22 @@ en:
       dob-not-verified: DoB Not Verified
       name-not-verified: Name Not Verified
       ssn-not-verified: SSN Not Verfieid
+    document_types:
+      license: "Valid US Driver's License"
+      passport: Valid US Passport
     continue: Continue
   root:
     index:
       header: Select Example
       helper_text: Select an example to use in the form or leave blank to show an empty form.
+  session:
+    new:
+      header: Login
+      email: Email Address
+      password: Password
+      login: Login
+      incorrect: Invalid email or password
+      logout: You have successfully logged out
   admin:
     applicants:
       view_on_alloy: View on Alloy.co
@@ -74,6 +91,10 @@ en:
         header: Almost!
         helper_text: We are not able to verify applicant identity automatically, this application has been sent to manual review. and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.
         reasons_html: Some reasons for this review may include&colon;
+  document:
+    new:
+      header: "Upload a Picture of your Driver's License"
+      helper_text: "We need a picture of your Driver's License to help verify your identity. Upload it here."
   tags:
     fraud-risk:
       header: Fraud Risk Identified

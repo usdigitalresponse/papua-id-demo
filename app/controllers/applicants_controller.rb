@@ -25,7 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      redirect_to @applicant, notice: 'Applicant was successfully created.'
+      redirect_to new_applicant_document_url(@applicant)
     else
       render :new
     end

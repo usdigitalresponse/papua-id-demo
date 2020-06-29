@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+require('dropzone')
+
 import 'bootstrap'
 import '../stylesheets/application'
 

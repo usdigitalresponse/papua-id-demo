@@ -33,6 +33,8 @@ module Papua
 
     config.i18n.fallbacks = [:en]
 
+    config.active_job.queue_adapter = :sidekiq
+
     # Configure generators:
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid

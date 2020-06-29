@@ -10,6 +10,9 @@ module DescisionHelper
     when 'Manual Review'
       text_class = 'text-warning'
       icon_class = 'fas fa-user-circle'
+    when 'unprocessed'
+      text_class = 'text-secondary'
+      icon_class = 'fas fa-question-circle'
     end
     icon_class << " fa-#{options[:size]}x" if options[:size].present?
     content_tag(:span, content_tag(:i, '', class: icon_class), class: text_class)

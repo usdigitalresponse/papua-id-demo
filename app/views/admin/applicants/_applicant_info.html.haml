@@ -1,0 +1,35 @@
+.card
+  .card-header
+    %h5.card-title= t('admin.applicants.show.details.header')
+  %ul.list-group.list-group-flush
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.first_name')
+        %span= @applicant.first_name
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.last_name')
+        %span= @applicant.last_name
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.birthdate')
+        %span= @applicant.birthdate.iso8601
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.ssn')
+        %span= @applicant.ssn.gsub(/^\d{5}/, "••• - •• - ")
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.email_address')
+        %span= @applicant.email_address
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.phone_number')
+        %span= @applicant.phone_number
+    %li.list-group-item
+      .d-flex.justify-content-between
+        %strong= t('admin.applicants.show.details.address')
+        %address
+          = @applicant.street_address
+          %br
+          = "#{@applicant.city}, #{@applicant.state} #{@applicant.postal_code}"
