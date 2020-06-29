@@ -3,6 +3,7 @@
 .card-body
   %p= t('root.index.helper_text')
   = form_tag(new_applicant_url, method: :get) do
+    = hidden_field_tag(:locale, I18n.locale)
     .form-group
       = select_tag(:example_with_ln, options_from_collection_for_select(@examples, :to_s, :to_s), include_blank: true, class: 'form-control')
     .form-group
