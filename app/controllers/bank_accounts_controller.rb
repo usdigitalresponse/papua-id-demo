@@ -1,37 +1,30 @@
 class BankAccountsController < ApplicationController
-  before_action :set_bank_account, only: [:show]
-  MAX_APPLICANTS_PER_ACCOUNT = 2
-
-  def show
-    case @bank_account.decision
-    when 'Approved'
-      'success'
-    when 'Manual Review'
-      'warning'
-    when 'Denied'
-      'danger'
-    end
-  end
+  before_action :set_applicant
 
   # GET /bank_accounts/new
   def new
     if params[:example_with_ln].present?
-      @bank_account = FactoryBot.build(:bank_account, last_name: params[:example_with_ln])
+      @bank_account = FactoryBot.build(:bank_account, last_name: params[:example_with_ln], applicant_id: @applicant.id)
     end
-    @bank_account ||= BankAccount.new
+    @bank_account ||= BankAccount.new(applicant_id: @applicant.id)
   end
 
   # POST /bank_accounts
   def create
-    @bank_account = BankAccount.new(bank_account_params)
-
-    if @bank_account.save
-      @bank_account.applicant.make_decision
+    if @bank_account = BankAccount.create(bank_account_params.to_h.merge(applicant_id: @applicant.id))
+      # calling a protected method here:
+      #@bank_account.applicant.make_decision
 
       redirect_to new_applicant_document_url(@bank_account.applicant)
     else
       render :new
     end
+  end
+
+  protected
+
+  def set_applicant
+    @applicant = Applicant.find(params[:applicant_id])
   end
 
   def set_bank_account

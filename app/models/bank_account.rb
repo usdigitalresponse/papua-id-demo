@@ -1,23 +1,22 @@
-class MaxBankAccountsValidator < ActiveModel::Validator
-  ACCOUNT_LIMIT = 2
-
-  def validate(record)
-    if BankAccount.where(bank_account_number: record.bank_account_number, bank_routing_number: record.bank_routing_number).size >= ACCOUNT_LIMIT
-      record.errors[:bank_account_number] << "Unable to store bank account information"
-    end
-  end
-end
-
 class BankAccount < ApplicationRecord
+  ACCOUNT_LIMIT = 2
+  belongs_to :applicant
   validates :first_name, :last_name, :bank_account_number, :bank_routing_number, presence: true
-  belongs_to :applicant, optional: true
-  validates_with MaxBankAccountsValidator
+  validate :check_for_multiples
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
+  protected
+
   def make_decision
-    self.applicant.make_decision
+    #self.applicant.make_decision
+  end
+
+  def check_for_multiples
+    if BankAccount.where(bank_account_number: bank_account_number, bank_routing_number: bank_routing_number).count >= ACCOUNT_LIMIT
+      record.errors[:bank_account_number] << "Unable to store bank account information"
+    end
   end
 end

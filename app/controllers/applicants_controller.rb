@@ -25,7 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params.except(:example_with_ln))
 
     if @applicant.save
-      redirect_to new_bank_account_path(example_with_ln: applicant_params[:example_with_ln], applicant_id: @applicant.id)
+      redirect_to new_applicant_bank_account_url(@applicant, example_with_ln: applicant_params[:example_with_ln])
     else
       render :new
     end

@@ -7,7 +7,6 @@ class DocumentsController < ApplicationController
 
   def create
     @document = @applicant.documents.create(document_params)
-    byebug
     redirect_to @applicant
   end
 

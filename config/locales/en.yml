@@ -93,8 +93,8 @@ en:
         reasons_html: Some reasons for this review may include&colon;
   document:
     new:
-      header: "Upload a Picture of your Driver's License"
-      helper_text: "We need a picture of your Driver's License to help verify your identity. Upload it here."
+      header: Upload a Picture of your ID
+      helper_text: We need a photo of your ID to verify your identity - please upload either a driver's license or a passport. On mobile, you may be able to use your phone's camera to take a photo.
   bank_account:
     new:
       header: Applicant Bank Account Verification
