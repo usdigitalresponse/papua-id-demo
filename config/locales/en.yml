@@ -56,7 +56,7 @@ en:
       logout: You have successfully logged out
   admin:
     applicants:
-      view_on_alloy: View on Alloy.co
+      view_on_alloy: View on developer console
       index:
         header: Listing Applicants
         helper_text: This page shows all applicants in the system.
