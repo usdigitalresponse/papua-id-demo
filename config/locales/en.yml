@@ -40,7 +40,7 @@ en:
     continue: Continue
   root:
     index:
-      header: Select Example
+      header: USDR Papua ID Verification Demo
       helper_text: Welcome to the USDR Papua ID Verification Demo.
       admin: View the Admin Console
       ux: View the User Experience
