@@ -5,6 +5,8 @@ en:
         document_type: TEST THIS
         file: File to Upload
   shared:
+    site_title: Papua ID Demo
+    demo_banner: THIS IS A DEMO. DO NOT PUT REAL, SENSITIVE DATA INTO THIS
     descisions:
       approved: Approved
       denied: Denied
