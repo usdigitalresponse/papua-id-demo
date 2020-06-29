@@ -1,7 +1,6 @@
 class Applicant < ApplicationRecord
   has_many :documents
-  validates :first_name, :last_name, :ssn, :birthdate, presence: true
-  before_create :make_descision
+  has_one :bank_account
 
   enum descision: {
     Approved: 1,
@@ -10,7 +9,11 @@ class Applicant < ApplicationRecord
     unprocessed: -2
   }
 
+  before_create :make_descision
+
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
+
+  validates :first_name, :last_name, :ssn, :birthdate, presence: true
 
   def ssn=(value)
     super(value.to_s.gsub(/-/, ''))
@@ -63,5 +66,7 @@ class Applicant < ApplicationRecord
     self.evaluation_id = descision_response['evaluation_token']
     self.application_token = descision_response['application_token']
     self.application_version_id = descision_response['application_version_id']
+
+    self.save
   end
 end

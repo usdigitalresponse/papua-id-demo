@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :applicants, only: [:new, :create, :show] do
     resources :documents, only: [:new, :create]
   end
+  resources :bank_accounts, only: [:new, :create, :show]
 end

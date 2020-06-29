@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 2020_06_29_110713) do
     t.string "application_version_id"
   end
 
+  create_table "bank_accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "bank_account_number"
+    t.string "bank_routing_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "decision"
+    t.uuid "applicant_id"
+    t.index ["applicant_id"], name: "index_bank_accounts_on_applicant_id"
+  end
+
   create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "document_type"
     t.uuid "applicant_id", null: false
