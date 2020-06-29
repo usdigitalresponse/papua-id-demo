@@ -23,6 +23,7 @@ gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'i18n-tasks'
   gem 'rspec-rails'
 end
 

@@ -32,6 +32,7 @@ module Papua
     # the framework and any gems in your application.
 
     config.i18n.fallbacks = [:en]
+    config.i18n.available_locales = [:en, :fr, :es, :de, :zh, :so, :hi, :eo, :it]
 
     config.active_job.queue_adapter = :sidekiq
 
