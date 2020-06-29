@@ -2,6 +2,7 @@
 
 .card-body
   = form_tag(sessions_url) do
+    = hidden_field_tag :redirect_path, @redirect_path
     .form-group
       = label_tag :email, t('session.new.email')
       = email_field_tag :email, nil, class: 'form-control'
