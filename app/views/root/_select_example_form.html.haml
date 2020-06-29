@@ -1,0 +1,15 @@
+#SELECT_EXAMPLE_FORM.modal.fade{tabindex: '-1', role: 'dialog', aria: {labelledby: '#SELECT_EXAMPLE_FORM_LABEL', hidden: 'true'}}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5#SELECT_EXAMPLE_FORM_LABEL.modal-title= t('root.index.popup_title')
+        %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+          %i.fas.fa-times
+      .modal-body
+        %p= t('root.index.popup_helper_text')
+        = form_tag(new_applicant_url, method: :get) do
+          = hidden_field_tag(:locale, I18n.locale)
+          .form-group
+            = select_tag(:example_with_ln, options_from_collection_for_select(@examples, :to_s, :to_s), include_blank: true, class: 'form-control')
+          .form-group
+            = submit_tag t('shared.continue'), class: 'btn btn-success'

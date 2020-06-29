@@ -35,13 +35,17 @@ en:
       name-not-verified: Name Not Verified
       ssn-not-verified: SSN Not Verfieid
     document_types:
-      license: "Valid US Driver's License"
+      license: Valid US Driver's License
       passport: Valid US Passport
     continue: Continue
   root:
     index:
       header: Select Example
-      helper_text: Select an example to use in the form or leave blank to show an empty form.
+      helper_text: Welcome to the USDR Papua ID Verification Demo.
+      admin: View the Admin Console
+      ux: View the User Experience
+      popup_title: Choose Example
+      popup_helper_text: Select an example to use in the form or leave blank to show an empty form.
   session:
     new:
       header: Login

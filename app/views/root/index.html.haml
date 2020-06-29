@@ -2,9 +2,10 @@
 
 .card-body
   %p= t('root.index.helper_text')
-  = form_tag(new_applicant_url, method: :get) do
-    = hidden_field_tag(:locale, I18n.locale)
-    .form-group
-      = select_tag(:example_with_ln, options_from_collection_for_select(@examples, :to_s, :to_s), include_blank: true, class: 'form-control')
-    .form-group
-      = submit_tag t('shared.continue'), class: 'btn btn-success'
+  .row
+    .col-lg.text-center
+      = link_to t('root.index.admin'), admin_applicants_url, class: 'btn btn-lg btn-warning mx-auto'
+    .col-lg.text-center
+      %button.btn.btn-lg.btn-info.mx-auto{type: 'button', data: {toggle: 'modal', target: '#SELECT_EXAMPLE_FORM'}}= t('root.index.ux')
+
+= render 'select_example_form'
