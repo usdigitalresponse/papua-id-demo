@@ -65,7 +65,7 @@ en:
       address-not-verified: Address Not Verified in LexisNexis and Secure30
       dob-not-verified: DoB Not Verified in LexisNexis and Secure30
       name-not-verified: Name Not Verified in LexisNexis and Secure30
-      ssn-not-verified: SSN Not Verfieid in LexisNexis and Secure30
+      ssn-not-verified: SSN information was not avaliable in processors for this applicant.
     document_types:
       license: Valid US Driver's License
       passport: Valid US Passport

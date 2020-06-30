@@ -13,7 +13,7 @@ Alloy::Api.set_endpoint(
   Rails.application.credentials.alloy[:uri]
 )
 
-SHOWN_TAGS = ['Fraud Risk', 'SSN Warning']
+SHOWN_TAGS = ['Fraud Risk', 'SSN Warning', 'SSN Not Verified']
 TAG_GROUPS = {
   success: [
     "KYC Address Match",
@@ -27,6 +27,7 @@ TAG_GROUPS = {
     'SSN Miskey',
     'DOB Miskey',
     'Foreign Device'
+    'SSN Not Verified'
   ],
   danger: [
     'Device Warning',
