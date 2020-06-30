@@ -26,7 +26,7 @@ TAG_GROUPS = {
     'SSN Warning',
     'SSN Miskey',
     'DOB Miskey',
-    'Foreign Device'
+    'Foreign Device',
     'SSN Not Verified'
   ],
   danger: [
