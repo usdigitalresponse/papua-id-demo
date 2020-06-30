@@ -3,8 +3,8 @@ class BankAccountsController < ApplicationController
 
   # GET /bank_accounts/new
   def new
-    if params[:example_with_ln].present?
-      @bank_account = FactoryBot.build(:bank_account, last_name: params[:example_with_ln], applicant_id: @applicant.id)
+    if session[:enable_factorybot].present?
+      @bank_account = FactoryBot.build(:bank_account, last_name: @applicant.last_name, first_name: @applicant.first_name, applicant_id: @applicant.id)
     end
     @bank_account ||= BankAccount.new(applicant_id: @applicant.id)
   end

@@ -1,5 +1,8 @@
 class RootController < ApplicationController
   def index
-    @examples = %w[FraudRiskMR DOBMiskeyMR SSNWarningApprove NameNotVerifiedMR NameAddressNotVerifiedMR SSNWarningDeniedFraud SSNNotVerifiedMR DeviceWarningDenied BankAccountInvalid BankRoutingNumberInvalid]
+    session[:enable_factorybot] = true unless session.to_h.keys.include? :enable_factorybot
+    @examples = EXAMPLES.map { |k,v|
+      [I18n.t("shared.examples.display_names.#{k}"), v]
+    }
   end
 end

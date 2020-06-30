@@ -1,5 +1,6 @@
 class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:show]
+  before_action :set_session_params_from_switches, only: [:new]
 
   def show
     case @applicant.descision
@@ -14,8 +15,8 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/new
   def new
-    if params[:example_with_ln].present?
-      @applicant = FactoryBot.build(:applicant, last_name: params[:example_with_ln])
+    if session[:enable_factorybot].present?
+      @applicant = FactoryBot.build(:applicant, forced_params)
     end
     @applicant ||= Applicant.new
   end
@@ -33,6 +34,11 @@ class ApplicantsController < ApplicationController
 
   protected
 
+  def set_session_params_from_switches
+    # Handle setting the session params from those switches:
+    session[:enable_factorybot] = params[:enable_factorybot]
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_applicant
     @applicant = Applicant.find(params[:id])
@@ -41,5 +47,9 @@ class ApplicantsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def applicant_params
     params.require(:applicant).permit(:first_name, :last_name, :birthdate, :email_address, :phone_number, :street_address, :city, :state, :postal_code, :ssn, :case_number, :example_with_ln)
+  end
+
+  def forced_params
+    params.require(:applicant).permit(:ssn).to_h.delete_if { |k,v| v.blank? }
   end
 end

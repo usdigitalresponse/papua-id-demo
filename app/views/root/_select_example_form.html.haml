@@ -1,15 +1,21 @@
 #SELECT_EXAMPLE_FORM.modal.fade{tabindex: '-1', role: 'dialog', aria: {labelledby: '#SELECT_EXAMPLE_FORM_LABEL', hidden: 'true'}}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %h5#SELECT_EXAMPLE_FORM_LABEL.modal-title= t('root.index.popup_title')
-        %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
-          %i.fas.fa-times
-      .modal-body
-        %p= t('root.index.popup_helper_text')
-        = form_tag(new_applicant_url, method: :get) do
+  = form_tag(new_applicant_url, method: :get) do
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %h5#SELECT_EXAMPLE_FORM_LABEL.modal-title= t('root.index.popup.title')
+          %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+            %i.fas.fa-times
+        .modal-body
+          %p= t('root.index.popup.helper_text')
           = hidden_field_tag(:locale, I18n.locale)
           .form-group
-            = select_tag(:example_with_ln, options_from_collection_for_select(@examples, :to_s, :to_s), include_blank: true, class: 'form-control')
-          .form-group
+            = label :applicant, :ssn, t('root.index.popup.example_label')
+            = select :applicant, :ssn, options_for_select(@examples), {include_blank: true}, {class: 'form-control'}
+          %hr
+          %p= switch_tag :enable_bank_accounts, t('root.index.popup.enable_bank_accounts'), 1, true
+          %p= switch_tag :enable_documents, t('root.index.popup.enable_documents'), 1, true
+          %p= switch_tag :enable_factorybot, t('root.index.popup.enable_factorybot'), 1, true
+        .modal-footer
+          .d-flex.flex-row-reverse
             = submit_tag t('shared.continue'), class: 'btn btn-success'

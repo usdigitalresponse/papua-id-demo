@@ -9,7 +9,13 @@ class Applicant < ApplicationRecord
     unprocessed: -2
   }
 
-  before_create :make_descision
+  enum processing_status: {
+    unable_to_process: -1,
+    queued: 0,
+    processed: 1
+  }
+
+  after_create_commit :make_descision
 
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
 
@@ -59,12 +65,6 @@ class Applicant < ApplicationRecord
   protected
 
   def make_descision
-    # TODO: Move this to a job
-    self.descision_response = Alloy::Api.evaluations(body: self.request_params)
-    self.descision = descision_response['summary']['outcome']
-    self.entity_id = descision_response['entity_token']
-    self.evaluation_id = descision_response['evaluation_token']
-    self.application_token = descision_response['application_token']
-    self.application_version_id = descision_response['application_version_id']
+    ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
   end
 end

@@ -7,6 +7,16 @@ en:
   shared:
     site_title: Papua ID Demo
     demo_banner: THIS IS A DEMO. DO NOT PUT REAL, SENSITIVE DATA INTO THIS
+    examples:
+      display_names:
+        FraudRiskMR: Fraud Risk - MR
+        DOBMiskeyMR: DoB Question - MR
+        SSNWarningApprove: SSN Missing in Only Some Matches - A
+        NameNotVerifiedMR: Name not Verified - MR
+        NameAddressNotVerifiedMR: Name + Address not Verified - MR
+        SSNWarningDeniedFraud: SSN Fraud Warning - D
+        SSNNotVerifiedMR: SSN Not Found - MR
+        DeviceWarningDenied: Device Fraud - D
     descisions:
       approved: Approved
       denied: Denied
@@ -34,6 +44,28 @@ en:
       dob-not-verified: DoB Not Verified
       name-not-verified: Name Not Verified
       ssn-not-verified: SSN Not Verfieid
+    tag_descriptions:
+      ssn-warning: This SSN has a fraud flag attached to it. This could be because it was previously involved in identity theft, and has been flagged as blocked, or it could be fraudlent activity.
+      fraud-risk: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      device-warning: This user completed the application from a known fraudulent IP address - it is most likely a bot.
+      foreign-device: This application was completed from outside the USA
+      address-warning: The address may not match sources from identity providers.
+      denied-fraud: This address/name/ssn are known to be fraudulent
+      fraud-review: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      email-warning: This email is known to be associated with fraud.
+      fraud-warning: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      dob-miskey: In some data sources, the data of birth is different, but by only one day/month/year, suggesting those datasources may be miskeyed.
+      kyc-address-match: Address Match in LexisNexis and Secure30
+      kyc-dob-match: DoB Matches in LexisNexis and Secure30
+      kyc-name-match: Name Match in LexisNexis and Secure30
+      kyc-ssn-match: SSN Match in LexisNexis
+      ofac-match: OFAC Match
+      phone-match: Phone Number Match in LexisNexis and WPP
+      ssn-miskey: In some data sources, the ssn is different, but by only one digit, suggesting those datasources may be miskeyed.
+      address-not-verified: Address Not Verified in LexisNexis and Secure30
+      dob-not-verified: DoB Not Verified in LexisNexis and Secure30
+      name-not-verified: Name Not Verified in LexisNexis and Secure30
+      ssn-not-verified: SSN Not Verfieid in LexisNexis and Secure30
     document_types:
       license: Valid US Driver's License
       passport: Valid US Passport
@@ -44,8 +76,13 @@ en:
       helper_text: Welcome to the USDR Papua ID Verification Demo.
       admin: View the Admin Console
       ux: View the User Experience
-      popup_title: Choose Example
-      popup_helper_text: Select an example to use in the form or leave blank to show an empty form.
+      popup:
+        title: Experience Settings
+        helper_text: Configure the user experience settings. The example selectors allow you to choose specific, sandboxed examples that will generate pre-determined results.
+        example_label: Sandboxed Exmaple
+        enable_bank_accounts: Enable Bank Account Verification
+        enable_documents: Enable Document Verification
+        enable_factorybot: Prefill Forms with Example Data
   session:
     new:
       header: Login
@@ -77,7 +114,7 @@ en:
           address: Address
         result: Result
         reasons:
-          header: Descision Reasons
+          header: Decision Reasons
           success: Passing Checks
           warning: Warnings
           danger: Red Flags
