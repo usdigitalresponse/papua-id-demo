@@ -46,14 +46,14 @@ en:
       ssn-not-verified: SSN Not Verfieid
     tag_descriptions:
       ssn-warning: This SSN has a fraud flag attached to it. This could be because it was previously involved in identity theft, and has been flagged as blocked, or it could be fraudlent activity.
-      fraud-risk: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      fraud-risk: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
       device-warning: This user completed the application from a known fraudulent IP address - it is most likely a bot.
       foreign-device: This application was completed from outside the USA
       address-warning: The address may not match sources from identity providers.
       denied-fraud: This address/name/ssn are known to be fraudulent
-      fraud-review: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      fraud-review: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
       email-warning: This email is known to be associated with fraud.
-      fraud-warning: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentiall fraudulent.
+      fraud-warning: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
       dob-miskey: In some data sources, the data of birth is different, but by only one day/month/year, suggesting those datasources may be miskeyed.
       kyc-address-match: Address Match in LexisNexis and Secure30
       kyc-dob-match: DoB Matches in LexisNexis and Secure30
