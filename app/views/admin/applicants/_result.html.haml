@@ -1,0 +1,6 @@
+.card
+  .card-header
+    %h5.card-title= t('admin.applicants.show.result')
+  .card-body.text-center
+    %h3= t("shared.descisions.#{@applicant.descision.parameterize}")
+    %p= descision_icon(@applicant.descision, size: 3)

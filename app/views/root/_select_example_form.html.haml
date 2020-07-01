@@ -11,11 +11,20 @@
           = hidden_field_tag(:locale, I18n.locale)
           .form-group
             = label :applicant, :ssn, t('root.index.popup.example_label')
-            = select :applicant, :ssn, options_for_select(@examples), {include_blank: true}, {class: 'form-control'}
+            = select :applicant, :ssn, options_for_select(@examples), {include_blank: 'None - All Checks will Pass'}, {class: 'form-control'}
           %hr
-          %p= switch_tag :enable_bank_accounts, t('root.index.popup.enable_bank_accounts'), 1, true
-          %p= switch_tag :enable_documents, t('root.index.popup.enable_documents'), 1, true
-          %p= switch_tag :enable_factorybot, t('root.index.popup.enable_factorybot'), 1, true
+          %p
+            .custom-switch
+              = check_box_tag :enable_bank_accounts, 1, session['enable_bank_accounts']
+              = label_tag :enable_bank_accounts, t('root.index.popup.enable_bank_accounts')
+          %p
+            .custom-switch
+              = check_box_tag :enable_documents, 1, session['enable_documents']
+              = label_tag :enable_documents, t('root.index.popup.enable_documents')
+          %p
+            .custom-switch
+              = check_box_tag :enable_factorybot, 1, session['enable_factorybot']
+              = label_tag :enable_factorybot, t('root.index.popup.enable_factorybot')
         .modal-footer
           .d-flex.flex-row-reverse
             = submit_tag t('shared.continue'), class: 'btn btn-success'

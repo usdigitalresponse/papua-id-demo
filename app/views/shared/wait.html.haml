@@ -1,0 +1,9 @@
+- content_for(:page_header) { t('shared.loading') }
+
+.my-3.mx-auto.text-center
+  %i.fa.fa-spinner.fa-pulse.fa-10x.fa-fw
+
+:javascript
+  setTimeout(() => {
+    location.reload(1);
+  }, #{ (@count || 5) * 1000 });

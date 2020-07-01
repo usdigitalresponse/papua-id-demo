@@ -1,36 +1,33 @@
 - content_for(:page_header) { "Applicant Bank Account Verification" }
 
-.card-body
-  = t('bank_account.new.helper_text')
+%p= t('bank_account.new.helper_text')
+= form_for [@applicant, @bank_account] do |f|
+  - if @bank_account.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@bank_account.errors.count, "error")} prohibited this bank account from being saved:"
+      %ul
+        - @bank_account.errors.full_messages.each do |message|
+          %li= message
 
-.card-body
-  = form_for [@applicant, @bank_account] do |f|
-    - if @bank_account.errors.any?
-      #error-explanation
-        %h2= "#{pluralize(@bank_account.errors.count, "error")} prohibited this bank account from being saved:"
-        %ul
-          - @bank_account.errors.full_messages.each do |message|
-            %li= message
-
-    .row
-      .col-lg-4
-        .form-group
-          = f.label :first_name, "First Name"
-          = f.text_field :first_name, class: 'form-control'
-      .col-lg-4
-        .form-group
-          = f.label :last_name, "Last Name"
-          = f.text_field :last_name, class: 'form-control'
-    .row
-      .col-lg
-        .form_group
-          = f.label :bank_account_number, "Bank Account Number"
-          = f.text_field :bank_account_number, class: 'form-control'
-      .col-lg
-        .form-group
-          = f.label :bank_routing_number, "Bank Routing Number"
-          = f.text_field :bank_routing_number, class: 'form-control'
-        .form-group
-          = f.hidden_field :applicant_id, value: params[:applicant_id]
-    .form-group
-      = f.submit 'Save', class: 'btn btn-success'
+  .row
+    .col-lg-4
+      .form-group
+        = f.label :first_name, "First Name"
+        = f.text_field :first_name, class: 'form-control'
+    .col-lg-4
+      .form-group
+        = f.label :last_name, "Last Name"
+        = f.text_field :last_name, class: 'form-control'
+  .row
+    .col-lg
+      .form_group
+        = f.label :bank_account_number, "Bank Account Number"
+        = f.text_field :bank_account_number, class: 'form-control'
+    .col-lg
+      .form-group
+        = f.label :bank_routing_number, "Bank Routing Number"
+        = f.text_field :bank_routing_number, class: 'form-control'
+      .form-group
+        = f.hidden_field :applicant_id, value: params[:applicant_id]
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'

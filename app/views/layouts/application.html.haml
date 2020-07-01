@@ -9,7 +9,6 @@
     = render 'layouts/favicon'
 
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %script{src: 'https://kit.fontawesome.com/e9501c4774.js', crossorigin: 'anonymous'}
   %body
@@ -17,7 +16,9 @@
       .container= t('shared.demo_banner')
     .container
       .card{class: ("border-#{@card_border}" if @card_border.present?)}
+        - if content_for?(:page_full_header)
+          .card-header= content_for :page_full_header
         - if content_for?(:page_header)
           .card-header
             %h1.card-title= content_for :page_header
-        = yield
+        .card-body= yield

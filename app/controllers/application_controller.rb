@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     locale = (params[:locale] if I18n.available_locales.include?(params[:locale])) || I18n.default_locale
     I18n.with_locale(locale, &action)
   end
+
+  def wait_on(condition, &block)
+    render 'shared/wait' and return unless condition.()
+    yield if block_given?
+  end
 end

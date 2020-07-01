@@ -1,16 +1,10 @@
 class ApplicantsController < ApplicationController
+  include MainFlow
   before_action :set_applicant, only: [:show]
   before_action :set_session_params_from_switches, only: [:new]
 
   def show
-    case @applicant.descision
-    when 'Approved'
-      'success'
-    when 'Manual Review'
-      'warning'
-    when 'Denied'
-      'danger'
-    end
+    wait_on -> { @applicant.processed? }
   end
 
   # GET /applicants/new
@@ -26,7 +20,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params.except(:example_with_ln))
 
     if @applicant.save
-      redirect_to new_applicant_bank_account_url(@applicant, example_with_ln: applicant_params[:example_with_ln])
+      redirect_to next_controller_url(@applicant)
     else
       render :new
     end
@@ -36,7 +30,10 @@ class ApplicantsController < ApplicationController
 
   def set_session_params_from_switches
     # Handle setting the session params from those switches:
-    session[:enable_factorybot] = params[:enable_factorybot]
+    # HAVE to set this to true/false - if left nil, they are not set to false/nil but rather ERASED from the session:
+    session['enable_factorybot'] = params[:enable_factorybot] ? true : false
+    session['enable_documents'] = params[:enable_documents] ? true : false
+    session['enable_bank_accounts'] = params[:enable_bank_accounts] ? true : false
   end
 
   # Use callbacks to share common setup or constraints between actions.

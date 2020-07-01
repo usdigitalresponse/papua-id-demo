@@ -1,20 +1,19 @@
 - content_for(:page_header) { t('admin.applicants.index.header') }
 
-.card-body
-  %p= t('admin.applicants.index.helper_text')
-  %table.table
-    %thead
+%p= t('admin.applicants.index.helper_text')
+%table.table
+  %thead
+    %tr
+      %th= t('admin.applicants.index.table.name')
+      %th= t('admin.applicants.index.table.timestamp')
+      %th= t('admin.applicants.index.table.descision')
+      %th
+  %tbody
+    - @applicants.each do |applicant|
       %tr
-        %th= t('admin.applicants.index.table.name')
-        %th= t('admin.applicants.index.table.timestamp')
-        %th= t('admin.applicants.index.table.descision')
-        %th
-    %tbody
-      - @applicants.each do |applicant|
-        %tr
-          %td= link_to applicant.full_name, admin_applicant_url(applicant)
-          %td= applicant.created_at
-          %td
-            = descision_icon(applicant.descision)
-            = t("shared.#{applicant.descision.parameterize}")
-          %td= link_to(t('admin.applicants.view_on_alloy'), applicant.alloy_app_uri, target: '_blank')
+        %td= link_to applicant.full_name, admin_applicant_url(applicant)
+        %td= applicant.created_at
+        %td
+          = descision_icon(applicant.descision)
+          = t("shared.#{applicant.descision.parameterize}")
+        %td= link_to(t('admin.applicants.view_on_alloy'), applicant.alloy_app_uri, target: '_blank')

@@ -1,11 +1,10 @@
 - content_for(:page_header) { t('root.index.header') }
 
-.card-body
-  %p= t('root.index.helper_text')
-  .row
-    .col-lg.text-center
-      = link_to t('root.index.admin'), admin_applicants_url, class: 'btn btn-lg btn-warning mx-auto'
-    .col-lg.text-center
-      %button.btn.btn-lg.btn-info.mx-auto{type: 'button', data: {toggle: 'modal', target: '#SELECT_EXAMPLE_FORM'}}= t('root.index.ux')
+%p= t('root.index.helper_text')
+.row
+  .col-lg.text-center
+    = link_to t('root.index.admin'), admin_applicants_url, class: 'btn btn-lg btn-warning mx-auto'
+  .col-lg.text-center
+    %button.btn.btn-lg.btn-info.mx-auto{type: 'button', data: {toggle: 'modal', target: '#SELECT_EXAMPLE_FORM'}}= t('root.index.ux')
 
 = render 'select_example_form'

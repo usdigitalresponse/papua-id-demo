@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/bootstrap';
+
+.form-check {
+  input[type="checkbox"] {
+    @extend .form-check-input;
+  }
+  label {
+    @extend .form-check-label;
+    margin-left: 4px;
+  }
+}
+
+.custom-switch {
+  @extend .custom-control;
+  input[type="checkbox"] {
+    @extend .custom-control-input;
+  }
+  label {
+    @extend .custom-control-label;
+    margin-left: 4px;
+  }
+}

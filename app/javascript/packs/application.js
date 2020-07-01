@@ -11,7 +11,9 @@ require("channels")
 require('dropzone')
 
 import 'bootstrap'
+import '../stylesheets/bootstrap_extensions'
 import '../stylesheets/application'
+import '../stylesheets/dropzone'
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()

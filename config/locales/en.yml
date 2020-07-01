@@ -7,16 +7,17 @@ en:
   shared:
     site_title: Papua ID Demo
     demo_banner: THIS IS A DEMO. DO NOT PUT REAL, SENSITIVE DATA INTO THIS
+    loading: Loading...
     examples:
       display_names:
-        FraudRiskMR: Fraud Risk - MR
-        DOBMiskeyMR: DoB Question - MR
-        SSNWarningApprove: SSN Missing in Only Some Matches - A
-        NameNotVerifiedMR: Name not Verified - MR
-        NameAddressNotVerifiedMR: Name + Address not Verified - MR
-        SSNWarningDeniedFraud: SSN Fraud Warning - D
-        SSNNotVerifiedMR: SSN Not Found - MR
-        DeviceWarningDenied: Device Fraud - D
+        FraudRiskMR: Fraud Risk - Manual Review
+        DOBMiskeyMR: DoB Question - Manual Review
+        SSNWarningApprove: SSN Missing in Only Some Matches - Approved
+        NameNotVerifiedMR: Name not Verified - Manual Review
+        NameAddressNotVerifiedMR: Name + Address not Verified - Manual Review
+        SSNWarningDeniedFraud: SSN Fraud Warning - Deny
+        SSNNotVerifiedMR: SSN Not Found - Manual Review
+        DeviceWarningDenied: Device Fraud - Deny
     descisions:
       approved: Approved
       denied: Denied
