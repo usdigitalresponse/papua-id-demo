@@ -20,7 +20,10 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params.except(:example_with_ln))
 
     if @applicant.save
-      redirect_to next_controller_url(@applicant)
+      respond_to do |format|
+        format.html { redirect_to next_controller_url(@applicant) }
+        format.json { render json: @applicant.as_json }
+      end
     else
       render :new
     end
@@ -43,7 +46,7 @@ class ApplicantsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :birthdate, :email_address, :phone_number, :street_address, :city, :state, :postal_code, :ssn, :case_number, :example_with_ln)
+    params.require(:applicant).permit(:first_name, :last_name, :birthdate, :email_address, :phone_number, :street_address, :city, :state, :postal_code, :ssn, :case_number)
   end
 
   def forced_params
