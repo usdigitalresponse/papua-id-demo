@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   namespace :admin, constraints: AdminConstraint.new do
     resources :applicants, only: [:index, :show]
     resources :documents, only: [:show]
-    resources :bank_accounts, only: [:show]
   end
   resources :applicants, only: [:new, :create, :show] do
     resources :documents, only: [:new, :create]
