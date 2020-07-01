@@ -119,6 +119,11 @@ en:
           success: Passing Checks
           warning: Warnings
           danger: Red Flags
+        options:
+          header: Options
+          json:
+            button: Show Original Response
+            header: Original Server Response
   applicant:
     new:
       header: Applicant Identity Verification
