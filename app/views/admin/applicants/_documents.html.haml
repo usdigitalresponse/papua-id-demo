@@ -3,10 +3,11 @@
     %h5.card-title Documents
   %ul.list-group.list-group-flush
     - @applicant.documents.each do |document|
-      %li.list-group-item
-        .d-flex.justify-content-between
-          = image_tag document.file, style: 'width: 50%'
-          %div{style: 'vertical-alignn: middle; height: 100%'}
-            = descision_icon(document.descision, size: 2)
-            %br
-            = link_to t("shared.descisions.#{document.descision.parameterize}"), '#', data: { container: 'body', toggle: 'popover', placement: 'right', trigger: 'focus', title: 'All Checks Passed', content: 'Name, address, and DoB all MATCH SecureDV' }
+      - if document.file.attached?
+        %li.list-group-item
+          .d-flex.justify-content-between
+            = image_tag document.file, style: 'width: 50%'
+            %div{style: 'vertical-alignn: middle; height: 100%'}
+              = descision_icon(document.descision, size: 2)
+              %br
+              = link_to t("shared.descisions.#{document.descision.parameterize}"), '#', data: { container: 'body', toggle: 'popover', placement: 'right', trigger: 'focus', title: 'All Checks Passed', content: 'Name, address, and DoB all MATCH SecureDV' }
