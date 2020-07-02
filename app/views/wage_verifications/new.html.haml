@@ -1,0 +1,31 @@
+- content_for(:page_header) { "Applicant Wage Verification" }
+
+%p= "Input your information to verify applicant's wage"
+= form_for [@applicant, @wage_verification] do |f|
+  - if @wage_verification.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@wage_verification.errors.count, "error")} prohibited this wage verification request from being saved"
+      %ul
+        - @wage_verification.errors.full_messages.each do |message|
+          %li= message
+  .row
+    .col-lg-4
+      .form-group
+        = f.label "Employer Name"
+        = f.text_field :reported_employer_name
+  .row
+    .col-lg-4
+      .form-group
+        = f.label "Wages"
+        = f.text_field :reported_wages
+    .col-lg-4
+      .form_group
+        = f.label "Wage Time Period"
+        = f.collection_select :reported_time_period, %w(Weekly Bi-weekly Bi-monthly Monthly).map { |x| {id => x, name => x}}, :id, :name
+  .row
+    .col-lg
+      .form_group
+        = f.label "End Date"
+        = f.date_select :reported_termination_date
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'

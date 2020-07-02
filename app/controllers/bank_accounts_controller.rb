@@ -27,10 +27,6 @@ class BankAccountsController < ApplicationController
     @applicant = Applicant.find(params[:applicant_id])
   end
 
-  def set_bank_account
-    @bank_account = BankAccount.find(params[:id])
-  end
-
   def bank_account_params
     params.require(:bank_account).permit(:first_name, :last_name, :bank_account_number, :bank_routing_number, :applicant_id)
   end
