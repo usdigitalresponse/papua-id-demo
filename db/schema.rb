@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_223734) do
+ActiveRecord::Schema.define(version: 2020_07_05_203920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -95,10 +95,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_223734) do
   end
 
   create_table "wage_verifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.decimal "reported_wages"
     t.string "reported_employer_name"
     t.string "reported_employer_id"
-    t.string "reported_time_period"
     t.date "reported_termination_date"
     t.decimal "verified_wages"
     t.string "verified_employer_name"

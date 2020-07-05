@@ -23,6 +23,10 @@
               = label_tag :enable_documents, t('root.index.popup.enable_documents')
           %p
             .custom-switch
+              = check_box_tag :enable_wage_verifications, 1, session['enable_wage_verifications']
+              = label_tag :enable_wage_verifications, "Enable Wage Verifications"
+          %p
+            .custom-switch
               = check_box_tag :enable_factorybot, 1, session['enable_factorybot']
               = label_tag :enable_factorybot, t('root.index.popup.enable_factorybot')
         .modal-footer

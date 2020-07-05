@@ -1,4 +1,6 @@
 class BankAccountsController < ApplicationController
+  include MainFlow
+
   before_action :set_applicant
 
   # GET /bank_accounts/new
@@ -15,7 +17,7 @@ class BankAccountsController < ApplicationController
       # calling a protected method here:
       #@bank_account.applicant.make_decision
 
-      redirect_to new_applicant_document_url(@bank_account.applicant)
+      redirect_to next_controller_url(@bank_account.applicant)
     else
       render :new
     end

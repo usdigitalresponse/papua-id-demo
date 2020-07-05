@@ -1,4 +1,6 @@
 class WageVerificationsController < ApplicationController
+  include MainFlow
+
   before_action :set_applicant
 
   # GET /wage_verifications/new
@@ -11,8 +13,8 @@ class WageVerificationsController < ApplicationController
 
   # POST /wage_verifications
   def create
-    if @wage_verification = WageVerification.new(wage_verification_params.to_h.merge(applicant_id: @applicant.id))
-      redirect_to new_applicant_document_url(@wage_verification.applicant)
+    if @wage_verification = WageVerification.create(wage_verification_params.to_h.merge(applicant_id: @applicant.id))
+      redirect_to next_controller_url(@wage_verification.applicant)
     else
       render :new
     end

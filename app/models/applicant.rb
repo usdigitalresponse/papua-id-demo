@@ -1,6 +1,7 @@
 class Applicant < ApplicationRecord
   has_many :documents
   has_one :bank_account
+  has_one :wage_verification
 
   enum descision: {
     Approved: 1,

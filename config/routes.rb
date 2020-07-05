@@ -2,7 +2,6 @@ require 'sidekiq/web'
 require 'admin_constraint'
 
 Rails.application.routes.draw do
-  resources :wage_verifications
   mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
   root to: 'root#index'
   get '/logout', to: 'sessions#destroy', as: 'logout'
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   resources :applicants, only: [:new, :create, :show] do
     resources :documents, only: [:new, :create]
     resources :bank_accounts, only: [:new, :create]
+    resources :wage_verifications, only: [:new, :create]
   end
   get '*path', to: 'sessions#new', :constraints => LoginConstraint.new
 end

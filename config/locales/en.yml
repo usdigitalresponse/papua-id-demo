@@ -80,7 +80,7 @@ en:
       popup:
         title: Experience Settings
         helper_text: Configure the user experience settings. The example selectors allow you to choose specific, sandboxed examples that will generate pre-determined results.
-        example_label: Sandboxed Exmaple
+        example_label: Sandboxed Example
         enable_bank_accounts: Enable Bank Account Verification
         enable_documents: Enable Document Verification
         enable_factorybot: Prefill Forms with Example Data
