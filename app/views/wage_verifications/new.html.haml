@@ -13,5 +13,9 @@
       .form-group
         = f.label "Employer Name"
         = f.text_field :reported_employer_name
+    .col-lg-6
+      .form-group
+        = f.label "Last Date Employed"
+        = f.date_select :reported_termination_date
   .form-group
     = f.submit 'Save', class: 'btn btn-success'
