@@ -6,7 +6,7 @@ en:
         file: File to Upload
   shared:
     site_title: Papua ID Demo
-    demo_banner: THIS IS A DEMO. DO NOT PUT REAL, SENSITIVE DATA INTO THIS
+    demo_banner: THIS IS A DEMO. DO NOT SENSITIVE DATA INTO THIS APPLICATION.
     loading: Loading...
     examples:
       display_names:
@@ -73,8 +73,8 @@ en:
     continue: Continue
   root:
     index:
-      header: USDR Papua ID Verification Demo
-      helper_text: Welcome to the USDR Papua ID Verification Demo.
+      header: USDR Unemployment Insurance Call Center Sample App
+      helper_text: Welcome to the USDR Unemployment Insurance Sample Application.  This application shows a sample dashboard for call center workers that allows them to do identity verification, fraud checks and wage verification.
       admin: View the Admin Console
       ux: View the User Experience
       popup:
