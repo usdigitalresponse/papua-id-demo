@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_145959) do
+ActiveRecord::Schema.define(version: 2020_07_05_203920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -92,6 +92,23 @@ ActiveRecord::Schema.define(version: 2020_06_30_145959) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "wage_verifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "reported_employer_name"
+    t.string "reported_employer_id"
+    t.date "reported_termination_date"
+    t.decimal "verified_wages"
+    t.string "verified_employer_name"
+    t.string "verified_employer_id"
+    t.string "verified_time_period"
+    t.date "verified_termination_date"
+    t.string "truework_verification_status"
+    t.string "verification_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "applicant_id"
+    t.index ["applicant_id"], name: "index_wage_verifications_on_applicant_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

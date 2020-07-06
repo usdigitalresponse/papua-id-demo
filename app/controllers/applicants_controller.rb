@@ -37,6 +37,7 @@ class ApplicantsController < ApplicationController
     session['enable_factorybot'] = params[:enable_factorybot] ? true : false
     session['enable_documents'] = params[:enable_documents] ? true : false
     session['enable_bank_accounts'] = params[:enable_bank_accounts] ? true : false
+    session['enable_wage_verifications'] = params[:enable_wage_verifications] ? true : false
   end
 
   # Use callbacks to share common setup or constraints between actions.

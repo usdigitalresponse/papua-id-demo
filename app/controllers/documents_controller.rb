@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  include MainFlow
+
   before_action :set_applicant
 
   def new
@@ -7,7 +9,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = @applicant.documents.create(document_params)
-    redirect_to @applicant
+    redirect_to next_controller_url(@applicant)
   end
 
   protected

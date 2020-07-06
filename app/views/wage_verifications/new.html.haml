@@ -1,0 +1,17 @@
+- content_for(:page_header) { "Applicant Wage Verification" }
+
+%p= "Input your information to verify applicant's wage"
+= form_for [@applicant, @wage_verification] do |f|
+  - if @wage_verification.errors.any?
+    #error-explanation
+      %h2= "#{pluralize(@wage_verification.errors.count, "error")} prohibited this wage verification request from being saved"
+      %ul
+        - @wage_verification.errors.full_messages.each do |message|
+          %li= message
+  .row
+    .col-lg-4
+      .form-group
+        = f.label "Employer Name"
+        = f.text_field :reported_employer_name
+  .form-group
+    = f.submit 'Save', class: 'btn btn-success'
