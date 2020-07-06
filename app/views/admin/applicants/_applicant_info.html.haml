@@ -53,6 +53,10 @@
       .d-flex.justify-content-between
         %strong= "Reported Termination Date"
         %span= @applicant.wage_verification&.verified_termination_date
+.card
+  .card-header
+    %h5.card-title= "TrueWork Verification Details"
+  %ul.list-group.list-group-flush
     %li.list-group-item
       .d-flex.justify-content-between
         %strong= "Verified Employer Name"
@@ -64,7 +68,7 @@
     %li.list-group-item
       .d-flex.justify-content-between
         %strong= "Verified Wages"
-        %span= @applicant.wage_verification&.verified_wages
+        %span= number_to_currency(@applicant.wage_verification&.verified_wages)
     %li.list-group-item
       .d-flex.justify-content-between
         %strong= "Verified Time Period"
@@ -76,4 +80,4 @@
     %li.list-group-item
       .d-flex.justify-content-between
         %strong= "Verification Status"
-        %span= @applicant.wage_verification&.verification_status
+        %span= @applicant.wage_verification&.verification_status&.titleize
