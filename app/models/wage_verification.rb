@@ -1,9 +1,10 @@
 class WageVerification < ApplicationRecord
   belongs_to :applicant
 
-  after_create :do_verification
+  after_create_commit :do_verification
 
   protected
+  
   def do_verification
     # Simulate answers for each term
     self.reported_employer_id = get_id_for_employer_name
