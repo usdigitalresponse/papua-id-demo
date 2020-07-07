@@ -8,7 +8,7 @@ class ValidateWagesJob < ApplicationJob
     wages.processing_status = "In Progress"
     wages.truework_verification_status = "Started"
     wages.decision = -2
-    case(applicant.ssn.to_i)
+    case(wages.applicant.ssn.to_i)
     when EXAMPLES[:TrueworkStillProcessing]
       wages.truework_verification_status = "In Progress"
     when EXAMPLES[:TrueworkDeniedNoEmploymentFound]

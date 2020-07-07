@@ -43,9 +43,5 @@
         %span= @applicant.wage_verification&.reported_employer_name
     %li.list-group-item
       .d-flex.justify-content-between
-        %strong= "Reported Employer Id"
-        %span= @applicant.wage_verification&.reported_employer_id
-    %li.list-group-item
-      .d-flex.justify-content-between
         %strong= "Reported Termination Date"
-        %span= @applicant.wage_verification&.verified_termination_date
+        %span= @applicant.wage_verification&.reported_termination_date
