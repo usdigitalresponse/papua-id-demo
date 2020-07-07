@@ -126,6 +126,14 @@ en:
           json:
             button: Show Original Response
             header: Original Server Response
+        wage_info:
+          header: Wage Verification Details
+          employer_name: Verified Employer Name
+          employer_id: Verified Employer Service Id
+          wages: Verified Wages Earned
+          time_period: Verified Employment Period
+          termination_date: Verified Termination Date
+          status: Verified Employment Status
   applicant:
     new:
       header: Applicant Identity Verification
