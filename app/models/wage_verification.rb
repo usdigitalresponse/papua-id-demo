@@ -2,6 +2,12 @@ class WageVerification < ApplicationRecord
   belongs_to :applicant
 
   after_create_commit :do_verification
+  enum decision: {
+    Approved: 1,
+    "Manual Review": 0,
+    Denied: -1,
+    unprocessed: -2
+  }
 
   protected
   
