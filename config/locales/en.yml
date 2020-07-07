@@ -18,6 +18,8 @@ en:
         SSNWarningDeniedFraud: SSN Fraud Warning - Deny
         SSNNotVerifiedMR: SSN Not Found - Manual Review
         DeviceWarningDenied: Device Fraud - Deny
+        TrueworkStillProcessing: Truework still processing - Manual Review
+        TrueworkDeniedNoEmploymentFound: Truework denied, no employment found - Deny
     descisions:
       approved: Approved
       denied: Denied

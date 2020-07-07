@@ -7,7 +7,20 @@ class WageVerification < ApplicationRecord
   def do_verification
     # Simulate answers for each term
     self.reported_employer_id = get_id_for_employer_name
-    get_validated_truework_response
+    self.verification_status = "In Progress"
+    self.truework_verification_status = "Started"
+    case(applicant.ssn.to_i)
+    when EXAMPLES[:TrueworkStillProcessing]
+      self.truework_verification_status = "In Progress"
+      self.applicant
+    when EXAMPLES[:TrueworkDeniedNoEmploymentFound]
+      self.truework_verification_status = "Completed"
+      self.verification_status = "Rejected - No Employment history found"
+      self.applicant.decision
+    else
+      get_validated_truework_response
+    end
+
     self.save
   end
 

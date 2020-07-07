@@ -6,5 +6,7 @@ EXAMPLES = {
   NameAddressNotVerifiedMR: 934005923,
   SSNWarningDeniedFraud: 456005290,
   SSNNotVerifiedMR: 454008735,
-  DeviceWarningDenied: 563002634
+  DeviceWarningDenied: 563002634,
+  TrueworkStillProcessing: 938004321,
+  TrueworkDeniedNoEmploymentFound: 342008372
 }
