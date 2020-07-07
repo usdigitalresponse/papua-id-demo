@@ -1,0 +1,11 @@
+%ul.none
+  - if @applicant.descision_response['raw_responses']['Socure 30'][0]['kyc']['fieldValidations']['dob'] == 0.99
+    %li
+      = descision_icon('Approved')
+      Socure 30
+      = t('admin.applicants.show.matches.dob')
+  - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['DOB'].present?
+    %li
+      = descision_icon('Approved')
+      LexisNexis
+      = t('admin.applicants.show.matches.dob')

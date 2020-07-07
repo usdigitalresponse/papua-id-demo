@@ -108,6 +108,11 @@ en:
         matches:
           first_name: First Name Match
           last_name: Last Name Match
+          dob: Date of Birth Match
+          ssn: SSN Match
+          email: Email Address not Fraud
+          phone: Phone Number Match
+          address: Address Match
         applied_at: Applied At %{date}
         details:
           header: Application Details
