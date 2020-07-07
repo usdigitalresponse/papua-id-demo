@@ -13,11 +13,9 @@ class WageVerification < ApplicationRecord
     case(applicant.ssn.to_i)
     when EXAMPLES[:TrueworkStillProcessing]
       self.truework_verification_status = "In Progress"
-      self.applicant
     when EXAMPLES[:TrueworkDeniedNoEmploymentFound]
       self.truework_verification_status = "Completed"
       self.verification_status = "Rejected - No Employment history found"
-      self.applicant.decision
     else
       get_validated_truework_response
     end
