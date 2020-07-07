@@ -6,7 +6,7 @@ en:
         file: File to Upload
   shared:
     site_title: Papua ID Demo
-    demo_banner: THIS IS A DEMO. DO NOT SENSITIVE DATA INTO THIS APPLICATION.
+    demo_banner: THIS IS A DEMO. DO NOT PUT SENSITIVE DATA INTO THIS APPLICATION.
     loading: Loading...
     examples:
       display_names:
