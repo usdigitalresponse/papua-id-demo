@@ -4,8 +4,14 @@
       = descision_icon('Approved')
       Socure 30
       = t('admin.applicants.show.matches.dob')
-  - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['DOB'].present?
+  - begin
+    - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['DOB'].present?
+      %li
+        = descision_icon('Approved')
+        LexisNexis
+        = t('admin.applicants.show.matches.dob')
+  - rescue
     %li
-      = descision_icon('Approved')
+      = descision_icon('Denied')
       LexisNexis
-      = t('admin.applicants.show.matches.dob')
+      = t('admin.applicants.show.errors.dob')

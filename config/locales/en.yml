@@ -114,8 +114,12 @@ en:
           phone: Phone Number Match
           address: Address Match
         error:
-          first_name: First Name Not Verified
-          last_name: Last Name Not Verified
+          first_name: First Name Not Matched
+          last_name: Last Name Not Matched
+          dob: Date of Birth Not Matched
+          address: Address Appears Invalid
+          phone: Phone Appears Invalid
+          ssn: SSN Not Matched
         applied_at: Applied At %{date}
         details:
           header: Application Details
