@@ -9,8 +9,14 @@
       = descision_icon('Approved')
       WPP
       = t('admin.applicants.show.matches.last_name')
-  - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['Name']['Last'].present?
+  -begin
+    - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['Name']['Last'].present?
+      %li
+        = descision_icon('Approved')
+        LexisNexis
+        = t('admin.applicants.show.matches.last_name')
+  - rescue
     %li
-      = descision_icon('Approved')
+      = descision_icon('Denied')
       LexisNexis
       = t('admin.applicants.show.matches.last_name')
