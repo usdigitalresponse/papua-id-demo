@@ -108,8 +108,7 @@ en:
         applied_at: Applied At %{date}
         details:
           header: Application Details
-          first_name: First Name
-          last_name: Last Name
+          name: Full Name
           birthdate: Date of Birth
           ssn: "Social Security #"
           email_address: Email

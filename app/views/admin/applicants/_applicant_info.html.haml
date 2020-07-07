@@ -4,12 +4,8 @@
   %ul.list-group.list-group-flush
     %li.list-group-item
       .d-flex.justify-content-between
-        %strong= t('admin.applicants.show.details.first_name')
-        %span= @applicant.first_name
-    %li.list-group-item
-      .d-flex.justify-content-between
-        %strong= t('admin.applicants.show.details.last_name')
-        %span= @applicant.last_name
+        %strong= t('admin.applicants.show.details.name')
+        %span= @applicant.full_name
     %li.list-group-item
       .d-flex.justify-content-between
         %strong= t('admin.applicants.show.details.birthdate')
