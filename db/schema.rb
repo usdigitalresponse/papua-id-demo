@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_152904) do
+ActiveRecord::Schema.define(version: 2020_07_11_001125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -104,11 +104,12 @@ ActiveRecord::Schema.define(version: 2020_07_07_152904) do
     t.string "verified_time_period"
     t.date "verified_termination_date"
     t.string "truework_verification_status"
-    t.string "processing_status"
+    t.string "verification_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "applicant_id"
-    t.integer "decision"
+    t.integer "decision", limit: 2
+    t.integer "processing_status", limit: 2, default: 0, null: false
     t.index ["applicant_id"], name: "index_wage_verifications_on_applicant_id"
   end
 

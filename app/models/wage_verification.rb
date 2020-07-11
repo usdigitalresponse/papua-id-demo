@@ -9,6 +9,12 @@ class WageVerification < ApplicationRecord
     unprocessed: -2
   }
 
+  enum processing_status: {
+    unable_to_process: -1,
+    queued: 0,
+    processed: 1
+  }
+
   protected
   
   def make_decision
