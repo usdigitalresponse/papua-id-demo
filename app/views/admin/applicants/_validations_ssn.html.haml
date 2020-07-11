@@ -1,0 +1,17 @@
+%ul.none
+  - if @applicant.descision_response['raw_responses']['Socure 30'][0]['kyc']['fieldValidations']['ssn'] == 0.99
+    %li
+      = descision_icon('Approved')
+      Socure 30
+      = t('admin.applicants.show.matches.ssn')
+  - begin
+    - if @applicant.descision_response['raw_responses']['Lexis Nexis Instant ID'][0]['response']['Result']['VerifiedInput']['SSN'].present?
+      %li
+        = descision_icon('Approved')
+        LexisNexis
+        = t('admin.applicants.show.matches.ssn')
+  - rescue
+    %li
+      = descision_icon('Denied')
+      LexisNexis
+      = t('admin.applicants.show.error.ssn')
