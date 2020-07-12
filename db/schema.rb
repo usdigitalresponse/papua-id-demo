@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_001125) do
     t.string "verified_time_period"
     t.date "verified_termination_date"
     t.string "truework_verification_status"
-    t.string "processing_status"
+    t.string "verification_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "applicant_id"
