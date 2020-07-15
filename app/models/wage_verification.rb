@@ -19,6 +19,6 @@ class WageVerification < ApplicationRecord
   
   def make_decision
     # Simulate answers for each term
-    ValidateWagesJob.set(wait: 1.minutes).perform_later(self.id)
+    ValidateWagesJob.set(wait: 1.second).perform_later(self.id)
   end
 end

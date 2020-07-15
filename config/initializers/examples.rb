@@ -8,5 +8,7 @@ EXAMPLES = {
   SSNNotVerifiedMR: 454008735,
   DeviceWarningDenied: 563002634,
   TrueworkStillProcessing: 938004321,
-  TrueworkDeniedNoEmploymentFound: 342008372
+  TrueworkDeniedNoEmploymentFound: 342008372,
+  TrueworkEmploymentDetailsAreClose: 111223333,
+  TrueworkEmploymentDetailsAreWayOff: 4649307765
 }
