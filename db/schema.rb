@@ -109,9 +109,9 @@ ActiveRecord::Schema.define(version: 2020_07_11_001125) do
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "applicant_id"
     t.integer "decision", limit: 2
-    t.integer "processing_status", limit: 2, default: 0, null: false
     t.decimal "reported_wages", default: "0.0", null: false
     t.string "reported_time_period", default: ""
+    t.integer "processing_status", limit: 2, default: 0, null: false
     t.index ["applicant_id"], name: "index_wage_verifications_on_applicant_id"
   end
 

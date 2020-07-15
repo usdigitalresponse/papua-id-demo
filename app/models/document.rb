@@ -29,6 +29,6 @@ class Document < ApplicationRecord
   protected
 
   def make_descision
-    ValidateDocumentJob.set(wait: 5.minutes).perform_later(self.id)
+    ValidateDocumentJob.set(wait: 1.second).perform_later(self.id)
   end
 end
