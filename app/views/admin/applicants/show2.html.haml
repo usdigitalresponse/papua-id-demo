@@ -1,0 +1,29 @@
+- content_for(:page_full_header) do
+  %h1.card-title= @applicant.full_name
+  %small= t('admin.applicants.show.applied_at', date: @applicant.created_at)
+
+%table
+  %thead
+    %tr
+      %th= t('admin.applicants.show2.table.head.check')
+      %th= t('admin.applicants.show2.table.head.data')
+      %th= t('admin.applicants.show2.table.head.source')
+      %th= t('admin.applicants.show2.table.head.results')
+  %tbody
+    %tr
+      = render partial: 'show_row_col', locals: {row: :name}
+      %td= @applicant.full_name
+      %td
+        = render 'validations_first_name'
+        = render 'validations_last_name'
+      %td
+        = descision_icon('Approved')
+        %span{data: {toggle: 'tooltip', title: t('admin.applicants.show2.table.rows.name.pass')}} Passed
+    %tr
+      = render partial: 'show_row_col', locals: {row: :dob}
+      %td= @applicant.birthdate.iso8601
+      %td
+        = render 'validations_dob'
+      %td
+        = descision_icon('Manual Review')
+        %span{data: {toggle: 'tooltip', title: t('admin.applicants.show2.table.rows.dob.review')}} Needs Review

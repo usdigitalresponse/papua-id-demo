@@ -4,6 +4,7 @@
   .card-body
     %button.btn.btn-primary{role: 'button', data: {toggle: 'modal', target: '#SHOW_APPLICANT_JSON'}}
       = t('admin.applicants.show.options.json.button')
+    = link_to 'New View', show2_admin_applicant_url(@applicant), class: 'btn btn-primary'
 
 #SHOW_APPLICANT_JSON.modal{tabindex: '-1', role: 'dialog'}
   .modal-dialog

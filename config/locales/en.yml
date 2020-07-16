@@ -107,6 +107,23 @@ en:
           name: Name
           timestamp: Applied On
           descision: Result
+      show2:
+        applied_at: Applied At %{date}
+        table:
+          head:
+            check: Check
+            data: User Data
+            source: Checked Data Sources
+            result: Results
+          rows:
+            name:
+              title: Name
+              popover: This is the user's full name as entered on their UI application which is checked for validity
+              pass: Per DOL policy, this user has passed because their name matches records from Socure30 and LexisNexis.
+            dob:
+              title: Date of Birth
+              popover: This is the user’s date of birth as entered on their UI application which is checked for validity
+              review: Per your state's DOL policy, this user is recommended for a manual review because their date of birth does not match state records. The next step is to ask the applicant to submit their drivers license for review.
       show:
         matches:
           first_name: First Name Match

@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   resources :sessions, only: [:new, :create, :destroy]
   namespace :admin do #, constraints: AdminConstraint.new do
-    resources :applicants, only: [:index, :show]
+    resources :applicants, only: [:index, :show] do
+      member do
+        get :show2
+      end
+    end
     resources :documents, only: [:show]
     resources :metrics, only: [:index]
   end
