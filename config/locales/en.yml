@@ -78,6 +78,7 @@ en:
       header: USDR Unemployment Insurance Call Center Sample App
       helper_text: Welcome to the USDR Unemployment Insurance Sample Application.  This application shows a sample dashboard for call center workers that allows them to do identity verification, fraud checks and wage verification.
       admin: View the Admin Console
+      metrics: View the Metrics
       ux: View the User Experience
       popup:
         title: Experience Settings

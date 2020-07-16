@@ -1,0 +1,7 @@
+Barcode,Fraud Risk,Wage Verification,CWOS,Work Separation,Monetary Claim,Other
+MEAN,2.5,1.5,1,0.5,0.5,0.2
+5th,1,0,0,1,0,0.8
+25th,1.5,1,0,0.5,0,0.8
+50th,2,1,0.9,0.5,0,0.8
+75th,3,1,2,1,1,1
+95th,3,1,2,3,4,4

@@ -5,6 +5,8 @@
   .col-lg.text-center
     = link_to t('root.index.admin'), admin_applicants_url, class: 'btn btn-lg btn-warning mx-auto'
   .col-lg.text-center
+    = link_to t('root.index.metrics'), admin_metrics_url, class: 'btn btn-lg btn-success mx-auto'
+  .col-lg.text-center
     %button.btn.btn-lg.btn-info.mx-auto{type: 'button', data: {toggle: 'modal', target: '#SELECT_EXAMPLE_FORM'}}= t('root.index.ux')
 
 = render 'select_example_form'
