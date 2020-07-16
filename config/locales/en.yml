@@ -20,6 +20,8 @@ en:
         DeviceWarningDenied: Device Fraud - Deny
         TrueworkStillProcessing: Truework still processing - Manual Review
         TrueworkDeniedNoEmploymentFound: Truework denied, no employment found - Deny
+        TrueworkEmploymentDetailsAreClose: Truework still processing - details are close but do not match
+        TrueworkEmploymentDetailsAreWayOff: Truework denied, employment details are way off
     descisions:
       approved: Approved
       denied: Denied
