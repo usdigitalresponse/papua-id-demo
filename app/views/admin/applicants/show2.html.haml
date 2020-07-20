@@ -16,14 +16,18 @@
       %td
         = render 'validations_first_name'
         = render 'validations_last_name'
-      %td
-        = descision_icon('Approved')
-        %span{data: {toggle: 'tooltip', title: t('admin.applicants.show2.table.rows.name.pass')}} Passed
+      %td{style: 'max-width: 250px;'}
+        %p
+          = descision_icon('Approved')
+          Passed
+        %small.text-muted= t('admin.applicants.show2.table.rows.name.pass')
     %tr
       = render partial: 'show_row_col', locals: {row: :dob}
       %td= @applicant.birthdate.iso8601
       %td
         = render 'validations_dob'
-      %td
-        = descision_icon('Manual Review')
-        %span{data: {toggle: 'tooltip', title: t('admin.applicants.show2.table.rows.dob.review')}} Needs Review
+      %td{style: 'max-width: 250px;'}
+        %p
+          = descision_icon('Manual Review')
+          Manual Review
+        %small.text-muted= t('admin.applicants.show2.table.rows.dob.review')
