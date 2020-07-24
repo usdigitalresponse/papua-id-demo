@@ -26,7 +26,7 @@ document.addEventListener("turbolinks:load", () => {
   });
 
   // Start Cohere
-  window.Cohere.init("<%= Rails.application.credentials.cohere[:key] %>");
+  window.Cohere.init("RemPbc5wtNJTbqzUZBWsnU2R");
 })
 
 // Uncomment to copy all static images under ../images to the output folder and reference
