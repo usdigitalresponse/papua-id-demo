@@ -9,6 +9,7 @@
       %th= t('admin.applicants.index.table.descision')
       %th
   %tbody
+  <!-- I need to some how put a form here, wiht a submit button that gets and replaces @applicants -->
     - @applicants.each do |applicant|
       %tr
         %td= link_to applicant.full_name, admin_applicant_url(applicant)

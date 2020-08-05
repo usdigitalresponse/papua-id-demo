@@ -21,6 +21,10 @@ class Applicant < ApplicationRecord
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
 
   validates :first_name, :last_name, :ssn, :birthdate, presence: true
+  
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:first_name, :last_name]
 
   def ssn=(value)
     super(value.to_s.gsub(/-/, ''))
