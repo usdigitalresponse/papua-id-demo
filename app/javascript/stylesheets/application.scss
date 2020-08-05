@@ -1,0 +1,25 @@
+@import 'bootstrap_extensions';
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+nav.small {
+  @extend .bg-primary;
+  @extend .full-height;
+  width: 72px;
+}
+
+nav.main {
+  @extend .full-height;
+  background-color: lighten( $primary, 80% );
+  width: 208px;
+}

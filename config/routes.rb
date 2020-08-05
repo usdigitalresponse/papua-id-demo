@@ -3,7 +3,7 @@ require 'admin_constraint'
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq' #, :constraints => AdminConstraint.new
-  root to: 'root#index'
+  root to: 'admin/applicants#index'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/login', to: 'sessions#new', as: 'login'
   resources :sessions, only: [:new, :create, :destroy]

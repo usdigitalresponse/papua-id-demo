@@ -1,1 +1,1 @@
-formation: web=1,worker=1,release=0
+formation: web=1,worker=1,release=0,webpacker=1,redis=1
