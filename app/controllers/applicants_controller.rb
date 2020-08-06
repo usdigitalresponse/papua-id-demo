@@ -6,15 +6,6 @@ class ApplicantsController < ApplicationController
   def show
     wait_on -> { @applicant.processed? }
   end
-  
-  def index
-    if params["search"]
-      @filter = params["search"]
-      @applicants = Applicant.all.global_search("#{@filter}")
-    else
-      @applicants = Applicant.all
-    end
-  end
 
   # GET /applicants/new
   def new

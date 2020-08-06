@@ -1,6 +1,13 @@
 - content_for(:page_header) { t('admin.applicants.index.header') }
 
 %p= t('admin.applicants.index.helper_text')
+-# I need to some how put a form here, with a submit button that gets and replaces @applicants
+
+= form_with url: admin_applicants_url, method: "get" do |f|
+  = f.label :q, "Search for:"
+  = f.text_field :q
+  = f.submit "Search"
+
 %table.table
   %thead
     %tr
@@ -9,7 +16,6 @@
       %th= t('admin.applicants.index.table.descision')
       %th
   %tbody
-  <!-- I need to some how put a form here, wiht a submit button that gets and replaces @applicants -->
     - @applicants.each do |applicant|
       %tr
         %td= link_to applicant.full_name, admin_applicant_url(applicant)
