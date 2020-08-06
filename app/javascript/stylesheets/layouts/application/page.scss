@@ -1,0 +1,7 @@
+#PAGE {
+  @extend .p-3;
+  @extend .full-height;
+  @extend .full-width;
+  @extend .flex-grow-1;
+  overflow-y: scroll;
+}

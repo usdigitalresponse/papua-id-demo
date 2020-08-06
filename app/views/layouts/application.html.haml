@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= @title || t('shared.site_title')
+    %title= @title || t('shared.app_name')
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -12,6 +12,5 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %script{src: 'https://kit.fontawesome.com/e9501c4774.js', crossorigin: 'anonymous'}
   %body
-    %nav.small
-    %nav.main
-    .page
+    = render 'layouts/navbar'
+    #PAGE= yield

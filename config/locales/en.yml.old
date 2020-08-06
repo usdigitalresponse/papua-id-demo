@@ -1,0 +1,214 @@
+en:
+  activerecord:
+    attributes:
+      document:
+        document_type: Type of Document
+        file: File to Upload
+  shared:
+    site_title: Papua ID Demo
+    demo_banner: THIS IS A DEMO. DO NOT PUT SENSITIVE DATA INTO THIS APPLICATION.
+    loading: Loading...
+    examples:
+      display_names:
+        FraudRiskMR: Fraud Risk - Manual Review
+        DOBMiskeyMR: DoB Question - Manual Review
+        SSNWarningApprove: SSN Missing in Only Some Matches - Approved
+        NameNotVerifiedMR: Name not Verified - Manual Review
+        NameAddressNotVerifiedMR: Name + Address not Verified - Manual Review
+        SSNWarningDeniedFraud: SSN Fraud Warning - Deny
+        SSNNotVerifiedMR: SSN Not Found - Manual Review
+        DeviceWarningDenied: Device Fraud - Deny
+        TrueworkStillProcessing: Truework still processing - Manual Review
+        TrueworkDeniedNoEmploymentFound: Truework denied, no employment found - Deny
+        TrueworkEmploymentDetailsAreClose: Truework still processing - details are close but do not match
+        TrueworkEmploymentDetailsAreWayOff: Truework denied, employment details are way off
+    descisions:
+      approved: Approved
+      denied: Denied
+      manual-review: Manual Review
+      unprocessed: Not Yet Processed
+    tags:
+      ssn-warning: SSN Warning
+      fraud-risk: Fraud Risk
+      device-warning: Device Warning
+      foreign-device: Foreign Device
+      address-warning: Address Warning
+      denied-fraud: Denied Fraud
+      fraud-review: Fraud Review
+      email-warning: Email Warning
+      fraud-warning: Fraud Warning
+      dob-miskey: DoB Miskey
+      kyc-address-match: Address Match
+      kyc-dob-match: DoB Match
+      kyc-name-match: Name Match
+      kyc-ssn-match: SSN Match
+      ofac-match: OFAC Match
+      phone-match: Phone Number Match
+      ssn-miskey: SSN Miskey
+      address-not-verified: Address Not Verified
+      dob-not-verified: DoB Not Verified
+      name-not-verified: Name Not Verified
+      ssn-not-verified: SSN Not Verfieid
+    tag_descriptions:
+      ssn-warning: This SSN has a fraud flag attached to it. This could be because it was previously involved in identity theft, and has been flagged as blocked, or it could be fraudlent activity.
+      fraud-risk: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
+      device-warning: This user completed the application from a known fraudulent IP address - it is most likely a bot.
+      foreign-device: This application was completed from outside the USA
+      address-warning: The address may not match sources from identity providers.
+      denied-fraud: This address/name/ssn are known to be fraudulent
+      fraud-review: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
+      email-warning: This email is known to be associated with fraud.
+      fraud-warning: Potential Fraud Identified based on name/address matching. While they match known records, these records have been flagged as potentially fraudulent.
+      dob-miskey: In some data sources, the data of birth is different, but by only one day/month/year, suggesting those datasources may be miskeyed.
+      kyc-address-match: Address Match in LexisNexis and Secure30
+      kyc-dob-match: DoB Matches in LexisNexis and Secure30
+      kyc-name-match: Name Match in LexisNexis and Secure30
+      kyc-ssn-match: SSN Match in LexisNexis
+      ofac-match: OFAC Match
+      phone-match: Phone Number Match in LexisNexis and WPP
+      ssn-miskey: In some data sources, the ssn is different, but by only one digit, suggesting those datasources may be miskeyed.
+      address-not-verified: Address Not Verified in LexisNexis and Secure30
+      dob-not-verified: DoB Not Verified in LexisNexis and Secure30
+      name-not-verified: Name Not Verified in LexisNexis and Secure30
+      ssn-not-verified: SSN information was not avaliable in processors for this applicant.
+    document_types:
+      license: Valid US Driver's License
+      passport: Valid US Passport
+    continue: Continue
+  root:
+    index:
+      header: USDR Unemployment Insurance Call Center Sample App
+      helper_text: Welcome to the USDR Unemployment Insurance Sample Application.  This application shows a sample dashboard for call center workers that allows them to do identity verification, fraud checks and wage verification.
+      admin: View the Admin Console
+      metrics: View the Metrics
+      ux: View the User Experience
+      popup:
+        title: Experience Settings
+        helper_text: Configure the user experience settings. The example selectors allow you to choose specific, sandboxed examples that will generate pre-determined results.
+        example_label: Sandboxed Example
+        enable_bank_accounts: Enable Bank Account Verification
+        enable_documents: Enable Document Verification
+        enable_factorybot: Prefill Forms with Example Data
+  session:
+    new:
+      header: Login
+      email: Email Address
+      password: Password
+      login: Login
+      incorrect: Invalid email or password
+      logout: You have successfully logged out
+  admin:
+    applicants:
+      view_on_alloy: View on developer console
+      index:
+        header: Listing Applicants
+        helper_text: This page shows all applicants in the system.
+        table:
+          name: Name
+          timestamp: Applied On
+          descision: Result
+      show2:
+        applied_at: Applied At %{date}
+        table:
+          head:
+            check: Check
+            data: User Data
+            source: Checked Data Sources
+            result: Results
+          rows:
+            name:
+              title: Name
+              popover: This is the user's full name as entered on their UI application which is checked for validity
+              pass: Per DOL policy, this user has passed because their name matches records from Socure30 and LexisNexis.
+            dob:
+              title: Date of Birth
+              popover: This is the user’s date of birth as entered on their UI application which is checked for validity
+              review: Per your state's DOL policy, this user is recommended for a manual review because their date of birth does not match state records. The next step is to ask the applicant to submit their drivers license for review.
+      show:
+        matches:
+          first_name: First Name Match
+          last_name: Last Name Match
+          dob: Date of Birth Match
+          ssn: SSN Match
+          email: Email Address not Fraud
+          phone: Phone Number Match
+          address: Address Match
+        error:
+          first_name: First Name Not Matched
+          last_name: Last Name Not Matched
+          dob: Date of Birth Not Matched
+          address: Address Appears Invalid
+          phone: Phone Appears Invalid
+          ssn: SSN Not Matched
+        applied_at: Applied At %{date}
+        details:
+          header: Application Details
+          first_name: First Name
+          last_name: Last Name
+          birthdate: Date of Birth
+          ssn: "Social Security #"
+          email_address: Email
+          phone_number: Phone
+          address: Address
+        result: Result
+        reasons:
+          header: Decision Reasons
+          success: Passing Checks
+          warning: Warnings
+          danger: Red Flags
+        options:
+          header: Options
+          json:
+            button: Show Original Response
+            header: Original Server Response
+        wage_info:
+          header: Wage Verification Details
+          employer_name: Verified Employer Name
+          employer_id: Verified Employer Service Id
+          wages: Verified Wages Earned
+          time_period: Verified Employment Period
+          termination_date: Verified Termination Date
+          status: Verified Employment Status
+  applicant:
+    new:
+      header: Applicant Identity Verification
+      helper_text: Input your information below to verify an applicant's identity, and hit submit when complete. If verified, application data is valid and consistent with other data sources.
+    show:
+      approved:
+        header: Success!
+        helper_text: Identity verification was successful, application data is valid and consistent.
+      denied:
+        header: Whoops!
+        helper_text: Identity verification was not successful.
+        reasons_html: Some reasons your application was denied may include&colon;
+      manual-review:
+        header: Almost!
+        helper_text: We are not able to verify applicant identity automatically, this application has been sent to manual review. and hopefully we can verify your identity soon! If you don't hear back within 5 days, contact your benifits provider for other verification options.
+        reasons_html: Some reasons for this review may include&colon;
+  document:
+    new:
+      header: Upload a Picture of your ID
+      helper_text: We need a photo of your ID to verify your identity - please upload either a driver's license or a passport. On mobile, you may be able to use your phone's camera to take a photo.
+  bank_account:
+    new:
+      header: Applicant Bank Account Verification
+      helper_text: Input your information to verify applicant's bank account
+    show:
+      approved:
+        header: Success!
+        helper_text: Bank account verification was successful, data is valid and consistent
+      denied:
+        header: Whoops!
+        helper_text: Bank account verification was not successful
+        reasons_html: Some reasons your application was denied include&colon;
+      manual-review:
+        header: Almost!
+        helper_text: Bank account verification was not successful
+        reasons_html: Some reasons for this review may include&colon;
+  tags:
+    fraud-risk:
+      header: Fraud Risk Identified
+      explaination: Our partner identified significant fraud risk with this information.
+    ssn-warning:
+      header: SSN Mismatch
+      explaination: Our partner identified that the supplied social security number may be invalid.

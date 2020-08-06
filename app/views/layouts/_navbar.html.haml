@@ -1,0 +1,36 @@
+%nav.bar
+  .top
+    = link_to root_url do
+      = fa_icon :flag_usa, size: '2x'
+    = link_to root_url do
+      = fa_icon :search
+
+  .bottom
+    = link_to root_url do
+      = fa_icon :user_circle, size: '2x'
+    = link_to root_url do
+      = fa_icon :question_circle, variant: :far
+    = link_to root_url do
+      = fa_icon :bell, variant: :far
+%nav.main
+  %h1
+    = t('shared.app_name')
+    %small= APP['org_name']
+
+  %ul
+    %li
+      = link_to root_url do
+        = fa_icon :home
+        = t('share.navigation.dashboard')
+    %li
+      = link_to root_url do
+        = fa_icon :file
+        = t('share.navigation.claims')
+    %li
+      = link_to root_url do
+        = fa_icon :chart_line
+        = t('share.navigation.claims')
+    %li
+      = link_to root_url do
+        = fa_icon :history
+        = t('share.navigation.claims')
