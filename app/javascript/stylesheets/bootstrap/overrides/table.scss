@@ -1,0 +1,16 @@
+table {
+  @extend .table;
+
+  thead {
+    th {
+      @extend .text-dark;
+      border-top: none;
+      text-decoration: underline;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  td {
+    @extend .p-3;
+  }
+}

@@ -1,0 +1,7 @@
+%tr
+  %td= link_to applicant.full_name, root_url
+  %td= applicant.id
+  %td
+    %span.status-pending= t('claims.claim_status.pending')
+  %td= applicant.created_at.to_date.iso8601
+  %td 5 days

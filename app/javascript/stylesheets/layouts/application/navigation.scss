@@ -27,13 +27,18 @@ nav.bar {
 
 nav.main {
   @extend .p-4;
-  background-color: lighten( $primary, 46% );
-  max-width: 200px;
+  @extend .bg-info;
+  max-width: 180px;
 
   h1 {
     font-size: 16px;
+    line-height: 21px;
+    font-weight: bold;
     small {
+      font-size: 12px;
+      line-height: 16px;
       display: block;
+      font-weight: normal;
       @extend .mt-2;
       @extend .mb-4;
     }

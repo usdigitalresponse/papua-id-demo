@@ -1,10 +1,12 @@
-@import 'bootstrap_extensions';
+@import 'bootstrap/bootstrap_extensions';
 @import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/bootstrap_overrides';
 @import 'scrollbars';
 
 body {
   @extend .d-flex;
   @extend .flex-row;
+  @extend .text-dark;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -26,5 +28,9 @@ body {
   @extend .p-0;
 }
 
+// Layouts:
 @import 'layouts/application/navigation';
 @import 'layouts/application/page';
+
+// Application components:
+@import 'applicants'

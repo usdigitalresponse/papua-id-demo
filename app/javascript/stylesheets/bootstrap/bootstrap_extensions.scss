@@ -1,0 +1,14 @@
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'primary': #0B80FE,
+    //'secondary': #000000,
+    //'success': #000000,
+    'info': #EEF5FD,
+    //'warning': #000000,
+    //'danger': #000000,
+    'light': #FFFFFF,
+    'dark': #305175
+  ),
+  $theme-colors
+);

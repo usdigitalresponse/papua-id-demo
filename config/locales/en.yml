@@ -6,3 +6,15 @@ en:
       claims: Claims
       metrics: Reports
       log: Activity Log
+  dashboard:
+    heading: Pending Claims
+    view_link: View All
+    search_ph: 'Search Claims...'
+  claims:
+    name: Claimant Name
+    number: 'Claim #'
+    status: Status
+    date: Date Applied
+    days: Days Open
+    claim_status:
+      pending: PENDING
