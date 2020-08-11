@@ -3,6 +3,7 @@ class Admin::ApplicantsController < Admin::AdminController
 
   def index
     @applicants = Applicant.all.order(created_at: :desc)
+    @applicants = @applicants.global_search("#{@filter}") if params["query"].present?
   end
 
   def show
