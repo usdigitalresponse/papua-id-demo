@@ -18,3 +18,5 @@ en:
     days: Days Open
     claim_status:
       pending: PENDING
+  claim:
+    page_title: Claim
