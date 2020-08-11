@@ -24,7 +24,7 @@ class Applicant < ApplicationRecord
   
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [:first_name, :last_name, :ssn, :birthdate]
+    against: [:id, :first_name, :last_name, :ssn, :birthdate]
 
   def ssn=(value)
     super(value.to_s.gsub(/-/, ''))
