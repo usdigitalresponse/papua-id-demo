@@ -2,6 +2,7 @@ class Applicant < ApplicationRecord
   has_many :documents
   has_one :bank_account
   has_one :wage_verification
+  has_many :line_item_decisions, as: :decidable
 
   enum descision: {
     Approved: 1,

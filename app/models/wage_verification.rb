@@ -1,5 +1,7 @@
 class WageVerification < ApplicationRecord
   belongs_to :applicant
+  has_many :line_item_decisions, as: :decidable
+
 
   after_create_commit :make_decision
   enum decision: {

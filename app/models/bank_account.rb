@@ -3,6 +3,9 @@ class BankAccount < ApplicationRecord
   belongs_to :applicant
   validates :first_name, :last_name, :bank_account_number, :bank_routing_number, presence: true
   validate :check_for_multiples
+  has_many :line_item_decisions, as: :decidable
+
+  after_create_commit :make_decision
 
   def full_name
     "#{first_name} #{last_name}"
@@ -11,7 +14,7 @@ class BankAccount < ApplicationRecord
   protected
 
   def make_decision
-    #self.applicant.make_decision
+    ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
   end
 
   def check_for_multiples
