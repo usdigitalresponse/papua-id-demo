@@ -14,7 +14,7 @@ class BankAccount < ApplicationRecord
   protected
 
   def make_decision
-    ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
+    ValidateBankAccountJob.set(wait: 1.second).perform_later(self.id)
   end
 
   def check_for_multiples
