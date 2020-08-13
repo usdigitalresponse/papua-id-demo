@@ -15,5 +15,13 @@ class ValidateApplicantJob < ApplicationJob
     applicant.processing_status = :processed
 
     applicant.save
+
+    LineItemDecision.create(name: :first_name, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :last_name, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :birthdate, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :ssn, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :email_address, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :phone_number, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :street_address, decision: :approved, decidable: applicant)
   end
 end

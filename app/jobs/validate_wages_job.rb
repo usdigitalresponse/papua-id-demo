@@ -27,6 +27,11 @@ class ValidateWagesJob < ApplicationJob
     end
 
     wages.save
+
+    LineItemDecision.create(name: :employer_name, decision: :approved, decidable: wages)
+    LineItemDecision.create(name: :reported_termination_date, decision: :approved, decidable: wages)
+    LineItemDecision.create(name: :reported_, decision: :approved, decidable: wages)
+    LineItemDecision.create(name: :employer_name, decision: :approved, decidable: wages)
   end
 
   protected
