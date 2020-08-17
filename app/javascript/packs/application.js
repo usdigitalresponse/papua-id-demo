@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 require('dropzone')
+require('papercup')
 
 import 'bootstrap'
 import '../stylesheets/application'

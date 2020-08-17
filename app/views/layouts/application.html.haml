@@ -12,6 +12,7 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %script{src: 'https://kit.fontawesome.com/e9501c4774.js', crossorigin: 'anonymous'}
+    %script{async: true, src: 'https://app.papercups.io/widget.js'}
   %body
     = render 'layouts/navbar'
     #PAGE= yield
