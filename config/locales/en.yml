@@ -16,7 +16,46 @@ en:
     status: Status
     date: Date Applied
     days: Days Open
+    filters:
+      filter: Filter
+      assigned: Assigned to Me
+      fraud: Potentially Fraudulant
+      unverified: Unverified Wages
+      out_of_state: Claimed Wages Out of State
+      older: Older than 14 Days
     claim_status:
       pending: PENDING
   claim:
     page_title: Claim
+    filed_on: 'Filed: %{date}'
+    statuses:
+      filed: Filed
+      verified: Verified
+      review: Review
+      closed: Closed
+      pending: Pending
+    alerts:
+      unverified: This claim is pending because some information could not be verified. Click on unverified data to see why.
+    sections:
+      personal: Personal Info
+      employment: Employment & Wages
+      questions: Questionnaire
+      documents: Documents
+    actions:
+      hx: View History
+      update: Update
+    personal:
+      identity:
+        header: Identity Information
+        first_name: First Name
+        last_name: Last Name
+        ssn: SSN
+        dob: Date of Birth
+      contact:
+        header: Conact Information
+        address: Address
+        phone: Phone Number
+        email: Email Address
+    employment:
+      bank:
+        header: Bank Information

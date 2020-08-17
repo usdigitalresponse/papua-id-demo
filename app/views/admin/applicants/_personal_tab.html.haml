@@ -1,0 +1,18 @@
+%h3= t('claim.personal.identity.header')
+%dl
+  %dt= t('claim.personal.identity.first_name')
+  %dd= @applicant.first_name
+  %dt= t('claim.personal.identity.last_name')
+  %dd= @applicant.last_name
+  %dt= t('claim.personal.identity.ssn')
+  %dd= @applicant.ssn
+  %dt= t('claim.personal.identity.dob')
+  %dd= @applicant.birthdate
+%h3= t('claim.personal.contact.header')
+%dl
+  %dt= t('claim.personal.contact.address')
+  %dd= @applicant.street_address
+  %dt= t('claim.personal.contact.phone')
+  %dd= @applicant.phone_number
+  %dt= t('claim.personal.contact.email')
+  %dd= @applicant.email_address
