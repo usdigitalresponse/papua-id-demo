@@ -2,25 +2,26 @@
 
 %ul.filters
   %li
-    = fa_icon :filter
-    = t('claims.filters.filter')
-  %li= t('claims.filters.assigned')
-  %li= t('claims.filters.fraud')
-  %li= t('claims.filters.unverified')
-  %li= t('claims.filters.out_of_state')
-  %li= t('claims.filters.older')
+    = link_to '#' do
+      = fa_icon :filter
+      = t('claims.filters.filter')
+  %li= link_to t('claims.filters.assigned'), '#'
+  %li= link_to t('claims.filters.fraud'), '#'
+  %li= link_to t('claims.filters.unverified'), '#'
+  %li= link_to t('claims.filters.out_of_state'), '#'
+  %li= link_to t('claims.filters.older'), '#'
 
 .claim-display
   %ul.sidebar
     = render @applicants
   .claim
-    %section.progress
+    %section.claim-progress
       %ul.arrows
-        %li
+        %li.success
           = t('claim.statuses.filed')
-        %li
+        %li.success
           = t('claim.statuses.verified')
-        %li
+        %li.danger
           = t('claim.statuses.review')
         %li
           = t('claim.statuses.closed')
