@@ -32,6 +32,9 @@ body {
 @import 'layouts/application/navigation';
 @import 'layouts/application/page';
 
+// Sub-components:
+@import 'arrows';
+
 // Application components:
 @import 'applicants';
 @import 'claims';

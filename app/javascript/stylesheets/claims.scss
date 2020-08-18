@@ -1,57 +1,3 @@
-ul.arrows {
-  @extend .m-0;
-  @extend .mb-2;
-  @extend .p-0;
-  @extend .d-flex;
-  @extend .flex-row;
-  @extend .justify-content-between;
-  @extend .text-center;
-  list-style: none;
-  font-size: 14px;
-  line-height: 50px;
-  height: 50px;
-  position: relative;
-
-  li {
-    @extend .flex-grow-1;
-    @extend .mx-2;
-  }
-
-  li.success {
-    background-color: lighten($success, 50%);
-    color: $success;
-    font-weight: bold;
-  }
-  li.success::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 12px;
-    height: 0px;
-    border-top: 25px solid lighten($success, 50%);
-    border-bottom: 25px solid lighten($success, 50%);
-    border-left: 12px solid $white;
-    background-color: lighten($success, 50%);
-  }
-  li.success::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 12px;
-    height: 0px;
-    border-top: 25px solid $white;
-    border-bottom: 25px solid $white;
-    border-left: 12px solid lighten($success, 50%);
-    background-color: $white;
-    margin-left: -16px;
-  }
-  li.success:first-child::after {
-    display: none;
-  }
-}
-
 ul.filters {
   @extend .m-0;
   @extend .p-0;
@@ -80,8 +26,117 @@ ul.filters {
     @extend .p-0;
     max-width: 250px;
     list-style: none;
+    overflow-y: scroll;
+    max-height: 80%;
+    small {
+      display: block;
+    }
+    li {
+      @extend .p-3;
+      @extend .d-flex;
+      @extend .flex-row;
+      @extend .justify-content-between;
+      border-bottom: 1px solid lighten($secondary, 45%);
+      background-color: lighten($secondary, 50%);
+      font-size: 14px;
+      line-height: 21px;
+      .applicant-name {
+        font-weight: bold;
+      }
+      .applicant-id::before {
+        content: "#";
+      }
+      .name-and-id {
+        @extend .flex-grow-1;
+      }
+    }
+    li:last-child {
+      border-bottom: none;
+    }
   }
   .claim {
     @extend .flex-grow-1;
+    @extend .text-dark;
+    @extend .ml-2;
+
+    header, section {
+      @extend .mb-3;
+    }
+
+    header {
+      @extend .d-flex;
+      @extend .justify-content-between;
+      .name {
+        @extend .flex-grow-1;
+      }
+      .actions {
+        a {
+          @extend .mx-2;
+        }
+      }
+      h2 {
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 30px;
+        small {
+          font-size: 14px;
+          line-height: 21px;
+        }
+        small::before {
+          content: "#";
+        }
+      }
+    }
+    ul.nav-tabs {
+      @extend .mb-3;
+      .badge {
+        @extend .ml-2;
+      }
+    }
+
+    .tab-pane {
+      h3 {
+        @extend .my-4;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      dl {
+        font-size: 14px;
+        line-height: 21px;
+        dt {
+          font-weight: normal;
+        }
+        dd {
+          font-weight: bold;
+          address {
+            display: inline;
+          }
+        }
+
+        dd.passed {
+          @extend .text-dark;
+          i {
+            @extend .text-success;
+          }
+        }
+
+        dd.failed {
+          @extend .text-danger;
+        }
+
+        .dl-row {
+          @extend .d-flex;
+          @extend .flex-row;
+          @extend .justify-content-between;
+          @extend .py-3;
+          border-top: 1px solid $gray-200;
+        }
+        .dl-row:first-child {
+          border-top: none;
+        }
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@ en:
     app_name: Unemployment Insurance Claim Management
     navigation:
       dashboard: Dashboard
+      tasks: Tasks
       claims: Claims
       metrics: Reports
       log: Activity Log
@@ -12,6 +13,7 @@ en:
     search_ph: 'Search Claims...'
   claims:
     name: Claimant Name
+    claims: Claims
     number: 'Claim #'
     status: Status
     date: Date Applied

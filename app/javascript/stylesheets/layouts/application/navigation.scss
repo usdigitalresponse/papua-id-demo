@@ -26,11 +26,12 @@ nav.bar {
 }
 
 nav.main {
-  @extend .p-4;
+  @extend .p-0;
   @extend .bg-info;
   max-width: 180px;
 
   h1 {
+    @extend .p-4;
     font-size: 16px;
     line-height: 21px;
     font-weight: bold;
@@ -49,10 +50,18 @@ nav.main {
     @extend .mt-4;
     list-style-type: none;
     li {
-      @extend .my-3;
+      @extend .px-4;
+      @extend .py-3;
       i {
         @extend .pr-2;
       }
+    }
+    li.active {
+      @extend .bg-primary;
+      a {
+        @extend .text-light;
+      }
+      box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.1);
     }
   }
 }

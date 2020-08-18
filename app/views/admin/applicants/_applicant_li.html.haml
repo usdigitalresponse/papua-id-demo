@@ -1,0 +1,7 @@
+%li
+  .name-and-id
+    = link_to applicant.full_name, admin_applicant_url(applicant), class: 'applicant-name'
+    %br
+    %small.applicant-id= applicant.id
+  .applicant-status
+    %span.badge.status-pending= t('claims.claim_status.pending')

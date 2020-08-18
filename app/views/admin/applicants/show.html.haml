@@ -13,7 +13,10 @@
 
 .claim-display
   %ul.sidebar
-    = render @applicants
+    %small
+      = @applicants.count
+      = t('claims.claims')
+    = render @applicants, locals: {mode: :li}
   .claim
     %section.claim-progress
       %ul.arrows
@@ -23,15 +26,15 @@
           = t('claim.statuses.verified')
         %li.danger
           = t('claim.statuses.review')
-        %li
+        %li.secondary
           = t('claim.statuses.closed')
     %header
       .name
         %h2
           = @applicant.full_name
-          .small= @applicant.id
+          %small= @applicant.id
         .small
-          %span.badge= t('claim.statuses.closed')
+          %span.badge.status-pending= t('claim.statuses.pending')
           =t('claim.filed_on', date: @applicant.created_at&.iso8601)
       .actions
         = link_to '#' do
@@ -44,12 +47,15 @@
         = t('claim.alerts.unverified')
     %section.info
       %ul.nav.nav-tabs{role: 'tablist'}
-        %li#PERSONAL_TAB.nav-item{role: 'presentation'}= link_to t('claim.sections.personal'), '#PERSONAL', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'PERSONAL', selected: 'true'}
-        %li#EMPLOYMENT_TAB.nav-item{role: 'presentation'}= link_to t('claim.sections.employment'), '#EMPLOYMENT', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'EMPLOYMENT', selected: 'false'}
-        %li#QUESTIONS_TAB.nav-item{role: 'presentation'}= link_to t('claim.sections.questions'), '#QUESTIONS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'QUESTIONS', selected: 'false'}
-        %li#DOCUMENTS_TAB.nav-item{role: 'presentation'}= link_to t('claim.sections.documents'), '#DOCUMENTS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'DOCUMENTS', selected: 'false'}
+        %li#PERSONAL_TAB{role: 'presentation'}
+          = link_to '#PERSONAL', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'PERSONAL', selected: 'true'}, class: :active do
+            = t('claim.sections.personal')
+            %span.badge.badge-danger 1
+        %li#EMPLOYMENT_TAB{role: 'presentation'}= link_to t('claim.sections.employment'), '#EMPLOYMENT', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'EMPLOYMENT', selected: 'false'}
+        %li#QUESTIONS_TAB{role: 'presentation'}= link_to t('claim.sections.questions'), '#QUESTIONS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'QUESTIONS', selected: 'false'}
+        %li#DOCUMENTS_TAB{role: 'presentation'}= link_to t('claim.sections.documents'), '#DOCUMENTS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'DOCUMENTS', selected: 'false'}
       .tab-content
-        #PERSONAL.tab-pane.fade.show.active{role: 'tabpanel', aria: {labeledby: 'PERSONAL_TAB'}}= render 'personal_tab'
-        #EMPLOYMENT.tab-pane.fade{role: 'tabpanel', aria: {labeledby: 'EMPLOYMENT_TAB'}}= render 'employment_tab'
-        #QUESTIONS.tab-pane.fade{role: 'tabpanel', aria: {labeledby: 'QUESTIONS_TAB'}}= render 'questions_tab'
-        #DOCUMENTS.tab-pane.fade{role: 'tabpanel', aria: {labeledby: 'DOCUMENTS_TAB'}}= render 'documents_tab'
+        #PERSONAL.tab-pane.show.active{role: 'tabpanel', aria: {labeledby: 'PERSONAL_TAB'}}= render 'personal_tab'
+        #EMPLOYMENT.tab-pane{role: 'tabpanel', aria: {labeledby: 'EMPLOYMENT_TAB'}}= render 'employment_tab'
+        #QUESTIONS.tab-pane{role: 'tabpanel', aria: {labeledby: 'QUESTIONS_TAB'}}= render 'questions_tab'
+        #DOCUMENTS.tab-pane{role: 'tabpanel', aria: {labeledby: 'DOCUMENTS_TAB'}}= render 'documents_tab'

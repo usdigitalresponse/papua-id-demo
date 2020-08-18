@@ -21,7 +21,7 @@ class Applicant < ApplicationRecord
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
 
   validates :first_name, :last_name, :ssn, :birthdate, presence: true
-  
+
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [:id, :first_name, :last_name, :ssn, :birthdate]
@@ -48,6 +48,13 @@ class Applicant < ApplicationRecord
 
   def tags
     descision_response["summary"]["tags"]
+  end
+
+  def address(format = :one_line)
+    case format
+    when :one_line
+      "#{street_address}, #{city}, #{state}, #{postal_code}"
+    end
   end
 
   def request_params
