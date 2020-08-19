@@ -4,12 +4,12 @@
     %dt= t('claim.personal.identity.first_name')
     %dd.passed
       = @applicant.first_name
-      = fa_icon :check_circle
+      = fa_icon applicant_line_item_decision_icon(@applicant, :first_name)
   .dl-row
     %dt= t('claim.personal.identity.last_name')
     %dd.passed
       = @applicant.last_name
-      = fa_icon :check_circle
+      = fa_icon applicant_line_item_decision_icon(@applicant, :last_name)
   .dl-row
     %dt= t('claim.personal.identity.ssn')
     %dd.failed
