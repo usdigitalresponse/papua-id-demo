@@ -15,5 +15,19 @@ FactoryBot.define do
     trait :sandboxed do
       ssn { EXAMPLES.to_a.sample[1] }
     end
+
+    trait :with_wage_verification do
+      after(:create) do |applicant|
+        create :wage_verification,
+          applicant: applicant,
+          reported_employer_name: Faker::Company.name,
+          reported_employer_id: rand(100000..1000000),
+          reported_termination_date: Date.today - rand(1..100),
+          reported_wages: rand(10000..1000000) / 100.0,
+          reported_time_period: "Weekly",
+          truework_verification_status: "NotStarted"
+      end
+    end
+
   end
 end
