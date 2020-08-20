@@ -1,5 +1,5 @@
 module ApplicationHelper
-  @@personal_line_items = [:first_name, :last_name]
+  @@personal_line_items = [:first_name, :last_name, :ssn, :birthdate, :street_address, :phone_number, :email_address]
 
 
   def applicant_line_item_decision_icon(applicant, line_item)
