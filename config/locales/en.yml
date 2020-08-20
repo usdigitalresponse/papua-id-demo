@@ -61,3 +61,14 @@ en:
     employment:
       bank:
         header: Bank Information
+    tasks:
+      title: Task
+      number: Task ID
+      claim: 'Claim #'
+      status: Status
+      due: Due Date
+      statuses:
+        in_progress: In Progress
+    dashboard:
+      tasks: Tasks
+      announcements: Announcements

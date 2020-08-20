@@ -1,0 +1,7 @@
+%tr
+  %td= link_to task.title, '#'
+  %td= link_to truncate(task.id, length: 16), '#'
+  %td= link_to truncate(task.applicant.id, length: 16), admin_applicant_url(task.applicant)
+  %td
+    %span.badge{class: task.status}= t("task.statuses.#{task.status}")
+  %td= task.due_on&.iso8601

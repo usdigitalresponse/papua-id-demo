@@ -1,0 +1,21 @@
+.dashboard
+  .card.tasks
+    .card-header
+      %h2= t('dashboard.tasks')
+    .card-body
+      %table
+        %thead
+          %tr
+            %th= t('tasks.title')
+            %th= t('tasks.number')
+            %th= t('tasks.claim')
+            %th= t('tasks.status')
+            %th= t('tasks.due')
+        %tbody= render @tasks
+  - if @announcements.any?
+    .card.announcements
+      .card-header
+        %h2= t('dashboard.announcements')
+      .card-body
+        %ul
+          = render @announcements

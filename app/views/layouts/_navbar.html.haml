@@ -19,7 +19,7 @@
 
   %ul
     %li{class: (:active if @nav_selection == :dashboard)}
-      = link_to dashboard_admin_applicants_url do
+      = link_to admin_dashboard_url do
         = fa_icon :home
         = t('shared.navigation.dashboard')
     %li{class: (:active if @nav_selection == :tasks)}
