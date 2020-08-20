@@ -5,15 +5,15 @@
   .card-header
     .main
       %h2
-        = t('dashboard.heading')
+        = t('claims.heading')
         .badge.badge-info= @applicants.count
       = link_to root_url do
-        = t('View All')
+        = t('claims.view_link')
         = fa_icon :arrow_right
     .search
       = form_tag(root_url, method: :get) do
         .input-group.input-group-lg
-          = text_field_tag(:query, '', placeholder: t('dashboard.search_ph'))
+          = text_field_tag(:query, '', placeholder: t('claims.search_ph'))
           .input-group-append
             %button.btn.btn-primary{type: :submit}
               = fa_icon :search

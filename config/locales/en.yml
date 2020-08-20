@@ -8,10 +8,15 @@ en:
       metrics: Reports
       log: Activity Log
   dashboard:
+    tasks: Tasks
+    announcements: Announcements
+    tasks_assigned: Tasks Assigned to Me
+    claims_assigned: Claims Assigned to Me
+    average_age: Average Age of Claims Assigned to Me
+  claims:
     heading: Pending Claims
     view_link: View All
     search_ph: 'Search Claims...'
-  claims:
     name: Claimant Name
     claims: Claims
     number: 'Claim #'
@@ -69,6 +74,3 @@ en:
       due: Due Date
       statuses:
         in_progress: In Progress
-    dashboard:
-      tasks: Tasks
-      announcements: Announcements
