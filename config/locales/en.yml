@@ -67,6 +67,14 @@ en:
     employment:
       bank:
         header: Bank Information
+        account: Account Number
+        route: Routing Number
+      employment:
+        header: Employment History
+        employer: Employer
+        termination: Termination Date
+        wage: Wages
+        interval: Wage Period
     tasks:
       title: Task
       number: Task ID
