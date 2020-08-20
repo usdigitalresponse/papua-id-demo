@@ -7,7 +7,14 @@
     @extend .flex-grow-1;
   }
 
+  section {
+    @extend .d-flex;
+    @extend .flex-row;
+    @extend .justify-content-between;
+  }
+
   .announcements {
+    @extend .flex-grow-1;
     @extend .m-0;
     max-width: 350px;
 

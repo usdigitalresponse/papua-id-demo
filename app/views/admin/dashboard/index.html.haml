@@ -32,10 +32,9 @@
               %th= t('tasks.status')
               %th= t('tasks.due')
           %tbody= render @tasks
-    - if @announcements.any?
-      .card.announcements
-        .card-header
-          %h2= t('dashboard.announcements')
-        .card-body
-          %ul
-            = render @announcements
+    .card.announcements
+      .card-header
+        %h2= t('dashboard.announcements')
+      .card-body
+        %ul
+          = render @announcements
