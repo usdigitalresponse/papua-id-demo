@@ -8,6 +8,7 @@ en:
       metrics: Reports
       log: Activity Log
   dashboard:
+    dashboard: Dashboard
     tasks: Tasks
     announcements: Announcements
     tasks_assigned: Tasks Assigned to Me

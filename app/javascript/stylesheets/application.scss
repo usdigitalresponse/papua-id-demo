@@ -28,6 +28,14 @@ body {
   @extend .p-0;
 }
 
+h1 {
+  @extend .ml-3;
+  @extend .mb-4;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+}
+
 // Layouts:
 @import 'layouts/application/navigation';
 @import 'layouts/application/page';
