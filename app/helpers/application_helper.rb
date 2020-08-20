@@ -10,7 +10,7 @@ module ApplicationHelper
       when :rejected
         :times_circle
       when :pending
-        :question_circle
+        :circle
       default
         :circle
       end
