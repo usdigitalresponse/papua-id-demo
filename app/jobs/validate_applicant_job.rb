@@ -22,6 +22,6 @@ class ValidateApplicantJob < ApplicationJob
     LineItemDecision.create(name: :ssn, decision: :approved, decidable: applicant)
     LineItemDecision.create(name: :email_address, decision: :approved, decidable: applicant)
     LineItemDecision.create(name: :phone_number, decision: :approved, decidable: applicant)
-    LineItemDecision.create(name: :street_address, decision: :approved, decidable: applicant)
+    LineItemDecision.create(name: :address, decision: :approved, decidable: applicant)
   end
 end

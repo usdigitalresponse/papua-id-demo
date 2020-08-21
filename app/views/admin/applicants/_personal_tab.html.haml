@@ -2,38 +2,24 @@
 %dl
   .dl-row
     %dt= t('claim.personal.identity.first_name')
-    %dd.passed
-      = @applicant.first_name
-      = fa_icon applicant_line_item_decision_icon(@applicant, :first_name)
+    = applicant_line_item_decision_haml(@applicant, :first_name, @applicant.first_name)
   .dl-row
     %dt= t('claim.personal.identity.last_name')
-    %dd.passed
-      = @applicant.last_name
-      = fa_icon applicant_line_item_decision_icon(@applicant, :last_name)
+    = applicant_line_item_decision_haml(@applicant, :last_name, @applicant.last_name)
   .dl-row
     %dt= t('claim.personal.identity.ssn')
-    %dd.passed
-      = @applicant.ssn.to_s.gsub(/^\d{5}/, "••• - •• - ")
-      = fa_icon applicant_line_item_decision_icon(@applicant, :ssn)
+    = applicant_line_item_decision_haml(@applicant, :ssn, @applicant.ssn.to_s.gsub(/^\d{5}/, "••• - •• - "))
   .dl-row
     %dt= t('claim.personal.identity.dob')
-    %dd.passed
-      = @applicant.birthdate
-      = fa_icon applicant_line_item_decision_icon(@applicant, :birthdate)
+    = applicant_line_item_decision_haml(@applicant, :birthdate, @applicant.birthdate)
   %h3= t('claim.personal.contact.header')
 %dl
   .dl-row
     %dt= t('claim.personal.contact.address')
-    %dd.passed
-      %address= @applicant.address
-      = fa_icon applicant_line_item_decision_icon(@applicant, :street_address)
+    = applicant_line_item_decision_haml(@applicant, :address, @applicant.address)
   .dl-row
     %dt= t('claim.personal.contact.phone')
-    %dd.passed
-      = @applicant.phone_number
-      = fa_icon applicant_line_item_decision_icon(@applicant, :phone_number)
+    = applicant_line_item_decision_haml(@applicant, :phone_number, @applicant.phone_number)
   .dl-row
     %dt= t('claim.personal.contact.email')
-    %dd.passed
-      = @applicant.email_address
-      = fa_icon applicant_line_item_decision_icon(@applicant, :email_address)
+    = applicant_line_item_decision_haml(@applicant, :email_address, @applicant.email_address)
