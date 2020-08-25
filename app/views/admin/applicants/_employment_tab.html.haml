@@ -2,33 +2,21 @@
 %dl
   .dl-row
     %dt= t('claim.employment.bank.account')
-    %dd.passed
-      = @applicant.bank_account&.bank_account_number&.to_s&.gsub(/\d+(?=\d{4}$)/, "••••••••••••")
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :bank_account_number, @applicant.bank_account&.bank_account_number&.to_s&.gsub(/\d+(?=\d{4}$)/, "••••••••••••"))
   .dl-row
     %dt= t('claim.employment.bank.route')
-    %dd.passed
-      = @applicant.bank_account&.bank_routing_number
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :bank_routing_number, @applicant.bank_account&.bank_routing_number)
 %h3= t('claim.employment.employment.header')
 %dl
   .dl-row
     %dt= t('claim.employment.employment.employer')
-    %dd.passed
-      = @applicant.wage_verification&.reported_employer_name
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :reported_employer_name, @applicant.wage_verification&.reported_employer_name)
   .dl-row
     %dt= t('claim.employment.employment.termination')
-    %dd.passed
-      = @applicant.wage_verification&.reported_termination_date
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :reported_termination_date, @applicant.wage_verification&.reported_termination_date)
   .dl-row
     %dt= t('claim.employment.employment.wage')
-    %dd.passed
-      = @applicant.wage_verification&.reported_wages
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :reported_wages, @applicant.wage_verification&.reported_wages)
   .dl-row
     %dt= t('claim.employment.employment.interval')
-    %dd.passed
-      = @applicant.wage_verification&.reported_time_period
-      = fa_icon :check_circle
+    = applicant_line_item_decision_haml(@applicant, :reported_time_period, @applicant.wage_verification&.reported_time_period)

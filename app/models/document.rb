@@ -3,6 +3,8 @@ require 'base64'
 class Document < ApplicationRecord
   belongs_to :applicant
   has_one_attached :file
+  has_many :line_item_decisions, as: :decidable
+
   after_create_commit :make_descision
 
   enum document_type: {
