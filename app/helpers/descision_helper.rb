@@ -1,4 +1,46 @@
 module DescisionHelper
+  PERSONAL_LINE_ITEMS = [:first_name, :last_name, :ssn, :birthdate, :street_address, :phone_number, :email_address].freeze
+  BANK_ACCOUNT_LINE_ITEMS = [:bank_account_number, :bank_routing_number].freeze
+  WAGE_VALIDATION_LINE_ITEMS = [:reported_employer_name, :reported_termination_date, :reported_wages, :reported_time_period].freeze
+
+  def applicant_line_item_decision_icon(decision)
+    case decision
+    when "approved"
+      ":check_circle"
+    when "rejected"
+      ":times_circle"
+    else
+      ":question_circle"
+    end
+  end
+
+  def applicant_line_item_decision_haml(applicant, line_item, text)
+    line_item_decision = if PERSONAL_LINE_ITEMS.include? line_item
+      applicant&.line_item_decisions.find { |x| x.name == line_item.to_s}.try(:decision)
+    elsif BANK_ACCOUNT_LINE_ITEMS.include? line_item
+      applicant&.bank_account&.line_item_decisions&.find { |x| x.name == line_item.to_s}&.decision
+    else
+      applicant&.wage_verification&.line_item_decisions&.find { |x| x.name == line_item.to_s}&.decision
+    end
+
+    render_haml <<-HAML
+      %dd#{decision_to_css_class(line_item_decision)}
+        #{text}
+        = fa_icon #{applicant_line_item_decision_icon(line_item_decision)}
+    HAML
+  end
+
+  def decision_to_css_class(decision)
+    case decision
+    when "approved"
+      ".passed"
+    when "rejected"
+      ".failed"
+    when nil
+      ""
+    end
+  end
+
   def descision_icon(descision, options={})
     case descision
     when 'Approved'

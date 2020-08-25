@@ -94,16 +94,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_195702) do
     t.index ["applicant_id"], name: "index_documents_on_applicant_id"
   end
 
-  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.uuid "applicant_id", null: false
-    t.integer "status", null: false
-    t.date "due_on"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["applicant_id"], name: "index_tasks_on_applicant_id"
-  end
-  
   create_table "line_item_decisions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "decision"
@@ -112,6 +102,16 @@ ActiveRecord::Schema.define(version: 2020_08_19_195702) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["decidable_type", "decidable_id"], name: "index_line_item_decisions_on_decidable_type_and_decidable_id"
+  end
+
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.uuid "applicant_id", null: false
+    t.integer "status", null: false
+    t.date "due_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["applicant_id"], name: "index_tasks_on_applicant_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
