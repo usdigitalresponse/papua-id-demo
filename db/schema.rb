@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_195702) do
+ActiveRecord::Schema.define(version: 2020_08_27_013318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_195702) do
     t.string "decidable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sources", default: [], null: false, array: true
     t.index ["decidable_type", "decidable_id"], name: "index_line_item_decisions_on_decidable_type_and_decidable_id"
   end
 

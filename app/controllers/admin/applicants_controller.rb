@@ -25,11 +25,11 @@ class Admin::ApplicantsController < Admin::AdminController
   protected
 
   def set_applicant
-    @applicant = Applicant.find(params[:id])
+    @applicant = Applicant.includes(:line_item_decisions).find(params[:id])
   end
 
   def search
-    @applicants = Applicant.all.order(created_at: :desc)
+    @applicants = Applicant.all.includes(:line_item_decisions).order(created_at: :desc)
     @applicants = @applicants.global_search(params["query"]) if params["query"].present?
   end
 end

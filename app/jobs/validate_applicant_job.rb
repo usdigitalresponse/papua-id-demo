@@ -16,6 +16,8 @@ class ValidateApplicantJob < ApplicationJob
 
     applicant.save
 
+    # TODO: Actually make descisions here:
+
     LineItemDecision.create(name: :first_name, decision: :approved, decidable: applicant)
     LineItemDecision.create(name: :last_name, decision: :approved, decidable: applicant)
     LineItemDecision.create(name: :birthdate, decision: :approved, decidable: applicant)

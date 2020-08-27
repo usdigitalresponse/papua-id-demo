@@ -16,7 +16,7 @@
     = applicant_line_item_decision_haml(@applicant, :reported_termination_date, @applicant.wage_verification&.reported_termination_date)
   .dl-row
     %dt= t('claim.employment.employment.wage')
-    = applicant_line_item_decision_haml(@applicant, :reported_wages, @applicant.wage_verification&.reported_wages)
+    = applicant_line_item_decision_haml(@applicant, :reported_wages, "$#{@applicant.wage_verification&.reported_wages}")
   .dl-row
     %dt= t('claim.employment.employment.interval')
     = applicant_line_item_decision_haml(@applicant, :reported_time_period, @applicant.wage_verification&.reported_time_period)

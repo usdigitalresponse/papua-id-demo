@@ -4,4 +4,4 @@
     %br
     %small.applicant-id= applicant.id
   .applicant-status
-    %span.badge.status-pending= t('claims.claim_status.pending')
+    %span.badge{class: "status-#{applicant.status}"}= t("claims.statuses.#{applicant.status}")

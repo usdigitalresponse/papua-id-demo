@@ -33,6 +33,8 @@ en:
       older: Older than 14 Days
     claim_status:
       pending: PENDING
+      review: PENDING
+      closed: CLOSED
   claim:
     page_title: Claim
     filed_on: 'Filed: %{date}'
@@ -60,7 +62,7 @@ en:
         ssn: SSN
         dob: Date of Birth
       contact:
-        header: Conact Information
+        header: Contact Information
         address: Address
         phone: Phone Number
         email: Email Address

@@ -20,13 +20,13 @@
   .claim
     %section.claim-progress
       %ul.arrows
-        %li.success
+        %li{class: (@applicant.status_number < 1 ? :secondary : (@applicant.status_number == 1 ? :danger : :success ))}
           = t('claim.statuses.filed')
-        %li.success
+        %li{class: (@applicant.status_number < 2 ? :secondary : (@applicant.status_number == 2 ? :danger : :success ))}
           = t('claim.statuses.verified')
-        %li.danger
+        %li{class: (@applicant.status_number < 3 ? :secondary : (@applicant.status_number == 3 ? :danger : :success ))}
           = t('claim.statuses.review')
-        %li.secondary
+        %li{class: (@applicant.status_number < 4 ? :secondary : (@applicant.status_number == 4 ? :success : :success ))}
           = t('claim.statuses.closed')
     %header
       .name
@@ -34,7 +34,8 @@
           = @applicant.full_name
           %small= @applicant.id
         .small
-          %span.badge.status-pending= t('claim.statuses.pending')
+          - if @applicant.line_item_decisions.rejected.any?
+            %span.badge.status-pending= t('claim.statuses.pending')
           =t('claim.filed_on', date: @applicant.created_at&.iso8601)
       .actions
         = link_to '#' do
@@ -42,15 +43,18 @@
           = t('claim.actions.hx')
         = link_to t('claim.actions.update'), '#', class: 'btn btn-primary btn-lg'
     %section.alerts
-      .alert.alert-warning
-        = fa_icon :exclamation_triangle
-        = t('claim.alerts.unverified')
+      - if @applicant.line_item_decisions.rejected.any?
+        .alert.alert-warning
+          = fa_icon :exclamation_triangle
+          = t('claim.alerts.unverified')
     %section.info
       %ul.nav.nav-tabs{role: 'tablist'}
         %li#PERSONAL_TAB{role: 'presentation'}
           = link_to '#PERSONAL', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'PERSONAL', selected: 'true'}, class: :active do
             = t('claim.sections.personal')
-            %span.badge.badge-danger 1
+            -# HACK Count by section
+            - if @applicant.line_item_decisions.rejected.any?
+              %span.badge.badge-danger= @applicant.line_item_decisions.rejected.count
         %li#EMPLOYMENT_TAB{role: 'presentation'}= link_to t('claim.sections.employment'), '#EMPLOYMENT', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'EMPLOYMENT', selected: 'false'}
         %li#QUESTIONS_TAB{role: 'presentation'}= link_to t('claim.sections.questions'), '#QUESTIONS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'QUESTIONS', selected: 'false'}
         %li#DOCUMENTS_TAB{role: 'presentation'}= link_to t('claim.sections.documents'), '#DOCUMENTS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'DOCUMENTS', selected: 'false'}

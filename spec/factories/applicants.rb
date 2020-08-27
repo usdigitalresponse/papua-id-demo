@@ -11,6 +11,19 @@ FactoryBot.define do
     postal_code { Faker::Address.zip.gsub(/-\d{4}/, '') }
     ssn { Faker::IDNumber.valid.gsub(/-/, '') }
     case_number { Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3, min_numeric: 3) }
+    disable_verification { true }
+    status { 3 }
+
+    after(:create) do |applicant|
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :first_name, sources: ['LexisNexis', 'Socure30'])
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :last_name, sources: ['LexisNexis', 'Socure30'])
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :birthdate, sources: ['LexisNexis', 'Socure30'])
+      ln = FactoryBot.create(:line_item_decision, decision: [:approved, :rejected].sample, decidable: applicant, name: :ssn, sources: ['LexisNexis'])
+      applicant.update status: :closed if ln.accepted?
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :email_address, sources: ['WPP'])
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :phone_number, sources: ['LexisNexis', 'WPP'])
+      FactoryBot.create(:line_item_decision, decidable: applicant, name: :address, sources: ['LexisNexis', 'Socure30'])
+    end
 
     trait :sandboxed do
       ssn { EXAMPLES.to_a.sample[1] }

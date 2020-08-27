@@ -1,41 +1,42 @@
 module DescisionHelper
-  PERSONAL_LINE_ITEMS = [:first_name, :last_name, :ssn, :birthdate, :street_address, :phone_number, :email_address].freeze
+  PERSONAL_LINE_ITEMS = [:first_name, :last_name, :ssn, :birthdate, :address, :phone_number, :email_address].freeze
   BANK_ACCOUNT_LINE_ITEMS = [:bank_account_number, :bank_routing_number].freeze
   WAGE_VALIDATION_LINE_ITEMS = [:reported_employer_name, :reported_termination_date, :reported_wages, :reported_time_period].freeze
 
   def applicant_line_item_decision_icon(decision)
     case decision
     when "approved"
-      ":check_circle"
+      "check_circle"
     when "rejected"
-      ":times_circle"
+      "times_circle"
     else
-      ":question_circle"
+      "question_circle"
     end
   end
 
   def applicant_line_item_decision_haml(applicant, line_item, text)
     line_item_decision = if PERSONAL_LINE_ITEMS.include? line_item
-      applicant&.line_item_decisions.find { |x| x.name == line_item.to_s}.try(:decision)
+      applicant&.line_item_decisions.find { |x| x.name == line_item.to_s}
     elsif BANK_ACCOUNT_LINE_ITEMS.include? line_item
-      applicant&.bank_account&.line_item_decisions&.find { |x| x.name == line_item.to_s}&.decision
+      applicant&.bank_account&.line_item_decisions&.find { |x| x.name == line_item.to_s}
     else
-      applicant&.wage_verification&.line_item_decisions&.find { |x| x.name == line_item.to_s}&.decision
+      applicant&.wage_verification&.line_item_decisions&.find { |x| x.name == line_item.to_s}
     end
 
-    render_haml <<-HAML
-      %dd#{decision_to_css_class(line_item_decision)}
-        #{text}
-        = fa_icon #{applicant_line_item_decision_icon(line_item_decision)}
-    HAML
+    return content_tag :dd, class: decision_to_css_class(line_item_decision&.decision) do
+      [
+        content_tag(:a, text, href: '#', data: {container: :body, toggle: :popover, trigger: :focus, placement: :right, title: "#{line_item_decision&.name&.titleize} #{line_item_decision&.decision}", content: "#{line_item_decision&.name&.titleize} #{line_item_decision&.decision} in #{line_item_decision&.sources&.join(' and ')}."}),
+        fa_icon(applicant_line_item_decision_icon(line_item_decision&.decision))
+      ].join(' ').html_safe
+    end
   end
 
   def decision_to_css_class(decision)
     case decision
     when "approved"
-      ".passed"
+      "passed"
     when "rejected"
-      ".failed"
+      "failed"
     when nil
       ""
     end
