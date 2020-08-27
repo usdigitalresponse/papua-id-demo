@@ -1,0 +1,40 @@
+%h1= t('dashboard.dashboard')
+
+.dashboard
+  %header
+    %ul.callouts
+      %li
+        %dl
+          -# HACK
+          %dt 12
+          %dd= t('dashboard.tasks_assigned')
+      %li
+        %dl
+          -# HACK
+          %dt 149
+          %dd= t('dashboard.claims_assigned')
+      %li
+        %dl.text-danger
+          -# HACK
+          %dt 67
+          %dd= t('dashboard.average_age')
+  %section
+    .card.tasks
+      .card-header
+        %h2= t('dashboard.tasks')
+      .card-body
+        %table
+          %thead
+            %tr
+              %th= t('tasks.title')
+              %th= t('tasks.number')
+              %th= t('tasks.claim')
+              %th= t('tasks.status')
+              %th= t('tasks.due')
+          %tbody= render @tasks
+    .card.announcements
+      .card-header
+        %h2= t('dashboard.announcements')
+      .card-body
+        %ul
+          = render @announcements

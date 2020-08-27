@@ -1,0 +1,34 @@
+ul.callouts {
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .justify-content-between;
+  list-style: none;
+  @extend .p-0;
+
+  li {
+    @extend .card;
+    @extend .bg-info;
+    @extend .text-primary;
+    @extend .flex-grow-1;
+    @extend .p-4;
+    dl {
+      @extend .d-flex;
+      @extend .flex-row;
+      @extend .justify-content-center;
+      @extend .mb-0;
+      dt {
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 48px;
+        @extend .mr-2;
+      }
+      dd {
+        padding-top: 2px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 21px;
+        max-width: 175px;
+      }
+    }
+  }
+}

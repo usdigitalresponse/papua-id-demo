@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Applicant.destroy_all
+Task.destroy_all
+
+FactoryBot.create_list(:applicant, 20, :with_wage_verification)
+FactoryBot.create_list(:task, 20)

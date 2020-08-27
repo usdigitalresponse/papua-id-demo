@@ -1,0 +1,14 @@
+ul.nav-tabs {
+  li {
+    @extend .nav-item;
+    a {
+      @extend .nav-link;
+    }
+  }
+}
+
+.tab-content {
+  .tab-pane {
+    @extend .tab-pane;
+  }
+}

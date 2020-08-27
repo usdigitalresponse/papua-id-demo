@@ -1,0 +1,20 @@
+.card {
+  @extend .p-3;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, .10);
+  border-radius: 5px;
+  border: none;
+
+  .card-header {
+    @extend .d-flex;
+    @extend .flex-row;
+    @extend .justify-content-between;
+
+    background: $white;
+    border: none;
+
+    h2 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}

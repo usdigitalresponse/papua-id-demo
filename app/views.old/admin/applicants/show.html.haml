@@ -1,0 +1,13 @@
+- content_for(:page_full_header) do
+  %h1.card-title= @applicant.full_name
+  %small= t('admin.applicants.show.applied_at', date: @applicant.created_at)
+
+.row
+  .col-lg
+    = render 'applicant_info'
+    = render 'wage_info'
+    = render 'documents'
+  .col-lg
+    = render 'result'
+    = render 'reasons'
+    = render 'options'

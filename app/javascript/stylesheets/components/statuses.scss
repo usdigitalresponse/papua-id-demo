@@ -1,0 +1,19 @@
+.in_progress {
+  background-color: lighten($warning, 30%);
+}
+
+.status-pending {
+  background-color: lighten($warning, 30%);
+}
+.status-review {
+  background-color: lighten($warning, 30%);
+}
+.status-verified {
+  background-color: lighten($warning, 30%);
+}
+.status-closed {
+  background-color: lighten($success, 30%);
+}
+.status-filed {
+  background-color: lighten($danger, 30%);
+}

@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/bootstrap';
+
+ul.none {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.warning {
+  background-color: #9c1414;
+  color: #fff;
+  text-align: center;
+}
+
+.card {
+  margin-top: 2rem;
+
+  .bottom-buttons {
+    @extend .mt-3;
+    @extend .d-flex;
+    @extend .flex-row-reverse;
+  }
+}

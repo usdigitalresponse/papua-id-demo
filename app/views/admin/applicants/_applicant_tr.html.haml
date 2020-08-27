@@ -1,0 +1,7 @@
+%tr
+  %td= link_to applicant.full_name, admin_applicant_url(applicant)
+  %td= applicant.id
+  %td
+    %span.badge{class: "status-#{applicant.status}"}= t("claims.statuses.#{applicant.status}")
+  %td= applicant.created_at.to_date.iso8601
+  %td 5 days

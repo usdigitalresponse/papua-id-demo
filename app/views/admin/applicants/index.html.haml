@@ -1,19 +1,29 @@
-- content_for(:page_header) { t('admin.applicants.index.header') }
+- if @dashboard
+  = image_tag 'chart_placeholder.png'
 
-%p= t('admin.applicants.index.helper_text')
-%table.table
-  %thead
-    %tr
-      %th= t('admin.applicants.index.table.name')
-      %th= t('admin.applicants.index.table.timestamp')
-      %th= t('admin.applicants.index.table.descision')
-      %th
-  %tbody
-    - @applicants.each do |applicant|
-      %tr
-        %td= link_to applicant.full_name, admin_applicant_url(applicant)
-        %td= applicant.created_at
-        %td
-          = descision_icon(applicant.descision)
-          = t("shared.#{applicant.descision.parameterize}")
-        %td= link_to(t('admin.applicants.view_on_alloy'), applicant.alloy_app_uri, target: '_blank')
+.card
+  .card-header
+    .main
+      %h2
+        = t('claims.heading')
+        .badge.badge-info= @applicants.count
+      = link_to root_url do
+        = t('claims.view_link')
+        = fa_icon :arrow_right
+    .search
+      = form_tag(root_url, method: :get) do
+        .input-group.input-group-lg
+          = text_field_tag(:query, '', placeholder: t('claims.search_ph'))
+          .input-group-append
+            %button.btn.btn-primary{type: :submit}
+              = fa_icon :search
+  .card-body
+    %table
+      %thead
+        %tr
+          %th= t('claims.name')
+          %th= t('claims.number')
+          %th= t('claims.status')
+          %th= t('claims.date')
+          %th= t('claims.days')
+      %tbody= render @applicants

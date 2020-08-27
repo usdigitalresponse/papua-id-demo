@@ -1,0 +1,90 @@
+ul.arrows {
+  $arrows-height: ($spacer * 2.5);
+  @extend .m-0;
+  @extend .p-0;
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .justify-content-between;
+  @extend .text-center;
+  list-style: none;
+  font-size: 14px;
+  line-height: $arrows-height;
+  height: $arrows-height;
+  position: relative;
+
+  li {
+    @extend .flex-grow-1;
+    margin: 0 ($arrows-height / 8);
+    position: relative;
+    font-weight: bold;
+  }
+  li::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    width: 12px;
+    height: 0px;
+    //margin-left: -16px;
+    background-color: $white;
+    border-top: ($arrows-height / 2) solid $white;
+    border-bottom: ($arrows-height / 2) solid $white;
+  }
+  li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: ($arrows-height / 4);
+    height: 0px;
+    border-left: ($arrows-height / 4) solid $white;
+  }
+  li:first-child::before {
+    display: none;
+  }
+  li:last-child::after {
+    display: none;
+  }
+
+  li.secondary {
+    background-color: lighten($secondary, 30%);
+    color: $secondary;
+    font-weight: bold;
+  }
+  li.secondary::before {
+    border-top: ($arrows-height / 2) solid lighten($secondary, 30%);
+    border-bottom: ($arrows-height / 2) solid lighten($secondary, 30%);
+    background-color: lighten($secondary, 30%);
+  }
+  li.secondary::after {
+    border-left: ($arrows-height / 4) solid lighten($secondary, 30%);
+  }
+
+  li.success {
+    background-color: lighten($success, 50%);
+    color: $success;
+    font-weight: bold;
+  }
+  li.success::before {
+    border-top: ($arrows-height / 2) solid lighten($success, 50%);
+    border-bottom: ($arrows-height / 2) solid lighten($success, 50%);
+    background-color: lighten($success, 50%);
+  }
+  li.success::after {
+    border-left: ($arrows-height / 4) solid lighten($success, 50%);
+  }
+
+  li.danger {
+    background-color: lighten($danger, 35%);
+    color: $danger;
+    font-weight: bold;
+  }
+  li.danger::before {
+    border-top: ($arrows-height / 2) solid lighten($danger, 35%);
+    border-bottom: ($arrows-height / 2) solid lighten($danger, 35%);
+    background-color: lighten($danger, 35%);
+  }
+  li.danger::after {
+    border-left: ($arrows-height / 4) solid lighten($danger, 35%);
+  }
+}

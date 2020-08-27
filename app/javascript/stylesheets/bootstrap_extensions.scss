@@ -1,26 +1,16 @@
-@import '~bootstrap/scss/bootstrap';
-
-.form-check {
-  input[type="checkbox"] {
-    @extend .form-check-input;
-  }
-  label {
-    @extend .form-check-label;
-    margin-left: 4px;
-  }
-}
-
-.custom-switch {
-  @extend .custom-control;
-  input[type="checkbox"] {
-    @extend .custom-control-input;
-  }
-  label {
-    @extend .custom-control-label;
-    margin-left: 4px;
-  }
-}
-
-table {
-  @extend .table;
-}
+/*
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'primary': #674f84,
+    'secondary': #ffd000,
+    'success': #28a745,
+    'info': #17a2b8,
+    'warning': #ffc107,
+    'danger': #dc3545,
+    'light': #f8f9fa,
+    'dark': #343a40
+  ),
+  $theme-colors
+);
+*/

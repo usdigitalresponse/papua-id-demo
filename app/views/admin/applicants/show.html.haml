@@ -1,13 +1,65 @@
-- content_for(:page_full_header) do
-  %h1.card-title= @applicant.full_name
-  %small= t('admin.applicants.show.applied_at', date: @applicant.created_at)
+%h1= t('claim.page_title')
 
-.row
-  .col-lg
-    = render 'applicant_info'
-    = render 'wage_info'
-    = render 'documents'
-  .col-lg
-    = render 'result'
-    = render 'reasons'
-    = render 'options'
+%ul.filters
+  %li
+    = link_to '#' do
+      = fa_icon :filter
+      = t('claims.filters.filter')
+  %li= link_to t('claims.filters.assigned'), '#'
+  %li= link_to t('claims.filters.fraud'), '#'
+  %li= link_to t('claims.filters.unverified'), '#'
+  %li= link_to t('claims.filters.out_of_state'), '#'
+  %li= link_to t('claims.filters.older'), '#'
+
+.claim-display
+  %ul.sidebar
+    %small
+      = @applicants.count
+      = t('claims.claims')
+    = render @applicants, locals: {mode: :li}
+  .claim
+    %section.claim-progress
+      %ul.arrows
+        %li{class: (@applicant.status_number < 1 ? :secondary : (@applicant.status_number == 1 ? :danger : :success ))}
+          = t('claim.statuses.filed')
+        %li{class: (@applicant.status_number < 2 ? :secondary : (@applicant.status_number == 2 ? :danger : :success ))}
+          = t('claim.statuses.verified')
+        %li{class: (@applicant.status_number < 3 ? :secondary : (@applicant.status_number == 3 ? :danger : :success ))}
+          = t('claim.statuses.review')
+        %li{class: (@applicant.status_number < 4 ? :secondary : (@applicant.status_number == 4 ? :success : :success ))}
+          = t('claim.statuses.closed')
+    %header
+      .name
+        %h2
+          = @applicant.full_name
+          %small= @applicant.id
+        .small
+          - if @applicant.line_item_decisions.rejected.any?
+            %span.badge.status-pending= t('claim.statuses.pending')
+          =t('claim.filed_on', date: @applicant.created_at&.iso8601)
+      .actions
+        = link_to '#' do
+          = fa_icon :history
+          = t('claim.actions.hx')
+        = link_to t('claim.actions.update'), '#', class: 'btn btn-primary btn-lg'
+    %section.alerts
+      - if @applicant.line_item_decisions.rejected.any?
+        .alert.alert-warning
+          = fa_icon :exclamation_triangle
+          = t('claim.alerts.unverified')
+    %section.info
+      %ul.nav.nav-tabs{role: 'tablist'}
+        %li#PERSONAL_TAB{role: 'presentation'}
+          = link_to '#PERSONAL', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'PERSONAL', selected: 'true'}, class: :active do
+            = t('claim.sections.personal')
+            -# HACK Count by section
+            - if @applicant.line_item_decisions.rejected.any?
+              %span.badge.badge-danger= @applicant.line_item_decisions.rejected.count
+        %li#EMPLOYMENT_TAB{role: 'presentation'}= link_to t('claim.sections.employment'), '#EMPLOYMENT', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'EMPLOYMENT', selected: 'false'}
+        %li#QUESTIONS_TAB{role: 'presentation'}= link_to t('claim.sections.questions'), '#QUESTIONS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'QUESTIONS', selected: 'false'}
+        %li#DOCUMENTS_TAB{role: 'presentation'}= link_to t('claim.sections.documents'), '#DOCUMENTS', data: {toggle: 'tab'}, role: 'tab', aria: {controls: 'DOCUMENTS', selected: 'false'}
+      .tab-content
+        #PERSONAL.tab-pane.show.active{role: 'tabpanel', aria: {labeledby: 'PERSONAL_TAB'}}= render 'personal_tab'
+        #EMPLOYMENT.tab-pane{role: 'tabpanel', aria: {labeledby: 'EMPLOYMENT_TAB'}}= render 'employment_tab'
+        #QUESTIONS.tab-pane{role: 'tabpanel', aria: {labeledby: 'QUESTIONS_TAB'}}= render 'questions_tab'
+        #DOCUMENTS.tab-pane{role: 'tabpanel', aria: {labeledby: 'DOCUMENTS_TAB'}}= render 'documents_tab'

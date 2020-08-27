@@ -1,0 +1,25 @@
+%h3= t('claim.personal.identity.header')
+%dl
+  .dl-row
+    %dt= t('claim.personal.identity.first_name')
+    = applicant_line_item_decision_haml(@applicant, :first_name, @applicant.first_name)
+  .dl-row
+    %dt= t('claim.personal.identity.last_name')
+    = applicant_line_item_decision_haml(@applicant, :last_name, @applicant.last_name)
+  .dl-row
+    %dt= t('claim.personal.identity.ssn')
+    = applicant_line_item_decision_haml(@applicant, :ssn, @applicant.ssn.to_s.gsub(/^\d{5}/, "••• - •• - "))
+  .dl-row
+    %dt= t('claim.personal.identity.dob')
+    = applicant_line_item_decision_haml(@applicant, :birthdate, @applicant.birthdate)
+%h3= t('claim.personal.contact.header')
+%dl
+  .dl-row
+    %dt= t('claim.personal.contact.address')
+    = applicant_line_item_decision_haml(@applicant, :address, @applicant.address)
+  .dl-row
+    %dt= t('claim.personal.contact.phone')
+    = applicant_line_item_decision_haml(@applicant, :phone_number, @applicant.phone_number)
+  .dl-row
+    %dt= t('claim.personal.contact.email')
+    = applicant_line_item_decision_haml(@applicant, :email_address, @applicant.email_address)

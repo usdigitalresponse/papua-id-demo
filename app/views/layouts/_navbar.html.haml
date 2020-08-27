@@ -1,0 +1,40 @@
+%nav.bar
+  .top
+    = link_to root_url do
+      = fa_icon :flag_usa, size: '2x'
+    = link_to root_url do
+      = fa_icon :search
+
+  .bottom
+    = link_to root_url do
+      = fa_icon :user_circle, size: '2x'
+    = link_to root_url do
+      = fa_icon :question_circle, variant: :far
+    = link_to root_url do
+      = fa_icon :bell, variant: :far
+%nav.main
+  %h1
+    = t('shared.app_name')
+    %small= APP['org_name']
+
+  %ul
+    %li{class: (:active if @nav_selection == :dashboard)}
+      = link_to admin_dashboard_url do
+        = fa_icon :home
+        = t('shared.navigation.dashboard')
+    %li{class: (:active if @nav_selection == :tasks)}
+      = link_to '#' do
+        = fa_icon :tasks
+        = t('shared.navigation.tasks')
+    %li{class: (:active if @nav_selection == :claims)}
+      = link_to admin_applicants_url do
+        = fa_icon :file
+        = t('shared.navigation.claims')
+    %li{class: (:active if @nav_selection == :reports)}
+      = link_to '#' do
+        = fa_icon :chart_line
+        = t('shared.navigation.metrics')
+    %li{class: (:active if @nav_selection == :activity)}
+      = link_to '#' do
+        = fa_icon :history
+        = t('shared.navigation.log')

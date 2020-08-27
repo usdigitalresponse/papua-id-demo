@@ -12,7 +12,6 @@ require('dropzone')
 require('papercup')
 
 import 'bootstrap'
-import '../stylesheets/bootstrap_extensions'
 import '../stylesheets/application'
 import '../stylesheets/dropzone'
 

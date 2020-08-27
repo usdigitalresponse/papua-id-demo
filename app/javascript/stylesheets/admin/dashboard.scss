@@ -1,0 +1,47 @@
+.dashboard {
+  .card {
+    @extend .mx-3;
+  }
+
+  .tasks {
+    @extend .flex-grow-1;
+  }
+
+  section {
+    @extend .d-flex;
+    @extend .flex-row;
+    @extend .justify-content-between;
+  }
+
+  .announcements {
+    @extend .flex-grow-1;
+    @extend .m-0;
+    max-width: 350px;
+
+    ul {
+      @extend .p-0;
+      @extend .d-flex;
+      @extend .flex-column;
+      list-style: none;
+
+      li {
+        @extend .py-2;
+        @extend .d-flex;
+        @extend .flex-column;
+        border-top: 1px solid $gray-200;
+        a {
+          @extend .mb-1;
+          font-weight: bold;
+        }
+        small {
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+
+      li:first-child {
+        border-top: none;
+      }
+    }
+  }
+}

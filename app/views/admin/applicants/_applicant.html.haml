@@ -1,0 +1,5 @@
+- case @applicant_mode
+- when :tr
+  = render partial: 'admin/applicants/applicant_tr', locals: {applicant: applicant}
+- when :li
+  = render partial: 'admin/applicants/applicant_li', locals: {applicant: applicant}

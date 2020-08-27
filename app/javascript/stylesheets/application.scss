@@ -1,22 +1,50 @@
+@import 'bootstrap/bootstrap_extensions';
 @import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/bootstrap_overrides';
+@import 'scrollbars';
 
-ul.none {
-  list-style: none;
-  padding-left: 1rem;
+body {
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .text-dark;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
 }
 
-.warning {
-  background-color: #9c1414;
-  color: #fff;
-  text-align: center;
+.full-height {
+  height: 100%;
 }
 
-.card {
-  margin-top: 2rem;
-
-  .bottom-buttons {
-    @extend .mt-3;
-    @extend .d-flex;
-    @extend .flex-row-reverse;
-  }
+.full-width {
+  height: 100%;
 }
+
+.no-space {
+  @extend .m-0;
+  @extend .p-0;
+}
+
+h1 {
+  @extend .ml-3;
+  @extend .mb-4;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+// Layouts:
+@import 'layouts/application/navigation';
+@import 'layouts/application/page';
+
+// Sub-components:
+@import 'components/arrows';
+@import 'components/statuses';
+@import 'components/callouts';
+
+// Application components:
+@import 'admin/claims';
+@import 'admin/dashboard';

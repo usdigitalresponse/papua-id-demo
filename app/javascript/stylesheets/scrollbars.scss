@@ -1,0 +1,19 @@
+// For Firefox:
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $gray-600 $white;
+}
+
+// For Webkit based browsers (everything else):
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: $white;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $gray-600;
+  border-radius: 4px;
+  border: 1px solid $white;
+}
