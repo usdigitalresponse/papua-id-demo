@@ -54,6 +54,8 @@ en:
     actions:
       hx: View History
       update: Update
+    update_dialog:
+      header: Update Claim
     personal:
       identity:
         header: Identity Information

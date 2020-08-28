@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   namespace :admin do #, constraints: AdminConstraint.new do
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-    resources :applicants, only: [:index, :show] do
+    resources :applicants, only: [:index, :show, :update] do
       member do
         get :show2
       end

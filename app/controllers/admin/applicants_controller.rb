@@ -1,5 +1,5 @@
 class Admin::ApplicantsController < Admin::AdminController
-  before_action :set_applicant, only: [:show, :show2]
+  before_action :set_applicant, only: [:show, :show2, :update]
   before_action :search, only: [:index, :show, :dashboard]
 
   def dashboard
@@ -14,6 +14,11 @@ class Admin::ApplicantsController < Admin::AdminController
     @nav_selection = :claims
   end
 
+  def update
+    @applicant.update(applicant_params)
+    redirect_to admin_applicant_url(@applicant)
+  end
+
   def show
     @applicant_mode = :li
     @nav_selection = :claims
@@ -23,6 +28,10 @@ class Admin::ApplicantsController < Admin::AdminController
   end
 
   protected
+
+  def applicant_params
+    params.require(:applicant).permit(:status)
+  end
 
   def set_applicant
     @applicant = Applicant.includes(:line_item_decisions).find(params[:id])

@@ -41,7 +41,8 @@
         = link_to '#' do
           = fa_icon :history
           = t('claim.actions.hx')
-        = link_to t('claim.actions.update'), '#', class: 'btn btn-primary btn-lg'
+        = link_to t('claim.actions.update'), '#', class: 'btn btn-primary btn-lg', data: {toggle: :modal, target: '#UPDATE_DIALOG'}
+        = render 'update_modal'
     %section.alerts
       - if @applicant.line_item_decisions.rejected.any?
         .alert.alert-warning

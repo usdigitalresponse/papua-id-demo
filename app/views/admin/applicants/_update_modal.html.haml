@@ -1,0 +1,14 @@
+= form_for @applicant, url: admin_applicant_url(@applicant), method: :put do |f|
+  #UPDATE_DIALOG.modal{tabindex: -1}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %h5.modal-title= t('claim.update_dialog.header')
+          %button.close{data: {dismiss: :modal}, aria: {label: 'Close'}}
+            %span{aria:{hidden: true}}= fa_icon :times
+        .modal-body
+          .form-group
+            = f.label :status
+            = f.select :status, Applicant.statuses.keys, {}, {class: 'form-control'}
+        .modal-footer.text-right
+          = f.submit 'Update', class: 'btn btn-success'
