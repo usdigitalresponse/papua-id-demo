@@ -38,7 +38,8 @@
             %span.badge.status-pending= t('claim.statuses.pending')
           =t('claim.filed_on', date: @applicant.created_at&.iso8601)
       .actions
-        = link_to '#' do
+        = render 'applicant_history'
+        = link_to '#', data: {toggle: 'modal', target: '#APPLICANT_HISTORY_MODAL'} do
           = fa_icon :history
           = t('claim.actions.hx')
         = link_to t('claim.actions.update'), '#', class: 'btn btn-primary btn-lg', data: {toggle: :modal, target: '#UPDATE_DIALOG'}
