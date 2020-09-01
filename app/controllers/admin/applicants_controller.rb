@@ -30,7 +30,13 @@ class Admin::ApplicantsController < Admin::AdminController
   end
 
   def search
-    @applicants = Applicant.all.includes(:line_item_decisions).order(created_at: :desc)
+    @applicants = Applicant.all.includes(:line_item_decisions)
     @applicants = @applicants.global_search(params["query"]) if params["query"].present?
+    if params['sort'].present?
+      # This is only safe in Rails 6:
+      @applicants.order!("#{params['sort']} #{params['dir']}")
+    else
+      @applicants.order!(created_at: :desc)
+    end
   end
 end
