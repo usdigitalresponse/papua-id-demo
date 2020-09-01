@@ -27,6 +27,8 @@ class Applicant < ApplicationRecord
     closed: 4
   }
 
+  audited
+
   after_create_commit :make_descision, unless: -> { disable_verification }
 
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }

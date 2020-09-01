@@ -59,6 +59,8 @@ GEM
     alloy-api (0.0.7)
       httparty (~> 0.18)
     ast (2.4.1)
+    audited (4.9.0)
+      activerecord (>= 4.2, < 6.1)
     aws-eventstream (1.1.0)
     aws-partitions (1.336.0)
     aws-sdk-core (3.102.1)
@@ -284,6 +286,7 @@ PLATFORMS
 
 DEPENDENCIES
   alloy-api (>= 0.0.7)
+  audited (~> 4.9)
   aws-sdk-s3
   bcrypt (~> 3.1.13)
   bootsnap (>= 1.4.2)

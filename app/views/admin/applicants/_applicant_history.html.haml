@@ -1,0 +1,25 @@
+#APPLICANT_HISTORY_MODAL.modal.fade{tabindex: '-1', role: 'dialog', aria: {labelledby: '#APPLICANT_HISTORY_MODAL_LABEL', hidden: 'true'}}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %h5#APPLICANT_HISTORY_MODAL.modal-title= t('claim.history.title')
+        %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
+          %i.fas.fa-times
+      .modal-body
+        = t('claim.history.overview')
+        %table
+          %thead
+            %tr
+              %th= t('claim.history.date')
+              %th= t('claim.history.user')
+              %th= t('claim.personal.type')
+              %th= t('claim.personal.changes')
+            %tbody
+              - @audits.each do |audit|
+                %tr
+                  %td= audit.created_at.to_datetime.strftime('%F %T')
+                  %td= 'Someone'
+                  %td= audit.action
+                  %td
+                    - audit.audited_changes.keys.each do |change|
+                      = change + " changed from " + audit.audited_changes.fetch(change)[0].to_s + " to " + audit.audited_changes.fetch(change)[1].to_s

@@ -26,6 +26,7 @@ class Admin::ApplicantsController < Admin::AdminController
 
   def set_applicant
     @applicant = Applicant.includes(:line_item_decisions).find(params[:id])
+    @audits = @applicant.audits
   end
 
   def search

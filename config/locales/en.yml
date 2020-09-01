@@ -44,6 +44,12 @@ en:
       review: Review
       closed: Closed
       pending: Pending
+    history:
+      date: Date
+      changes: Changes
+      user: Modified By
+      overview: This modal displays changes made to this claim.
+      title: Claim History
     alerts:
       unverified: This claim is pending because some information could not be verified. Click on unverified data to see why.
     sections:
