@@ -16,7 +16,8 @@
     %small
       = @applicants.count
       = t('claims.claims')
-    = render @applicants, locals: {mode: :li}
+    - @applicant_mode = :li
+    = render @applicants
   .claim
     %section.claim-progress
       %ul.arrows

@@ -1,16 +1,8 @@
 class Admin::ApplicantsController < Admin::AdminController
-  before_action :set_applicant, only: [:show, :show2, :update]
-  before_action :search, only: [:index, :show, :dashboard]
-
-  def dashboard
-    @dashboard = true
-    @applicant_mode = :tr
-    @nav_selection = :dashboard
-    render :index
-  end
+  before_action :set_applicant, only: [:show, :update]
+  before_action :search, only: [:index, :show]
 
   def index
-    @applicant_mode = :tr
     @nav_selection = :claims
   end
 
@@ -20,7 +12,6 @@ class Admin::ApplicantsController < Admin::AdminController
   end
 
   def show
-    @applicant_mode = :li
     @nav_selection = :claims
   end
 
