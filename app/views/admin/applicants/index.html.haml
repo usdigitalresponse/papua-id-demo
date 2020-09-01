@@ -21,10 +21,10 @@
     %table
       %thead
         %tr
-          %th= t('claims.name')
-          %th= t('claims.number')
-          %th= t('claims.status')
-          %th= t('claims.date')
-          %th= t('claims.days')
+          %th= link_to_sort t('claims.name'), :last_name
+          %th= link_to_sort t('claims.number'), :id
+          %th= link_to_sort t('claims.status'), :status
+          %th= link_to_sort t('claims.date'), :created_at
+          %th= link_to_sort t('claims.days'), :created_at
       - @applicant_mode = :tr
       %tbody= render @applicants
