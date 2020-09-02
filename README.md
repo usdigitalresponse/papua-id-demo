@@ -26,12 +26,9 @@ This is a Rails application which demonstrates a system for allowing claimants t
 * Create the database: `rake db:create`
 * Run database migrations: `rails db:migrate RAILS_ENV=development`
 * Set up Rails credentials for Alloy:
-	* `rails credentials:edit --environment development`
-	* Add placeholder like:
-        
-        alloy:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;uri: https://stuff.com
-* Start the rails server `rails server`
+	* Request a copy of the `master.key` file from another team member
+	* Store `master.key` in the `config` directory- it should be in the same folder as `credentials.yml.enc`
+* Start the rails server: `rails server`
 * Visit [http://localhost:3000/](http://localhost:3000/) to see the server running!
 
 # Testing
