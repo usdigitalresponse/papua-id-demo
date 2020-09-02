@@ -1,5 +1,5 @@
 #REASON_LIST.accordian
-  - (@applicant.descision_response["summary"]["tags"] & SHOWN_TAGS).each_with_index do |tag, index|
+  - (@applicant.decision_response["summary"]["tags"] & SHOWN_TAGS).each_with_index do |tag, index|
     .card.mt-0
       .card-header{id: "REASON_#{index}_HEADING"}
         %h5.mb-0

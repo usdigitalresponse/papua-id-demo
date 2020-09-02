@@ -6,17 +6,17 @@ class ValidateApplicantJob < ApplicationJob
 
     # Step 3 - Run the verification:
     request_params = applicant.request_params
-    applicant.descision_response = Alloy::Api.evaluations(body: request_params)
-    applicant.descision = applicant.descision_response['summary']['outcome']
-    applicant.entity_id = applicant.descision_response['entity_token']
-    applicant.evaluation_id = applicant.descision_response['evaluation_token']
-    applicant.application_token = applicant.descision_response['application_token']
-    applicant.application_version_id = applicant.descision_response['application_version_id']
+    applicant.decision_response = Alloy::Api.evaluations(body: request_params)
+    applicant.decision = applicant.decision_response['summary']['outcome']
+    applicant.entity_id = applicant.decision_response['entity_token']
+    applicant.evaluation_id = applicant.decision_response['evaluation_token']
+    applicant.application_token = applicant.decision_response['application_token']
+    applicant.application_version_id = applicant.decision_response['application_version_id']
     applicant.processing_status = :processed
 
     applicant.save
 
-    # TODO: Actually make descisions here:
+    # TODO: Actually make decisions here:
 
     LineItemDecision.create(name: :first_name, decision: :approved, decidable: applicant)
     LineItemDecision.create(name: :last_name, decision: :approved, decidable: applicant)

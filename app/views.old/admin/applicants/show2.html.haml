@@ -18,7 +18,7 @@
         = render 'validations_last_name'
       %td{style: 'max-width: 250px;'}
         %p
-          = descision_icon('Approved')
+          = decision_icon('Approved')
           Passed
         %small.text-muted= t('admin.applicants.show2.table.rows.name.pass')
     %tr
@@ -28,6 +28,6 @@
         = render 'validations_dob'
       %td{style: 'max-width: 250px;'}
         %p
-          = descision_icon('Manual Review')
+          = decision_icon('Manual Review')
           Manual Review
         %small.text-muted= t('admin.applicants.show2.table.rows.dob.review')

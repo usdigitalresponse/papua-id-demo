@@ -16,12 +16,12 @@ class ValidateDocumentJob < ApplicationJob
     request_params = document.applicant.request_params.merge({
       document_token_front: doc_params["document_token"]
     })
-    document.descision_response = Alloy::Api.evaluations(body: request_params, endpoint: :documents)
-    document.descision = document.descision_response['summary']['outcome']
-    document.entity_id = document.descision_response['entity_token']
-    document.evaluation_id = document.descision_response['evaluation_token']
-    document.application_token = document.descision_response['application_token']
-    document.application_version_id = document.descision_response['application_version_id']
+    document.decision_response = Alloy::Api.evaluations(body: request_params, endpoint: :documents)
+    document.decision = document.decision_response['summary']['outcome']
+    document.entity_id = document.decision_response['entity_token']
+    document.evaluation_id = document.decision_response['evaluation_token']
+    document.application_token = document.decision_response['application_token']
+    document.application_version_id = document.decision_response['application_version_id']
     document.processing_status = :processed
 
     document.save

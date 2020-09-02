@@ -1,4 +1,4 @@
-module DescisionHelper
+module DecisionHelper
   PERSONAL_LINE_ITEMS = [:first_name, :last_name, :ssn, :birthdate, :address, :phone_number, :email_address].freeze
   BANK_ACCOUNT_LINE_ITEMS = [:bank_account_number, :bank_routing_number].freeze
   WAGE_VALIDATION_LINE_ITEMS = [:reported_employer_name, :reported_termination_date, :reported_wages, :reported_time_period].freeze
@@ -42,8 +42,8 @@ module DescisionHelper
     end
   end
 
-  def descision_icon(descision, options={})
-    case descision
+  def decision_icon(decision, options={})
+    case decision
     when 'Approved'
       text_class = 'text-success'
       icon_class = 'fas fa-check-circle'
