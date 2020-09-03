@@ -8,6 +8,6 @@
           .d-flex.justify-content-between
             = image_tag document.file, style: 'width: 50%'
             %div{style: 'vertical-alignn: middle; height: 100%'}
-              = descision_icon(document.descision, size: 2)
+              = decision_icon(document.decision, size: 2)
               %br
-              = link_to t("shared.descisions.#{document.descision.parameterize}"), '#', data: { container: 'body', toggle: 'popover', placement: 'right', trigger: 'focus', title: 'All Checks Passed', content: 'Name, address, and DoB all MATCH SecureDV' }
+              = link_to t("shared.decisions.#{document.decision.parameterize}"), '#', data: { container: 'body', toggle: 'popover', placement: 'right', trigger: 'focus', title: 'All Checks Passed', content: 'Name, address, and DoB all MATCH SecureDV' }

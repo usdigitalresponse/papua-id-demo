@@ -7,7 +7,7 @@ class Applicant < ApplicationRecord
 
   attr_accessor :disable_verification
 
-  enum descision: {
+  enum decision: {
     Approved: 1,
     "Manual Review": 0,
     Denied: -1,
@@ -29,7 +29,7 @@ class Applicant < ApplicationRecord
 
   audited
 
-  after_create_commit :make_descision, unless: -> { disable_verification }
+  after_create_commit :make_decision, unless: -> { disable_verification }
 
   scope :for_current_workflow, -> { where(application_token: Rails.application.credentials.alloy[:token]) }
 
@@ -60,7 +60,7 @@ class Applicant < ApplicationRecord
   end
 
   def tags
-    descision_response["summary"]["tags"]
+    decision_response["summary"]["tags"]
   end
 
   def address(format = :one_line)
@@ -93,7 +93,7 @@ class Applicant < ApplicationRecord
 
   protected
 
-  def make_descision
+  def make_decision
     ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
   end
 end

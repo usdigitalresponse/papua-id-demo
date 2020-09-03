@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_150210) do
+ActiveRecord::Schema.define(version: 2020_09_02_205118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2020_08_29_150210) do
     t.string "case_number", limit: 32
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "descision", limit: 2, default: -2, null: false
-    t.jsonb "descision_response"
+    t.integer "decision", limit: 2, default: -2, null: false
+    t.jsonb "decision_response"
     t.string "entity_id"
     t.string "evaluation_id"
     t.string "application_token"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2020_08_29_150210) do
   create_table "documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "document_type"
     t.uuid "applicant_id", null: false
-    t.integer "descision", limit: 2, default: -2, null: false
-    t.jsonb "descision_response"
+    t.integer "decision", limit: 2, default: -2, null: false
+    t.jsonb "decision_response"
     t.string "entity_id"
     t.string "evaluation_id"
     t.string "application_token"

@@ -1,6 +1,6 @@
 %ul.none
-  - if @applicant.descision_response['raw_responses']['White Pages Pro'][0]['email_address_checks']['is_valid']
+  - if @applicant.decision_response['raw_responses']['White Pages Pro'][0]['email_address_checks']['is_valid']
     %li
-      = descision_icon('Approved')
+      = decision_icon('Approved')
       WPP
       = t('admin.applicants.show.matches.email')

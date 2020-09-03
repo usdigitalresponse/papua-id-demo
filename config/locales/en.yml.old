@@ -22,7 +22,7 @@ en:
         TrueworkDeniedNoEmploymentFound: Truework denied, no employment found - Deny
         TrueworkEmploymentDetailsAreClose: Truework still processing - details are close but do not match
         TrueworkEmploymentDetailsAreWayOff: Truework denied, employment details are way off
-    descisions:
+    decisions:
       approved: Approved
       denied: Denied
       manual-review: Manual Review
@@ -106,7 +106,7 @@ en:
         table:
           name: Name
           timestamp: Applied On
-          descision: Result
+          decision: Result
       show2:
         applied_at: Applied At %{date}
         table:

@@ -5,7 +5,7 @@ class Document < ApplicationRecord
   has_one_attached :file
   has_many :line_item_decisions, as: :decidable
 
-  after_create_commit :make_descision
+  after_create_commit :make_decision
 
   enum document_type: {
     license: 1,
@@ -18,7 +18,7 @@ class Document < ApplicationRecord
     processed: 1
   }
 
-  enum descision: {
+  enum decision: {
     Approved: 1,
     "Manual Review": 0,
     Denied: -1,
@@ -30,7 +30,7 @@ class Document < ApplicationRecord
 
   protected
 
-  def make_descision
+  def make_decision
     ValidateDocumentJob.set(wait: 1.second).perform_later(self.id)
   end
 end
