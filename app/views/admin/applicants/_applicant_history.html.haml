@@ -21,5 +21,9 @@
                   %td= 'Someone'
                   %td= audit.action
                   %td
-                    / - audit.audited_changes.keys.each do |change|
-                    /   = change + " changed from " + audit.audited_changes.fetch(change)[0].to_s + " to " + audit.audited_changes.fetch(change)[1].to_s
+                    - audit.audited_changes.keys.each do |change|
+                      - audited_change = audit.audited_changes.fetch(change)
+                      - if audited_change.kind_of?(Array)
+                        = change + " changed from " + audited_change[0].to_s + " to " + audited_change[1].to_s
+                      - else
+                        = change + " initialized to " + audited_change.to_s
