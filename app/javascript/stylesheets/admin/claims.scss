@@ -107,6 +107,7 @@ ul.filters {
         line-height: 21px;
         dt {
           font-weight: normal;
+          min-width: 200px;
         }
         dd {
           font-weight: bold;
@@ -129,7 +130,7 @@ ul.filters {
         .dl-row {
           @extend .d-flex;
           @extend .flex-row;
-          @extend .justify-content-between;
+          @extend .justify-content-start;
           @extend .py-3;
           border-top: 1px solid $gray-200;
         }
