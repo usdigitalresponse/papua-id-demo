@@ -106,9 +106,11 @@ ul.filters {
         font-size: 14px;
         line-height: 21px;
         dt {
+          @extend .col-3;
           font-weight: normal;
         }
         dd {
+          @extend .col-9;
           font-weight: bold;
           address {
             display: inline;
@@ -117,6 +119,7 @@ ul.filters {
 
         dd.passed {
           @extend .text-dark;
+
           i {
             @extend .text-success;
           }
@@ -127,9 +130,7 @@ ul.filters {
         }
 
         .dl-row {
-          @extend .d-flex;
-          @extend .flex-row;
-          @extend .justify-content-between;
+          @extend .row;
           @extend .py-3;
           border-top: 1px solid $gray-200;
         }
