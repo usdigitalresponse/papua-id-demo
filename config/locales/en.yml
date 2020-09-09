@@ -50,6 +50,7 @@ en:
       user: Modified By
       overview: This modal displays changes made to this claim.
       title: Claim History
+      none: No claim history to show.
     alerts:
       unverified: This claim is pending because some information could not be verified. Click on unverified data to see why.
     sections:

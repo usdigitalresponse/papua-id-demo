@@ -27,7 +27,7 @@ class Applicant < ApplicationRecord
     closed: 4
   }
 
-  audited
+  audited on: [:update]
 
   after_create_commit :make_decision, unless: -> { disable_verification }
 
