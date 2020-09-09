@@ -24,6 +24,6 @@
                     %td
                       %ul
                         - audit.audited_changes.each do |property, values|
-                          %li= t('claim.history.change', property: t("claim.properties.#{property}"), initial_value: enumerize(Applicant, property, values[0]), final_value: enumerize(Applicant, property, values[1]))
+                          %li= t('claim.history.change', property: t("claim.properties.#{property}"), initial_value: t_enum(Applicant, property, values[0]), final_value: t_enum(Applicant, property, values[1]))
         - else
           %p= t('claim.history.none')
