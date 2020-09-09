@@ -35,7 +35,20 @@ en:
       pending: PENDING
       review: PENDING
       closed: CLOSED
+  applicant:
+    statuses:
+      filed: Filed
+      verified: Verified
+      review: Review
+      closed: Closed
+      pending: Pending
   claim:
+    properties:
+      status: Status
+      first_name: First Name
+      last_name: Last Name
+      email_address: Email Address
+      phone_number: Phone Number
     page_title: Claim
     filed_on: 'Filed: %{date}'
     statuses:
@@ -51,6 +64,7 @@ en:
       overview: This modal displays changes made to this claim.
       title: Claim History
       none: No claim history to show.
+      change: "%{property} changed from %{initial_value} to %{final_value}"
     alerts:
       unverified: This claim is pending because some information could not be verified. Click on unverified data to see why.
     sections:

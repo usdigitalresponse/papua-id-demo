@@ -141,3 +141,12 @@ ul.filters {
     }
   }
 }
+
+#APPLICANT_HISTORY_MODAL {
+  ul {
+    @extend .pl-0;
+    li {
+      list-style-type: "- ";
+    }
+  }
+}
