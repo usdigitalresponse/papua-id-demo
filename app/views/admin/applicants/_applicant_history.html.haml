@@ -6,24 +6,24 @@
         %button.close{type: 'button', data: {dismiss: 'modal'}, aria: {label: 'Close'}}
           %i.fas.fa-times
       .modal-body
-        = t('claim.history.overview')
-        %table
-          %thead
-            %tr
-              %th= t('claim.history.date')
-              %th= t('claim.history.user')
-              %th= t('claim.personal.type')
-              %th= t('claim.personal.changes')
-            %tbody
-              - @audits.each do |audit|
-                %tr
-                  %td= audit.created_at.to_datetime.strftime('%F %T')
-                  %td= 'Someone'
-                  %td= audit.action
-                  %td
-                    - audit.audited_changes.keys.each do |change|
-                      - audited_change = audit.audited_changes.fetch(change)
-                      - if audited_change.kind_of?(Array)
-                        = change + " changed from " + audited_change[0].to_s + " to " + audited_change[1].to_s
-                      - else
-                        = change + " initialized to " + audited_change.to_s
+        - if @applicant.audits.any?
+          = t('claim.history.overview')
+          %table
+            %thead
+              %tr
+                %th= t('claim.history.date')
+                %th= t('claim.history.user')
+                %th= t('claim.personal.type')
+                %th= t('claim.personal.changes')
+              %tbody
+                - @applicant.audits.each do |audit|
+                  %tr
+                    %td= audit.created_at.to_datetime.strftime('%F %T')
+                    %td= 'Someone'
+                    %td= audit.action
+                    %td
+                      %ul
+                        - audit.audited_changes.each do |property, values|
+                          %li= t('claim.history.change', property: t("claim.properties.#{property}"), initial_value: enumerize(Applicant, property, values[0]), final_value: enumerize(Applicant, property, values[1]))
+        - else
+          %p= t('claim.history.none')
