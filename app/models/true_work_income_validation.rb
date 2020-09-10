@@ -7,6 +7,10 @@ class TrueWorkIncomeValidation < IncomeValidation
   	TrueWorkIncomeValidationJob
   end
 
+  def job_class
+    self.class.job_class
+  end
+
   def initiate_validation
     if !$truework_enabled
       raise "Truework integration not enabled, cannot validate"
@@ -19,11 +23,11 @@ class TrueWorkIncomeValidation < IncomeValidation
         type: 'employment-income',
         permissible_purpose: 'employee-eligibility',
         target: {
-          first_name: input[:first_name],
-          last_name: input[:last_name],
-          social_security_number: input[:social_security_number],
-          contact_email: input[:email],
-          company: { id: input[:company_id] } # Applicant chooses company synchronously in UI
+          first_name: input["first_name"],
+          last_name: input["last_name"],
+          social_security_number: input["social_security_number"],
+          contact_email: input["email"],
+          company: { id: input["company_id"] } # Applicant chooses company synchronously in UI
         },
         documents: [
           # TODO: Will we support any document types?
