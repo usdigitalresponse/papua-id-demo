@@ -1,0 +1,2 @@
+class WageValidation < Validation
+end
