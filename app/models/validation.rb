@@ -5,7 +5,7 @@ class Validation < ApplicationRecord
   enum decision: { approved: 0, denied: 1 }
 
   # NOTE: Do not call `validate_applicant` in superclass.  Instead, call in subclass, like
-  # TrueWorkWageValidation.validate_applicant
+  # TrueWorkIncomeValidation.validate_applicant
   def self.validate_applicant(applicant, input)
   	validation = self.new
   	validation.applicant = applicant
