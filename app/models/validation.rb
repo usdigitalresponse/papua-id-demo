@@ -1,8 +1,8 @@
 class Validation < ApplicationRecord
   belongs_to :applicant
 
-  enum status: [ :started, :in_process, :complete, :error ]
-  enum decision: [ :approved, :denied]
+  enum status: { started: 0, in_process: 1, complete: 2, error: 3 }
+  enum decision: { approved: 0, denied: 1 }
 
   # NOTE: Do not call `validate_applicant` in superclass.  Instead, call in subclass, like
   # TrueWorkWageValidation.validate_applicant
