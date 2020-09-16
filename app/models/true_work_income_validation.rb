@@ -95,16 +95,15 @@ class TrueWorkIncomeValidation < IncomeValidation
 
   def poll_validation
     begin
-      verification_request = Truework::VerificationRequest.retrieve(output[:verification_id])
+      verification_request = Truework::VerificationRequest.retrieve(output['verification_id'])
       case verification_request[:state]
       when "completed"
-        report = Truework::Report.retrieve(verification_info[:verification_id])
+        report = Truework::Report.retrieve(output['verification_id'])
         new_output = output.merge({
-          employment_status: report[:status], # active, inactive, or unknown
-          salary: report[:gross_pay],
-          salary_frequency: report[:pay_frequency], # This is a string; not clear what allowed values are 
-          employment_type: report[:employment_type], # regular-full-time, regular-part-time, contractor, or other
-          earnings: report[:earnings] # There's potentially a lot of info here; do we want all of it?
+          employment_status: report[:employee][:status], # active, inactive, or unknown
+          salary: report[:employee][:salary][:gross_pay],
+          salary_frequency: report[:employee][:salary][:pay_frequency], # This is a string; not clear what allowed values are 
+          earnings: report[:employee][:earnings] # There's potentially a lot of info here; do we want all of it?
         })
         update_attributes(status: :complete, output: new_output)
         # TODO: How does "self.decision" get set?
@@ -133,14 +132,13 @@ class TrueWorkIncomeValidation < IncomeValidation
           check_back_hours = verification_request[:turnaround_time][:lower_bound]
         end
 
-        verification_info = {verification_id: verification_request[:id]}
-        job_class.set(wait: check_back_hours.hours).perform_later(id, verification_info)
+        job_class.set(wait: check_back_hours.hours).perform_later(id)
       end
     rescue Truework::ClientException, Truework::ServerException => e
-        new_output = output.merge({
-          error_info: e.to_s
-        })
-        update_attributes(status: :error, output: new_output)
+      new_output = output.merge({
+        error_info: e.to_s
+      })
+      update_attributes(status: :error, output: new_output)
     end
   end
 end
