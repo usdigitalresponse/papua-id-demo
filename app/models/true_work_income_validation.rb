@@ -32,7 +32,7 @@ class TrueWorkIncomeValidation < IncomeValidation
         documents: [
           # TODO: Will we support any document types?
         ],
-        additional_information: "This is a demo/test conducted by U.S. Digital Response"
+        additional_information: addl_info
       )
 
       if verification_request[:state] == "canceled"
@@ -58,6 +58,38 @@ class TrueWorkIncomeValidation < IncomeValidation
           error_info: e.to_s
         }
         update_attributes(status: :error, output: output)
+    end
+  end
+
+  def addl_info
+    # For testing purposes, the "additional_info" that we pass to Truework
+    # will include some hints to request certain responses.  E.g. to test
+    # a good response, and to test a response where they weren't able to
+    # get income information.
+    #
+    # To make this easier for people doing demos, we'll base the response
+    # on something that the person doing the demo has control over: the
+    # social security number of the applicant.  We'll generate different
+    # additional_info based on the last digit of the SSN.  We use the last
+    # digit, since it's visible in the Truework dashboard.
+
+    ssn = input["social_security_number"]
+    if !ssn
+      return "This is a demo/test conducted by U.S. Digital Response"
+    end
+
+    case ssn[-1]
+    # "1" is "completed", but that's our default
+    when "2"
+      return "desired_state: action-required"
+    when "3"
+      return "desired_state: invalid"
+    when "4"
+      return "desired_state: canceled"
+    # NOTE: We don't support `pending-approval` or `processing`.  If we demanded
+    # those responses, then our polling would never complete.
+    else
+      return "desired_state: completed"
     end
   end
 
