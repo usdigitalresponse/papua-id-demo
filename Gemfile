@@ -22,6 +22,7 @@ gem 'sidekiq'
 gem 'thor'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'truework', '~> 1.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
