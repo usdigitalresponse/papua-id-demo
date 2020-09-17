@@ -44,14 +44,10 @@ class TrueWorkIncomeValidation < IncomeValidation
         update_attributes(status: :error, output: output)
       else
         # Enqueued- we need to check back later to get the result
-        check_back_hours = 1
-        if verification_request[:turnaround_time]
-          check_back_hours = verification_request[:turnaround_time][:lower_bound]
-        end
         output = {verification_id: verification_request[:id]}
         update_attributes(output: output)
 
-        job_class.set(wait: check_back_hours.hours).perform_later(id)
+        job_class.set(wait: check_back_time(verification_request)).perform_later(id)
       end
     rescue Truework::ClientException, Truework::ServerException => e
         output = {
@@ -127,12 +123,7 @@ class TrueWorkIncomeValidation < IncomeValidation
         update_attributes(status: :error, output: new_output)
       else
         # Processing is not complete, poll again later
-        check_back_hours = 1
-        if verification_request[:turnaround_time]
-          check_back_hours = verification_request[:turnaround_time][:lower_bound]
-        end
-
-        job_class.set(wait: check_back_hours.hours).perform_later(id)
+        job_class.set(wait: check_back_time(verification_request)).perform_later(id)
       end
     rescue Truework::ClientException, Truework::ServerException => e
       new_output = output.merge({
@@ -140,5 +131,17 @@ class TrueWorkIncomeValidation < IncomeValidation
       })
       update_attributes(status: :error, output: new_output)
     end
+  end
+
+  def check_back_time(verification_request)
+    if Rails.configuration.x.truework_demo
+      return 5.seconds
+    end
+
+    check_back_hours = 1
+    if verification_request[:turnaround_time]
+      check_back_hours = verification_request[:turnaround_time][:lower_bound]
+    end
+    check_back_hours.hours
   end
 end
