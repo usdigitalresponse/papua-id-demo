@@ -19,8 +19,6 @@ module DecisionHelper
       applicant&.line_item_decisions.find { |x| x.name == line_item.to_s}
     elsif BANK_ACCOUNT_LINE_ITEMS.include? line_item
       applicant&.bank_account&.line_item_decisions&.find { |x| x.name == line_item.to_s}
-    else
-      applicant&.wage_verification&.line_item_decisions&.find { |x| x.name == line_item.to_s}
     end
 
     return content_tag :dd, class: decision_to_css_class(line_item_decision&.decision) do

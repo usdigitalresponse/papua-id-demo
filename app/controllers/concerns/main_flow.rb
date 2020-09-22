@@ -10,7 +10,6 @@ module MainFlow
     applicants
     documents
     bank_accounts
-    wage_verifications
   ]
 
   def next_controller_url(*args)

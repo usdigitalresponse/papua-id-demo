@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :applicants, only: [:new, :create, :show] do
     resources :documents, only: [:new, :create]
     resources :bank_accounts, only: [:new, :create]
-    resources :wage_verifications, only: [:new, :create]
   end
   get '*path', to: 'sessions#new', :constraints => LoginConstraint.new
 end

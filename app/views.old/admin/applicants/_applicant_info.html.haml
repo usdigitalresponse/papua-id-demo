@@ -55,19 +55,3 @@
       .d-flex.justify-content-between
         %strong= "Bank Routing Number"
         %span= @applicant.bank_account&.bank_routing_number
-    %li.list-group-item
-      .d-flex.justify-content-between
-        %strong= "Reported Employer Name"
-        %span= @applicant.wage_verification&.reported_employer_name
-    %li.list-group-item
-      .d-flex.justify-content-between
-        %strong= "Reported Wages"
-        %span= @applicant.wage_verification&.reported_wages
-    %li.list-group-item
-      .d-flex.justify-content-between
-        %strong= "Reported Wage Period"
-        %span= @applicant.wage_verification&.reported_time_period
-    %li.list-group-item
-      .d-flex.justify-content-between
-        %strong= "Reported Termination Date"
-        %span= @applicant.wage_verification&.reported_termination_date
