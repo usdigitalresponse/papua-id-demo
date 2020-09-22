@@ -74,7 +74,15 @@ en:
       documents: Documents
     actions:
       hx: View History
-      update: Update
+      update:
+        button: Update
+        status: Update Status
+        verify_id:
+          sent: Resend ID Verification
+          unsent: Run ID Verification
+        verify_wage:
+          sent: Resend Wage/Employment Verification
+          unsent: Run Wage/Employment Verification
     update_dialog:
       header: Update Claim
     personal:
