@@ -1,7 +1,0 @@
-.text-center
-  %h1.card-title= t("applicant.show.#{@applicant.decision.parameterize}.header")
-  %p= t("applicant.show.#{@applicant.decision.parameterize}.helper_text")
-  = decision_icon(@applicant.decision, size: 10)
-  - unless @applicant.Approved?
-    %h4.my-4= t("applicant.show.#{@applicant.decision.parameterize}.reasons_html")
-    = render 'reasons'
