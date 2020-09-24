@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
   include MainFlow
-  before_action :set_applicant, only: [:show]
+  before_action :set_applicant, only: [:show, :initialize_income_verification]
   before_action :set_session_params_from_switches, only: [:new]
 
   def show

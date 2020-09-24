@@ -1,0 +1,19 @@
+= form_for @verification, url: admin_applicant_truework_income_verifications_url(@applicant, @verification) do |f|
+  %table
+    %tr
+      %td First name
+      %td= f.text_field(:first_name, value: @verification.input['first_name'])
+    %tr
+      %td Last name
+      %td= f.text_field(:last_name, value: @verification.input['last_name'])
+    %tr
+      %td Social Security Number
+      %td= f.text_field(:social_security_number, value: @verification.input['social_security_number'])
+    %tr
+      %td Email Address
+      %td= f.text_field(:email, value: @verification.input['email'])
+    %tr
+      %td Company ID
+      %td= f.number_field(:company_id, value: @verification.input['company_id'])
+    %tr
+      %td= f.submit

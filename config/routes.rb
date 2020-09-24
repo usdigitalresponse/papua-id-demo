@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       member do
         get :show2
       end
+      resources :truework_income_verifications, only: [:new, :create, :show, :index]
     end
     resources :documents, only: [:show]
     resources :metrics, only: [:index]
