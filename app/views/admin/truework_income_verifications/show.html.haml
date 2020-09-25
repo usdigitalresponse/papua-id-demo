@@ -1,0 +1,16 @@
+.title= "Income verification for #{@applicant.first_name} #{@applicant.last_name}"
+
+.status= "Status: #{@verification.status}"
+
+- case @verification.status
+- when "in_process"
+  .info= "Come back later for updates"
+- when "complete"
+  .salary= "Salary: #{@verification.output['salary']}"
+  .salary_frequency= "Salary frequency: #{@verification.output['salary_frequency']}"
+  .employment_status= "Employment status: #{@verification.output['employment_status']}"
+- when "error"
+  .info= "Error: #{@verification.output['error_info']}"
+
+.all_verifications= link_to "All verifications for application", admin_applicant_truework_income_verifications_url(@applicant)
+.application= link_to "Back to application", admin_applicant_url(@applicant)
