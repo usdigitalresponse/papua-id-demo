@@ -44,5 +44,7 @@ module Papua
       g.jbuilder        false
       g.fixtures        false
     end
+
+    config.x.truework_demo  = true
   end
 end
