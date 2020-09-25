@@ -45,6 +45,6 @@ module Papua
       g.fixtures        false
     end
 
-    config.x.truework_demo  = false
+    config.x.truework_demo  = true
   end
 end

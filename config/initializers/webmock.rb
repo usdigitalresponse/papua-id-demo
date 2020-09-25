@@ -13,7 +13,7 @@ if Rails.configuration.x.truework_demo
 	require 'webmock'
 	include WebMock::API
 	WebMock.enable!
-	WebMock.allow_net_connect!
+	WebMock.allow_net_connect!(net_http_connect_on_start: true)
 
 	# From https://raw.githubusercontent.com/truework/truework-sdk-ruby/d2c69df3752f31a4fa0b89e6588d8f55ee94809d/spec/fixtures/report/report_1.json
 	verification_1_status = {
