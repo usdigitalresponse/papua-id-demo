@@ -1,9 +1,0 @@
-#REASON_LIST.accordian
-  - (@applicant.decision_response["summary"]["tags"] & SHOWN_TAGS).each_with_index do |tag, index|
-    .card.mt-0
-      .card-header{id: "REASON_#{index}_HEADING"}
-        %h5.mb-0
-          %button.btn.btn-link.collapsed{data: {toggle: 'collapse', target: "#REASON_#{index}"}, aria: {expanded: false, controls: "#REASON_#{index}"}}
-            = t("tags.#{tag.parameterize}.header")
-      .collapse{id: "REASON_#{index}", data: {parent: '#REASON_LIST'}, aria: {labelledby: "#REASON_#{index}_HEADING"}}
-        .card-body= t("tags.#{tag.parameterize}.explaination")

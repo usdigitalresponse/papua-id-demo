@@ -9,5 +9,5 @@
 Applicant.destroy_all
 Task.destroy_all
 
-FactoryBot.create_list(:applicant, 20, :with_wage_verification)
+FactoryBot.create_list(:applicant, 20)
 FactoryBot.create_list(:task, 20)

@@ -7,16 +7,3 @@
     %dt= t('claim.employment.bank.route')
     = applicant_line_item_decision_haml(@applicant, :bank_routing_number, @applicant.bank_account&.bank_routing_number)
 %h3= t('claim.employment.employment.header')
-%dl
-  .dl-row
-    %dt= t('claim.employment.employment.employer')
-    = applicant_line_item_decision_haml(@applicant, :reported_employer_name, @applicant.wage_verification&.reported_employer_name)
-  .dl-row
-    %dt= t('claim.employment.employment.termination')
-    = applicant_line_item_decision_haml(@applicant, :reported_termination_date, @applicant.wage_verification&.reported_termination_date)
-  .dl-row
-    %dt= t('claim.employment.employment.wage')
-    = applicant_line_item_decision_haml(@applicant, :reported_wages, "$#{@applicant.wage_verification&.reported_wages}")
-  .dl-row
-    %dt= t('claim.employment.employment.interval')
-    = applicant_line_item_decision_haml(@applicant, :reported_time_period, @applicant.wage_verification&.reported_time_period)
