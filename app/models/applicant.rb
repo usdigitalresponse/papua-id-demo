@@ -95,6 +95,6 @@ class Applicant < ApplicationRecord
   protected
 
   def make_decision
-    ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
+    #ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
   end
 end

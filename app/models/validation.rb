@@ -1,4 +1,5 @@
 class Validation < ApplicationRecord
+  self.abstract_class = true
   belongs_to :applicant
 
   enum status: { started: 0, in_process: 1, complete: 2, error: 3 }

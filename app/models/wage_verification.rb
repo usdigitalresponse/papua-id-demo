@@ -2,7 +2,6 @@ class WageVerification < ApplicationRecord
   belongs_to :applicant
   has_many :line_item_decisions, as: :decidable
 
-
   after_create_commit :make_decision
   enum decision: {
     Approved: 1,
@@ -18,7 +17,7 @@ class WageVerification < ApplicationRecord
   }
 
   protected
-  
+
   def make_decision
     # Simulate answers for each term
     ValidateWagesJob.set(wait: 1.second).perform_later(self.id)

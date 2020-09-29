@@ -1,0 +1,2 @@
+class IdentityValidation < Validation
+end
