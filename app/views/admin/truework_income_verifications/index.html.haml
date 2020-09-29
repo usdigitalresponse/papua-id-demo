@@ -1,0 +1,12 @@
+.title= "Income verifications for #{@applicant.first_name} #{@applicant.last_name}"
+
+%table
+  %tr
+    %th= "ID"
+    %th= "Status"
+  - for v in @verifications
+    %tr
+      %td= link_to v.id, admin_applicant_truework_income_verification_url(@applicant, v)
+      %td= v.status
+
+= link_to "Back to application", admin_applicant_url(@applicant)

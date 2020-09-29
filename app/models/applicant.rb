@@ -1,7 +1,6 @@
 class Applicant < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_one :bank_account, dependent: :destroy
-  has_one :wage_verification, dependent: :destroy
   has_many :line_item_decisions, as: :decidable, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :validations, dependent: :destroy

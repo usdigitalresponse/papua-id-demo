@@ -48,7 +48,7 @@
           .dropdown-menu.dropdown-menu-right
             = link_to t('claim.actions.update.status'), '#', class: 'dropdown-item', data: {toggle: :modal, target: '#UPDATE_DIALOG'}
             = link_to t('claim.actions.update.verify_id.unsent'), '#', class: 'dropdown-item'
-            = link_to t('claim.actions.update.verify_wage.unsent'), '#', class: 'dropdown-item disabled'
+            = link_to t('claim.actions.update.verify_wage.unsent'), new_admin_applicant_truework_income_verification_path(@applicant), class: 'dropdown-item'
         = render 'update_modal'
     %section.alerts
       - if @applicant.line_item_decisions.rejected.any?
