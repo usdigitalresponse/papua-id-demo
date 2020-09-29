@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_154506) do
+ActiveRecord::Schema.define(version: 2020_09_29_190236) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -126,7 +125,9 @@ ActiveRecord::Schema.define(version: 2020_09_22_154506) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "sources", default: [], null: false, array: true
+    t.uuid "validations_id"
     t.index ["decidable_type", "decidable_id"], name: "index_line_item_decisions_on_decidable_type_and_decidable_id"
+    t.index ["validations_id"], name: "index_line_item_decisions_on_validations_id"
   end
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -160,5 +161,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_154506) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "documents", "applicants"
+  add_foreign_key "line_item_decisions", "validations", column: "validations_id"
   add_foreign_key "tasks", "applicants"
 end

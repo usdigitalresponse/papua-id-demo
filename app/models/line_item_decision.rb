@@ -1,6 +1,8 @@
 class LineItemDecision < ApplicationRecord
   # TODO: Change decision to enum
   belongs_to :decidable, polymorphic: true
+  belongs_to :validation, optional: true
+  
   scope :accepted, -> { where(decision: :accepted) }
   scope :rejected, -> { where(decision: :rejected) }
 
