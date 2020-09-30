@@ -47,8 +47,8 @@
           = link_to t('claim.actions.update.button'), '#', class: 'btn btn-primary btn-lg', data: {toggle: :dropdown}
           .dropdown-menu.dropdown-menu-right
             = link_to t('claim.actions.update.status'), '#', class: 'dropdown-item', data: {toggle: :modal, target: '#UPDATE_DIALOG'}
-            = link_to t('claim.actions.update.verify_id.unsent'), '#', class: 'dropdown-item'
-            = link_to t('claim.actions.update.verify_wage.unsent'), new_admin_applicant_truework_income_verification_path(@applicant), class: 'dropdown-item'
+            = link_to t('claim.actions.update.verify_id.unsent'), admin_applicant_alloy_identity_verifications_url(@applicant), class: 'dropdown-item', method: :post
+            = link_to t('claim.actions.update.verify_wage.unsent'), new_admin_applicant_truework_income_verification_url(@applicant), class: 'dropdown-item'
         = render 'update_modal'
     %section.alerts
       - if @applicant.line_item_decisions.rejected.any?

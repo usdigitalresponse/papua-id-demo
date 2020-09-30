@@ -1,6 +1,5 @@
 class Validation < ApplicationRecord
-  self.abstract_class = true
-  belongs_to :applicant
+  belongs_to :applicant # NOT optional, keep validation.
   has_many :line_item_decisions, dependent: :destroy
 
   enum status: { started: 0, in_process: 1, complete: 2, error: 3 }

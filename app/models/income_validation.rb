@@ -1,3 +1,5 @@
 class IncomeValidation < Validation
-  self.abstract_class = true
+  def validation_type
+    'Income Verification' #HACK I18n needed
+  end
 end

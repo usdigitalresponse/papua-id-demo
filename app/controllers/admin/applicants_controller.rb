@@ -13,6 +13,7 @@ class Admin::ApplicantsController < Admin::AdminController
 
   def show
     @nav_selection = :claims
+    @hx = (@applicant.audits.to_a + @applicant.validations.to_a).sort_by(&:created_at).reverse
   end
 
   def show2
@@ -25,12 +26,12 @@ class Admin::ApplicantsController < Admin::AdminController
   end
 
   def set_applicant
-    @applicant = Applicant.includes(:line_item_decisions).find(params[:id])
+    @applicant = Applicant[params[:id]] #.includes(:line_item_decisions).find(params[:id])
     @audits = @applicant.audits
   end
 
   def search
-    @applicants = Applicant.all.includes(:line_item_decisions)
+    @applicants = Applicant.all #.includes(:line_item_decisions)
     @applicants = @applicants.global_search(params["query"]) if params["query"].present?
     if params['sort'].present?
       # This is only safe in Rails 6:

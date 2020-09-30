@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         get :show2
       end
       resources :truework_income_verifications, only: [:new, :create, :show, :index]
+      resources :alloy_identity_verifications, only: [:create]
     end
     resources :documents, only: [:show]
     resources :metrics, only: [:index]
