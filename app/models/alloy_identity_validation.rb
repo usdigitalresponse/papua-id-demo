@@ -3,10 +3,6 @@ require 'base64'
 class AlloyIdentityValidation < IdentityValidation
   def initiate_validation
     self.output = Alloy::Api.evaluations(body: self.input)
-    #self.output = {
-    #  decision: 'approved',
-    #  service: 'alloy'
-    #}
     make_decision
     self.status = :complete
     save
