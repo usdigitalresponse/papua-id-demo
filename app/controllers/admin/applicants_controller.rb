@@ -26,12 +26,12 @@ class Admin::ApplicantsController < Admin::AdminController
   end
 
   def set_applicant
-    @applicant = Applicant[params[:id]] #.includes(:line_item_decisions).find(params[:id])
+    @applicant = Applicant[params[:id]]
     @audits = @applicant.audits
   end
 
   def search
-    @applicants = Applicant.all #.includes(:line_item_decisions)
+    @applicants = Applicant.all
     @applicants = @applicants.global_search(params["query"]) if params["query"].present?
     if params['sort'].present?
       # This is only safe in Rails 6:
