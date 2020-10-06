@@ -15,4 +15,7 @@
     %script{async: true, src: 'https://app.papercups.io/widget.js'}
   %body
     = render 'layouts/navbar'
-    #PAGE= yield
+    #PAGE
+      - if flash[:notice].present?
+        .alert.alert-success= flash[:notice]
+      = yield
