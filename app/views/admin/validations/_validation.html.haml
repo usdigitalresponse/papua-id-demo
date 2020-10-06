@@ -1,5 +1,5 @@
 %tr
   %td= validation.created_at.to_datetime.strftime('%F %T')
   %td= 'Someone'
-  %td= validation.validation_type
+  %td= link_to validation.validation_type, validation
   %td= validation.status

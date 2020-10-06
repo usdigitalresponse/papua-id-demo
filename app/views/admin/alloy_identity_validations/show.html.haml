@@ -1,0 +1,4 @@
+%h1= t('claim.verification.header')
+= link_to t('claim.verification.back'), admin_applicant_url(@verification.applicant)
+%pre
+  %code= @verification.output
