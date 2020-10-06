@@ -43,6 +43,9 @@ en:
       closed: Closed
       pending: Pending
   claim:
+    verification:
+      back: Return to Applicant
+      header: Raw Output
     properties:
       status: Status
       first_name: First Name
