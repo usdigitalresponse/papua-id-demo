@@ -5,7 +5,7 @@ class Admin::TrueworkIncomeVerificationsController < Admin::AdminController
 
   # GET /applicants/:applicant_id/income_verifications/new
   def new
-  	@verification = TrueWorkIncomeValidation.new
+  	@verification = TrueworkIncomeVerification.new
   	@verification.input = {
   		"first_name" => @applicant.first_name,
   		"last_name" => @applicant.last_name,
@@ -17,26 +17,31 @@ class Admin::TrueworkIncomeVerificationsController < Admin::AdminController
 
   # POST /applicants/[ID]/income_verifications/create
   def create
-  	v = TrueWorkIncomeValidation.validate_applicant(@applicant, params['true_work_income_validation'])
+  	v = TrueworkIncomeVerification.verify_applicant(@applicant, params['truework_income_verification'])
   	redirect_to admin_applicant_truework_income_verification_path(@applicant, v)
   end
 
-  # GET /applicants/:applicant_id/income_verifications/:id
+  # GET /truework_income_verifications/:id
   def show
   end
 
   # GET /applicants/:applicant_id/income_verifications
   def index
-  	@verifications = Validation.where(applicant: @applicant)
+  	@verifications = Verification.where(applicant: @applicant)
   end
 
   protected
 
   def set_applicant
-    @applicant = Applicant.find(params[:applicant_id])
+    if params.has_key?(:applicant_id)
+      @applicant = Applicant.find(params[:applicant_id])
+    else
+      set_verification
+      @applicant = @verification.applicant
+    end
   end
 
   def set_verification
-    @verification = Validation.find(params[:id])
+    @verification ||= Verification.find(params[:id])
   end
 end

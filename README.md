@@ -31,6 +31,7 @@ This is a Rails application which demonstrates a system for allowing claimants t
 * Set up Rails credentials:
 	* Request a copy of the `master.key` file from another team member
 	* Store `master.key` in the `config` directory- it should be in the same folder as `credentials.yml.enc`
+* Add sample seed data to the database by running `rails db:seed`
 * Start the rails server using Foreman: `foreman start`
 * Visit [http://localhost:5000/](http://localhost:5000/) to see the server running!
 

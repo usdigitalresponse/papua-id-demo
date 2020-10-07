@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resources :documents, only: [:show]
     resources :metrics, only: [:index]
   end
-  resources :alloy_identity_validations, only: [:show], module: :admin # this has to be outside of the namespace to trigger the proper calls when linking directly to an object
+  resources :alloy_identity_verifications, only: [:show], module: :admin # this has to be outside of the namespace to trigger the proper calls when linking directly to an object
+  resources :truework_income_verifications, only: [:show], module: :admin # this has to be outside of the namespace to trigger the proper calls when linking directly to an object
   resources :applicants, only: [:new, :create, :show] do
     resources :documents, only: [:new, :create]
     resources :bank_accounts, only: [:new, :create]

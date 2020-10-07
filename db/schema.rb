@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_190236) do
+ActiveRecord::Schema.define(version: 2020_10_06_234242) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -125,9 +126,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_190236) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "sources", default: [], null: false, array: true
-    t.uuid "validation_id"
+    t.uuid "verification_id"
     t.index ["decidable_type", "decidable_id"], name: "index_line_item_decisions_on_decidable_type_and_decidable_id"
-    t.index ["validation_id"], name: "index_line_item_decisions_on_validation_id"
+    t.index ["verification_id"], name: "index_line_item_decisions_on_verification_id"
   end
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -147,7 +148,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_190236) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "validations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "verifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "applicant_id", null: false
     t.string "type", null: false
     t.jsonb "input"
@@ -156,11 +157,11 @@ ActiveRecord::Schema.define(version: 2020_09_29_190236) do
     t.integer "decision"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applicant_id"], name: "index_validations_on_applicant_id"
+    t.index ["applicant_id"], name: "index_verifications_on_applicant_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "documents", "applicants"
-  add_foreign_key "line_item_decisions", "validations"
+  add_foreign_key "line_item_decisions", "verifications"
   add_foreign_key "tasks", "applicants"
 end

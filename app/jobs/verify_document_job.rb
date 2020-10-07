@@ -1,4 +1,4 @@
-class ValidateDocumentJob < ApplicationJob
+class VerifyDocumentJob < ApplicationJob
   queue_as :default
 
   def perform(document_id)
