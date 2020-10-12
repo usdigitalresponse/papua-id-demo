@@ -1,0 +1,5 @@
+%tr
+  %td= verification.created_at.to_datetime.strftime('%F %T')
+  %td= 'Someone'
+  %td= link_to verification.verification_type, verification
+  %td= verification.status

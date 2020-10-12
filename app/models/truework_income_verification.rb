@@ -1,19 +1,19 @@
 require 'truework'
 require 'base64'
 
-class TrueWorkIncomeValidation < IncomeValidation
+class TrueworkIncomeVerification < IncomeVerification
 
   def self.job_class
-  	TrueWorkIncomeValidationJob
+  	TrueworkIncomeVerificationJob
   end
 
   def job_class
     self.class.job_class
   end
 
-  def initiate_validation
+  def initiate_verification
     if !$truework_enabled
-      raise "Truework integration not enabled, cannot validate"
+      raise "Truework integration not enabled, cannot verify"
     end
 
   	update_attributes(status: :in_process)
@@ -89,7 +89,7 @@ class TrueWorkIncomeValidation < IncomeValidation
     end
   end
 
-  def poll_validation
+  def poll_verification
     begin
       verification_request = Truework::VerificationRequest.retrieve(output['verification_id'])
       case verification_request.state
@@ -110,15 +110,15 @@ class TrueWorkIncomeValidation < IncomeValidation
         })
         update_attributes(status: :error, output: new_output)
       when "invalid"
-        # TODO: Can TrueWork tell us why our request is invalid?
+        # TODO: Can Truework tell us why our request is invalid?
         new_output = output.merge({
-          error_info: "TrueWork indicates that request made by this app is invalid; this is probably a bug.  Further info is not available at this time."
+          error_info: "Truework indicates that request made by this app is invalid; this is probably a bug.  Further info is not available at this time."
         })
         update_attributes(status: :error, output: new_output)
       when "action-required"
         # TODO: How do we handle this case?
         new_output = output.merge({
-          error_info: "TrueWork requires more information to process request, but we do not have a way to supply that information."
+          error_info: "Truework requires more information to process request, but we do not have a way to supply that information."
         })
         update_attributes(status: :error, output: new_output)
       else

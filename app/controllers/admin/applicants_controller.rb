@@ -13,7 +13,7 @@ class Admin::ApplicantsController < Admin::AdminController
 
   def show
     @nav_selection = :claims
-    @hx = (@applicant.audits.to_a + @applicant.validations.to_a).sort_by(&:created_at).reverse
+    @hx = (@applicant.audits.to_a + @applicant.verifications.to_a).sort_by(&:created_at).reverse
   end
 
   def show2

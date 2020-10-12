@@ -13,7 +13,7 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/applicants", type: :request do
-  # Applicant. As you add validations to Applicant, be sure to
+  # Applicant. As you add verifications to Applicant, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { {
     first_name: 'Hilda',

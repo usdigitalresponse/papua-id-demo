@@ -1,4 +1,4 @@
-class ValidateBankAccountJob < ApplicationJob
+class VerifyBankAccountJob < ApplicationJob
   queue_as :default
 
   def perform(bank_account_id)

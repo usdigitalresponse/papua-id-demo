@@ -49,7 +49,7 @@ if Rails.configuration.x.truework_demo
 	stub_request(:post, /api\.truework\.com\/verification-requests\/$/).with(body: hash_including("target" => hash_including("social_security_number" => "000-00-0001"))).to_return(body: verification_1_status.to_json)
 	# TODO: We could add similar mocks for different SSNs, but with different results,
 	# e.g. 000-00-0002 would return an "action-required" mock result.  See
-	# TrueWorkIncomeValidation::addl_info.
+	# TrueworkIncomeVerification::addl_info.
 
 	stub_request(:get, /api\.truework\.com\/verification-requests\/report_1\/$/).to_return(body: verification_1_status.to_json)
 

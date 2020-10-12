@@ -2,8 +2,8 @@ class Applicant < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_one :bank_account, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :validations, dependent: :destroy
-  has_many :line_item_decisions, through: :validations
+  has_many :verifications, dependent: :destroy
+  has_many :line_item_decisions, through: :verifications
 
   attr_accessor :disable_verification
 
@@ -94,6 +94,6 @@ class Applicant < ApplicationRecord
   protected
 
   def make_decision
-    #ValidateApplicantJob.set(wait: 1.second).perform_later(self.id)
+    #VerifyApplicantJob.set(wait: 1.second).perform_later(self.id)
   end
 end
