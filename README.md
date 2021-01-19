@@ -1,3 +1,6 @@
+**ARCHIVED**
+As of 1/19/2021, this project is no longer actively maintained.
+
 # Introduction
 
 This is a Rails application which demonstrates a system for allowing claimants to initiate and manage unemployment claims, and for customer service representatives to process claims.
